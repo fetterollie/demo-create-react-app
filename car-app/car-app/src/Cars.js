@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 
 const Cars = () => {
-    const carList = [
+    const [carList, setCarList] = useState([
         {
           id: 1,
           model: "camry",
@@ -64,16 +64,17 @@ const Cars = () => {
           year: "1800",
           color: "black"
         }
-  ]
+  ])
 
   const [submitting, setSubmitting] = useState(false);
 
   // a place to hold submitted values  
-  const [model, setModel] = useState();
-  const [color, setColor] = useState();
-  const [year, setYear] = useState();
+  const [model, setModel] = useState('');
+  const [color, setColor] = useState('');
+  const [year, setYear] = useState('');
 
-  const [finalArr, setFinalArr] = useState();
+  const [finalArr, setFinalArr] = useState([]);
+  
 
 
   const handleSubmit = (event) => {
@@ -100,7 +101,7 @@ const Cars = () => {
     // console.log(modelArr, colorArr, yearArr)
 
     // console.log(catArr)
-    console.log(finalArr)
+    // console.log(finalArr)
 
     setTimeout(() => {
         setSubmitting(false);
@@ -149,7 +150,7 @@ const Cars = () => {
                   {finalArr?.map((car) => {
                     console.log(car);
                     return (
-                      <ul>
+                      <ul key={car.id}>
                         <li>{ car.model }  { car.color }  { car.year }</li>
                       </ul>
                     );
