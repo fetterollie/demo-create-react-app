@@ -52,7 +52,8 @@ function App() {
 
   // Delete Character
   const deleteCharacter = (id) => {
-    console.log('delete', id)
+    // console.log('delete', id)
+    setCharacters(characters.filter((character) => character.id !== id))
   }
 
   return (
@@ -71,7 +72,7 @@ function App() {
               <Cars />
             </Route>
             <Route path='/characters'>
-              <Characters characters={characters} />
+              <Characters characters={characters} onDelete={deleteCharacter} />
             </Route>
           </Switch>
         </div>
