@@ -1,6 +1,6 @@
 import Character from './Character'
 
-const Characters = ({ characters, onDelete }) => {
+const Characters = ({ characters, onDelete, onToggle }) => {
 
 
 
@@ -9,7 +9,8 @@ const Characters = ({ characters, onDelete }) => {
         {characters.map((character) => (
             <Character key={character.id} 
             character={character} 
-            onDelete={onDelete} />
+            onDelete={onDelete} 
+            onToggle={onToggle} />
         ))}
         </>
     );

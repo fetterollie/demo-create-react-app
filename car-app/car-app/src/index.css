@@ -19,3 +19,7 @@ img {
   width: 150px;
 
 }
+
+.character.favorite {
+  border-left: 5px solid green;
+}
