@@ -72,7 +72,10 @@ function App() {
               <Cars />
             </Route>
             <Route path='/characters'>
-              <Characters characters={characters} onDelete={deleteCharacter} />
+              <h3>
+                {'Total characters: ' + characters.length}
+              </h3>
+              <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} />) : ('There are no Characters to display...')}</p>
             </Route>
           </Switch>
         </div>
