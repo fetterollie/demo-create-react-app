@@ -16,11 +16,11 @@ const Clicker = () => {
     return (
 
 
-        <div>
+        <div className='container'>
             <h2>Clicker</h2>
             <p>{ count } </p>
-            <button onClick={handleClickSub}>-</button>
-            <button onClick={handleClickAdd}>+</button>
+            <button  className='btn' onClick={handleClickSub}>-</button>
+            <button  className='btn' onClick={handleClickAdd}>+</button>
 
         </div>
      );

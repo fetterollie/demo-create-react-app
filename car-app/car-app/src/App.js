@@ -60,6 +60,9 @@ function App() {
   // Add Character
   const addCharacter = (charInfo) => {
     console.log(charInfo)
+    const id = Math.floor(Math.random() * 10000) + 1
+    const newCharacter = {id, ...charInfo}
+    setCharacters([...characters, newCharacter])
   }
 
   // Delete Character
@@ -81,6 +84,7 @@ function App() {
   return (
     <Router>
       <div className="container">
+        <h1 className='title'>Create-React-App</h1>
         <Navbar className="header" />
         <div className='content'>
           <Switch>

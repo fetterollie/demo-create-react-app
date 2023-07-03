@@ -119,49 +119,42 @@ const Cars = () => {
   }
 
     return (
-        <div className="cars">
+        <div className="container">
             <h2>Cars</h2>
-                <form onSubmit={handleSubmit} className='form-control' >
-                    <fieldset>
-                        <label>
-                            Model
-                            <input 
-                                value={model} 
-                                onChange={e => setModel(e.target.value)} 
-                            />
-                        </label>
-                        <label>
-                            Color
-                            <input 
-                                value={color} 
-                                onChange={e => setColor(e.target.value)} 
-                            />
-                        </label>
-                        <label>
-                            Year
-                            <input 
-                                value={year} 
-                                onChange={e => setYear(e.target.value)} 
-                            />
-                        </label>
-                    </fieldset>
-                    <button type="submit">Submit</button>
+                <form onSubmit={handleSubmit} className='' >
+                  <div className='form-control'>
+                    <label>Model</label>
+                      <input 
+                          value={model} 
+                          onChange={e => setModel(e.target.value)} 
+                      />
+                  </div>
+                  <div className='form-control'>
+                    <label>Color</label>
+                    <input 
+                        value={color} 
+                        onChange={e => setColor(e.target.value)} 
+                    />
+                  </div>
+                  <div className='form-control'>
+                    <label>Year</label>
+                    <input 
+                        value={year} 
+                        onChange={e => setYear(e.target.value)} 
+                    />
+                  </div>
+                  <div>
+                    <button className="btn" type="submit">Submit</button>
+                  </div>
                 </form>
-                <div className='output'>
-                    <form>
-                        <fieldset>
-                            <label>
-                                {"Search Results for:  "} { model } { color } { year }
-                            </label>
-                        </fieldset>
-                    </form>
-                </div>
-                <div>
+
+                <div className='container'>
+                {"Search Results for:  "} { model } { color } { year }
                   {/* Display finalArr */}
                   {finalArr?.map((car) => {
                     return (
                       <ul key={car.id}>
-                        <li>{ car.model }  { car.color }  { car.year } <img className="thumbnail" src={car.image} /> </li>
+                        <li class>{ car.model }  { car.color }  { car.year } <img className="thumbnail" src={car.image} /> </li>
                       </ul>
                     );
                   })}

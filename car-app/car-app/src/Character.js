@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 
 const Character = ({ character, onDelete, onToggle }) => {
     return (
-        <div className={`character ${character.favorite ? 'favorite' : ''}`} onDoubleClick={() => {onToggle(character.id)}}>
+        <div className={`character card ${character.favorite ? 'favorite' : ''}`} onDoubleClick={() => {onToggle(character.id)}}>
             <h3>{character.name} 
                 <FaTimes onCLick={onDelete} style={{ color: 'red', cursor: 'pointer' }} 
                 onClick={() => onDelete(character.id)} />

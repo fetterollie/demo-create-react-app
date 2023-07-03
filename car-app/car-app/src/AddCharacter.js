@@ -1,34 +1,40 @@
 import { useState } from 'react';
 
 const AddCharacter = ({ onAdd }) => {
-    const [charName, setCharName] = useState('')
-    const [dialogue, setDialogue] = useState('')
+    const [name, setName] = useState('')
+    const [speech, setSpeech] = useState('')
     const [favorite, setFavorite] = useState(false)
+    const [imgUrl, setImgUrl] = useState('')
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        if(!charName) {
+        if(!name) {
             alert('Please add a Character')
             return
         }
 
-        onAdd({ charName, dialogue, favorite})
+        onAdd({ name, speech, favorite, imgUrl})
 
-        setCharName('')
-        setDialogue('')
+        setName('')
+        setSpeech('')
         setFavorite(false)
+        setImgUrl('')
     }
 
     return (
         <form className='add-form' onSubmit={onSubmit}>
             <div className="form-control">
                 <label>Character</label>
-                <input type='text' placeholder="Add Character" value={charName} onChange={(e) => {setCharName(e.target.value)}} />
+                <input type='text' placeholder="Add Character" value={name} onChange={(e) => {setName(e.target.value)}} />
             </div>
             <div className="form-control">
                 <label>Add Character Dialogue</label>
-                <input type='text' placeholder="Add Character" value={dialogue} onChange={(e) => {setDialogue(e.target.value)}} />
+                <input type='text' placeholder="Add Character" value={speech} onChange={(e) => {setSpeech(e.target.value)}} />
+            </div>
+            <div className="form-control">
+                <label>Add Image URL</label>
+                <input type='text' placeholder="Paste URL here" value={imgUrl} onChange={(e) => {setImgUrl(e.target.value)}} />
             </div>
             <div className="form-control form-control-check">
                 <label>Favorite Character</label>
