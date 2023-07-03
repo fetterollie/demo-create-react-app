@@ -8,7 +8,9 @@ import Cars from './Cars';
 import Characters from './Characters';
 import character from './Character';
 import { useState } from 'react'
-
+import Weather from './Weather';
+import axios from 'axios'
+// import { Typography } from '@material-ui/core'
 
 
 
@@ -102,6 +104,9 @@ function App() {
                 {'Total characters: ' + characters.length}
               </h3>
               <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} />) : ('There are no Characters to display...')}</p>
+            </Route>
+            <Route path='/weather'>
+              <Weather />
             </Route>
           </Switch>
         </div>

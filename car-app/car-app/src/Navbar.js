@@ -8,6 +8,7 @@ const Navbar = () => {
                 <Link to='/clicker'> Clicker </Link>
                 <Link to='/cars'> Cars </Link>
                 <Link to='/characters'> Characters </Link>
+                <Link to='/weather'>Weather</Link>
             </div>
         </div>
     );
