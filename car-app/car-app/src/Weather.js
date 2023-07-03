@@ -9,7 +9,6 @@ const Weather = () => {
     const [city, setCity] = useState('Alexandria')
 
     const getWeather = (zipCode) => {
-        // console.log(API_KEY)
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`)
         .then(res => {
             // console.log(
