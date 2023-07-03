@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const Weather = () => {
     const [zipCode, setZipcode] = useState('22309')
-    const [apiKey, setApiKey] = useState('c781fb375508389dad4c78e819f52b1c')
+    const [apiKey, setApiKey] = useState('')
     const [temp, setTemp] = useState('')
     const [city, setCity] = useState('Alexandria')
 
