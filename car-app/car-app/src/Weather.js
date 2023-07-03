@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
+import secretKey from './data/.secrets'
 
 const Weather = () => {
     const [zipCode, setZipcode] = useState('22309')
@@ -8,7 +9,7 @@ const Weather = () => {
     const [city, setCity] = useState('Alexandria')
 
     const getWeather = (zipCode) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${apiKey}&units=imperial`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${secretKey}&units=imperial`)
         .then(res => {
             // console.log(
             //     res.data.city.name,
