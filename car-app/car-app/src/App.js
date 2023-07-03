@@ -10,6 +10,8 @@ import character from './Character';
 import { useState } from 'react'
 
 
+
+
 function App() {
 
   const [characters, setCharacters] = useState([
@@ -55,6 +57,11 @@ function App() {
     },
 ])
 
+  // Add Character
+  const addCharacter = (charInfo) => {
+    console.log(charInfo)
+  }
+
   // Delete Character
   const deleteCharacter = (id) => {
     // console.log('delete', id)
@@ -63,7 +70,7 @@ function App() {
 
   // Toggle Favorite
   const toggleFavorite = (id) => {
-    console.log('toggle', id)
+    // console.log('toggle', id)
     setCharacters(
       characters.map(
           (character) => character.id === id ? {...character, favorite: !character.favorite} : character
@@ -73,8 +80,8 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Navbar />
+      <div className="container">
+        <Navbar className="header" />
         <div className='content'>
           <Switch>
             <Route exact path="/">
@@ -90,7 +97,7 @@ function App() {
               <h3>
                 {'Total characters: ' + characters.length}
               </h3>
-              <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} />) : ('There are no Characters to display...')}</p>
+              <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} />) : ('There are no Characters to display...')}</p>
             </Route>
           </Switch>
         </div>

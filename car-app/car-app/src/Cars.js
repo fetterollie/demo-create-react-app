@@ -121,7 +121,7 @@ const Cars = () => {
     return (
         <div className="cars">
             <h2>Cars</h2>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='form-control' >
                     <fieldset>
                         <label>
                             Model
@@ -151,7 +151,7 @@ const Cars = () => {
                     <form>
                         <fieldset>
                             <label>
-                                { model }  { color }  { year }
+                                {"Search Results for:  "} { model } { color } { year }
                             </label>
                         </fieldset>
                     </form>
