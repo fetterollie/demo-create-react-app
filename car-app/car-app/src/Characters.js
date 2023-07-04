@@ -2,7 +2,7 @@ import AddCharacter from './AddCharacter';
 import Character from './Character'
 
 
-const Characters = ({ characters, onDelete, onToggle, onAdd }) => {
+const Characters = ({ characters, onDelete, onToggle, onAdd, classes }) => {
 
     return (
         
@@ -12,7 +12,8 @@ const Characters = ({ characters, onDelete, onToggle, onAdd }) => {
             <Character key={character.id} 
             character={character} 
             onDelete={onDelete} 
-            onToggle={onToggle} />
+            onToggle={onToggle}
+            classes={classes} />
         ))}
         </>
     );

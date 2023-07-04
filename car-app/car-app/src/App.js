@@ -10,11 +10,22 @@ import character from './Character';
 import { useState } from 'react'
 import Weather from './Weather';
 import axios from 'axios'
-// import { Typography } from '@material-ui/core'
+import Typography from '@mui/material/Typography';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import { Container } from '@mui/material';
+import { makeStyles } from '@material-ui/core';
 
-
+const useStyles = makeStyles({
+    btn: {
+        fontSize: 30,
+        '&:hover': {
+            fontSize: 32
+        }
+    }
+})
 
 function App() {
+  const classes = useStyles()
 
   const [characters, setCharacters] = useState([
     {
@@ -86,12 +97,18 @@ function App() {
   return (
     <Router>
       <div className="container">
-        <h1 className='title'>Create-React-App</h1>
+        <Typography 
+          variant="h4"
+          color="primary"
+          align="center"
+        >
+          Create-React-App
+        </Typography>
         <Navbar className="header" />
         <div className='content'>
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home/>
             </Route>
             <Route path="/clicker">
               <Clicker />
@@ -103,13 +120,18 @@ function App() {
               <h3>
                 {'Total characters: ' + characters.length}
               </h3>
-              <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} />) : ('There are no Characters to display...')}</p>
+              <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} classes={classes} />) : ('There are no Characters to display...')}</p>
             </Route>
             <Route path='/weather'>
               <Weather />
             </Route>
           </Switch>
         </div>
+        <Typography variant='h1'>
+          <Container align='center'>
+            <ChildCareIcon color="primary" />  
+          </Container>
+        </Typography>
       </div>
     </Router>
   );
