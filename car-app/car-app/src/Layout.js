@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         display: 'flex'
     },
     active: {
-        background: 'f4f4f4'
+        background: '#f4f4f4'
     },
 })
 
@@ -91,7 +91,6 @@ const Layout = ({ children }) => {
                                 button 
                                 key={item.text} 
                                 onClick={() => history.push(item.path)}
-// ***trying to get active page button to change color. so far unsuccessful***
                                 className={location.pathname == item.path ? classes.active : null}
                             >
                                 <ListItemIcon>{item.icon}</ListItemIcon>
