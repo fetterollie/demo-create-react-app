@@ -1,3 +1,4 @@
+import { Button, TextField, Typography } from '@mui/material';
 import { useState } from 'react';
 
 const Clicker = () => {
@@ -17,10 +18,24 @@ const Clicker = () => {
 
 
         <div className='container'>
-            <h2>Clicker</h2>
-            <p>{ count } </p>
-            <button  className='btn' onClick={handleClickSub}>-</button>
-            <button  className='btn' onClick={handleClickAdd}>+</button>
+            <Typography variant='h5'>
+                Clicker
+            </Typography>
+            <Button>
+                {count}
+            </Button>
+            <Button 
+                variant='contained'
+                onClick={handleClickSub}
+            >
+                -
+            </Button>
+            <Button  
+                variant='contained'
+                onClick={handleClickAdd}
+            >
+                +
+            </Button>
 
         </div>
      );

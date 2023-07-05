@@ -1,3 +1,4 @@
+import { Button, FormControl, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import { useState } from 'react'
 
@@ -35,18 +36,26 @@ const Weather = () => {
 
     return (
         <div className="container">
-            <h3>
+            <Typography variant='h5'>
                 {`Temperature:`}
-            </h3>
-            <p>{temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : 'No Temperature Info'}</p>
-                <form className='add-form' onSubmit={onSubmit}>
-                    <div className="form-control">
-                        <label>ZIP Code</label>
-                        <input type='text' placeholder="Input ZIP Code" value={zipCode} onChange={(e) => {setZipcode(e.target.value)}} />
-                    </div>
-                    <input type='submit' value='Get Temperature' className="btn btn-block" />
+            </Typography>
+            <Typography>
+                {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : 'No Temperature Info'}
+            </Typography>
+                <form onSubmit={onSubmit}>
+                    <TextField
+                        label="ZIP Code"
+                        value={zipCode}
+                        onChange={(e) => {setZipcode(e.target.value)}}
+                    >
+                    </TextField>
+                    <br/>
+                    <Button 
+                        type='submit'
+                    >
+                        Get Temperature
+                    </Button>
                 </form>
-            {/* <button className='btn' onclick={getWeather()}>Get Temperature</button> */}
         </div>
     );
 }

@@ -2,7 +2,7 @@ import AddCharacter from './AddCharacter';
 import Character from './Character'
 
 
-const Characters = ({ characters, onDelete, onToggle, onAdd, classes }) => {
+const Characters = ({ characters, onDelete, onToggle, onAdd }) => {
 
     return (
         
@@ -13,7 +13,7 @@ const Characters = ({ characters, onDelete, onToggle, onAdd, classes }) => {
             character={character} 
             onDelete={onDelete} 
             onToggle={onToggle}
-            classes={classes} />
+            />
         ))}
         </>
     );

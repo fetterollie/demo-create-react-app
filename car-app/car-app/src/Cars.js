@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from './api/carList'
+import { Button, Card, CardContent, CardMedia, Container, TextField, Typography } from '@material-ui/core';
 
 // import './App.css';
 
@@ -73,48 +74,82 @@ const Cars = () => {
     }, 2000)
   }
 
+  const loremIpsum = "Lorem ipsum  dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
     return (
-        <div className="container">
-            <h2>Cars</h2>
+        <Container>
+            <Typography variant='h5'>
+              Cars
+            </Typography>
                 <form onSubmit={handleSubmit} className='' >
-                  <div className='form-control'>
-                    <label>Model</label>
-                      <input 
-                          value={model} 
-                          onChange={e => setModel(e.target.value)} 
-                      />
-                  </div>
-                  <div className='form-control'>
-                    <label>Color</label>
-                    <input 
-                        value={color} 
-                        onChange={e => setColor(e.target.value)} 
-                    />
-                  </div>
-                  <div className='form-control'>
-                    <label>Year</label>
-                    <input 
-                        value={year} 
-                        onChange={e => setYear(e.target.value)} 
-                    />
-                  </div>
+                  <TextField
+                    label='Add Model'
+                    variant='outlined'
+                    value={model}
+                    onChange={e => setModel(e.target.value)}
+                  />
+                  <TextField
+                    label='Add Color'
+                    variant='outlined'
+                    value={color}
+                    onChange={e => setColor(e.target.value)}
+                  />
+                  <TextField
+                    label='Add Year'
+                    variant='outlined'
+                    value={year}
+                    onChange={e => setYear(e.target.value)}
+                  />
                   <div>
-                    <button className="btn" type="submit">Submit</button>
+                    <Button 
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
                   </div>
                 </form>
 
-                <div className='container'>
-                {"Search Results for:  "} { model } { color } { year }
-                  {/* Display finalArr */}
+                <div>
+                  <Typography variant='h6'>
+                    {`Search Results for: ${model} ${color} ${year}`}
+                  </Typography>
+
                   {finalArr?.map((car) => {
                     return (
-                      <ul key={car.id}>
-                        <li class>{ car.model }  { car.color }  { car.year } <img className="thumbnail" src={car.image} /> </li>
-                      </ul>
+                      <div key={car.id}>
+                        <Card sx={{ maxWidth: 345 }}>
+                        <CardContent>
+                          <Typography>
+                            <img 
+                              src={car.image}
+                              width='200px'
+                            />
+                          </Typography>
+                          <Typography 
+                            gutterBottom
+                            variant='h6'
+                            component="div"
+                          >
+                            {car.model}
+                          </Typography>
+                          <Typography
+                            variant='body2'
+                            color='text.secondary'
+                          >
+                            {`${car.color} ${car.model} built in ${car.year}. ${loremIpsum}`}
+                          </Typography>
+
+                        </CardContent>
+                      </Card>
+                      </div>
+                      
+                      // <ul key={car.id}>
+                      //   <li class>{ car.model }  { car.color }  { car.year } <img className="thumbnail" src={car.image} /> </li>
+                      // </ul>
                     );
                   })}
                 </div>
-        </div>
+        </Container>
     );
 }
  

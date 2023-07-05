@@ -13,19 +13,27 @@ import axios from 'axios'
 import Typography from '@mui/material/Typography';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import { Container } from '@mui/material';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core';
+import Layout from './Layout';
 
-const useStyles = makeStyles({
-    btn: {
-        fontSize: 30,
-        '&:hover': {
-            fontSize: 32
-        }
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#666699'
     }
+  },
+  typography: {
+    fontFamily: 'Quicksand',
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
+
+  }
 })
 
+
 function App() {
-  const classes = useStyles()
 
   const [characters, setCharacters] = useState([
     {
@@ -95,45 +103,41 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="container">
-        <Typography 
-          variant="h4"
-          color="primary"
-          align="center"
-        >
-          Create-React-App
-        </Typography>
-        <Navbar className="header" />
-        <div className='content'>
-          <Switch>
-            <Route exact path="/">
-              <Home/>
-            </Route>
-            <Route path="/clicker">
-              <Clicker />
-            </Route>
-            <Route path="/cars">
-              <Cars />
-            </Route>
-            <Route path='/characters'>
-              <h3>
-                {'Total characters: ' + characters.length}
-              </h3>
-              <p>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} classes={classes} />) : ('There are no Characters to display...')}</p>
-            </Route>
-            <Route path='/weather'>
-              <Weather />
-            </Route>
-          </Switch>
-        </div>
-        <Typography variant='h1'>
-          <Container align='center'>
-            <ChildCareIcon color="primary" />  
-          </Container>
-        </Typography>
-      </div>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Layout>
+          <div className="container">
+            <div className='content'>
+              <Switch>
+                <Route exact path="/">
+                  <Home/>
+                </Route>
+                <Route path="/clicker">
+                  <Clicker />
+                </Route>
+                <Route path="/cars">
+                  <Cars />
+                </Route>
+                <Route path='/characters'>
+                  <Typography variant="h5">
+                    {'Total characters: ' + characters.length}
+                  </Typography>
+                  <Container>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} />) : ('There are no Characters to display...')}</Container>
+                </Route>
+                <Route path='/weather'>
+                  <Weather />
+                </Route>
+              </Switch>
+            </div>
+            <Typography variant='h1'>
+              <Container align='center'>
+                <ChildCareIcon color="primary" />  
+              </Container>
+            </Typography>
+          </div>
+        </Layout>
+      </Router>
+    </ThemeProvider>
   );
 }
 
