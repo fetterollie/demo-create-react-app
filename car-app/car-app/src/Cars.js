@@ -74,6 +74,8 @@ const Cars = () => {
     }, 2000)
   }
 
+  
+
   const loremIpsum = "Lorem ipsum  dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
     return (
@@ -103,6 +105,7 @@ const Cars = () => {
                   <div>
                     <Button 
                       type="submit"
+                      variant='contained'
                     >
                       Submit
                     </Button>
@@ -117,30 +120,31 @@ const Cars = () => {
                   {finalArr?.map((car) => {
                     return (
                       <div key={car.id}>
-                        <Card sx={{ maxWidth: 345 }}>
-                        <CardContent>
-                          <Typography>
-                            <img 
-                              src={car.image}
-                              width='200px'
-                            />
-                          </Typography>
-                          <Typography 
-                            gutterBottom
-                            variant='h6'
-                            component="div"
-                          >
-                            {car.model}
-                          </Typography>
-                          <Typography
-                            variant='body2'
-                            color='text.secondary'
-                          >
-                            {`${car.color} ${car.model} built in ${car.year}. ${loremIpsum}`}
-                          </Typography>
-
-                        </CardContent>
-                      </Card>
+                        <Card sx={{ maxWidth: 200 }}>
+                          <CardContent>
+                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                              <img 
+                                src={car.image}
+                                width='200px'
+                              />
+                            </Typography>
+                            <Typography 
+                              gutterBottom
+                              variant='h6'
+                              component="div"
+                            >
+                              {car.model}
+                            </Typography>
+                            <Typography
+                              sx={{ fontSize: 14}}
+                              variant='body2'
+                              color='text.secondary'
+                              gutterBottom
+                            >
+                              {`${car.color} ${car.model} built in ${car.year}. ${loremIpsum}`}
+                            </Typography>
+                          </CardContent>
+                        </Card>
                       </div>
                       
                       // <ul key={car.id}>
