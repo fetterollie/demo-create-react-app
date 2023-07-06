@@ -10,6 +10,7 @@ const AddCharacter = ({ onAdd }) => {
     const [speech, setSpeech] = useState('')
     const [favorite, setFavorite] = useState(false)
     const [imgUrl, setImgUrl] = useState('')
+    const [color, setColor] = useState('')
 
 
     const onSubmit = (e) => {
@@ -20,12 +21,13 @@ const AddCharacter = ({ onAdd }) => {
             return
         }
 
-        onAdd({ name, speech, favorite, imgUrl})
+        onAdd({ name, speech, favorite, imgUrl, color})
 
         setName('')
         setSpeech('')
         setFavorite(false)
         setImgUrl('')
+        setColor('')
     }
 
     return (
@@ -58,6 +60,12 @@ const AddCharacter = ({ onAdd }) => {
                         variant='outlined'
                         value={imgUrl} 
                         onChange={(e) => {setImgUrl(e.target.value)}}
+                    />
+                    <TextField 
+                        label='Add Favorite Color'
+                        variant='outlined'
+                        value={color} 
+                        onChange={(e) => {setColor(e.target.value)}}
                     />
                     <FormControlLabel control={
                             <Checkbox 

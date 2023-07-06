@@ -1,15 +1,15 @@
-import { Container, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, Typography, makeStyles } from "@material-ui/core";
+import { Button, Container, CssBaseline, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, ThemeProvider, Typography, createTheme, makeStyles } from "@material-ui/core";
 import React from "react";
-import Navbar from "./Navbar";
 import { SubjectOutlined } from "@material-ui/icons";
 import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnessRounded';
+
 
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => {
     return {
         page: {
-            background: '#f9f9f9',
             width: '100%',
             padding: theme.spacing(3)
         },
@@ -31,11 +31,12 @@ const useStyles = makeStyles((theme) => {
     }
 })
 
-const Layout = ({ children }) => {
+const Layout = ({ children, toggleTheme, theme }) => {
 
     const classes = useStyles()
     const history = useHistory()
     const location = useLocation()
+
 
     const menuItems = [
         {
@@ -66,53 +67,57 @@ const Layout = ({ children }) => {
     ]
 
     return (
-        <div>
-            <Typography 
-              variant="h4"
-              color="primary"
-              align="center"
-            >
-              Create-React-App
-            </Typography>
-            <Container align="center">
-                {/* <Navbar />  */}
-            </Container>
-            <div className={classes.root}>
-                <Drawer
-                    className={classes.drawer}
-                    variant="permanent"
-                    anchor="left"
-                    classes={{ paper: classes.drawerPaper }}
+        <ThemeProvider theme={theme}>
+            <div>
+                <Typography 
+                variant="h4"
+                color="primary"
+                align="center"
                 >
-                    <div>
-                        <Typography className={classes.title}>
-                            Create-React-App
-                        </Typography>
+                Create-React-App
+                <br />
+                <Button 
+                    size="small"
+                    variant="contained"
+                    onClick={() => {toggleTheme()}}
+                    color="secondary"
+                >
+                    <SettingsBrightnessRoundedIcon/>
+                </Button>
+                </Typography>
+                <div className={classes.root}>
+                    <Drawer
+                        className={classes.drawer}
+                        variant="permanent"
+                        anchor="left"
+                        classes={{ paper: classes.drawerPaper }}
+                    >
+                        <div>
+                            <Typography className={classes.title}>
+                                Create-React-App
+                            </Typography>
+                        </div>
+
+                        <List>
+                            {menuItems.map((item) => (
+                                <ListItem 
+                                    button 
+                                    key={item.text} 
+                                    onClick={() => history.push(item.path)}
+                                    className={location.pathname == item.path ? classes.active : null}
+                                >
+                                    <ListItemIcon>{item.icon}</ListItemIcon>
+                                    <ListItemText primary={item.text} />
+                                </ListItem>
+                            ))}
+                        </List>
+                    </Drawer>
+                    <div className={classes.page}>
+                        {children}
                     </div>
-
-                    {/*List item links*/}
-                    <List>
-                        {menuItems.map((item) => (
-                            <ListItem 
-                                button 
-                                key={item.text} 
-                                onClick={() => history.push(item.path)}
-                                className={location.pathname == item.path ? classes.active : null}
-                            >
-                                <ListItemIcon>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.text} />
-                            </ListItem>
-                        ))}
-                    </List>
-
-
-
-                </Drawer>
-                <div className={classes.page}>
-                    {children}
                 </div>
             </div>
-        </div>
+        </ThemeProvider>
     );
 }
  

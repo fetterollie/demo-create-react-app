@@ -1,5 +1,4 @@
 
-import './App.css';
 import Home from './Home';
 import Clicker from './Clicker';
 import Navbar from './Navbar';
@@ -13,24 +12,55 @@ import axios from 'axios'
 import Typography from '@mui/material/Typography';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import { Container } from '@mui/material';
-import { makeStyles, createTheme, ThemeProvider } from '@material-ui/core';
+import { makeStyles, Paper, Box } from '@material-ui/core';
 import Layout from './Layout';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { createContext } from 'react';
+import { light } from '@mui/material/styles/createPalette';
 
-const theme = createTheme({
+export const ThemeContext = createContext(null);
+
+
+const darkTheme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
-      main: '#666699'
-    }
+      main: '#488dd3',
+      contrastText: '#badcff',
+    },
+    secondary: {
+      main: '#e6aa38',
+    },
+    warning: {
+      main: '#ffd600',
+    },
   },
   typography: {
-    fontFamily: 'Quicksand',
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
-    fontWeightBold: 700,
+    fontFamily: 'Lato',
+  },
+});
 
-  }
-})
+const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+      primary: {
+        main: '#4d9ae5',
+        dark: '#0a2c52',
+        light: '#cbe5ff',
+      },
+      secondary: {
+        main: '#e6aa38',
+      },
+      text: {
+        primary: '#0a2c52',
+        secondary: '#488dd3',
+      },
+    },
+    typography: {
+      fontFamily: 'Lato',
+    },
+  });
 
 
 function App() {
@@ -94,7 +124,7 @@ function App() {
 
   // Toggle Favorite
   const toggleFavorite = (id) => {
-    // console.log('toggle', id)
+    console.log('toggle', id)
     setCharacters(
       characters.map(
           (character) => character.id === id ? {...character, favorite: !character.favorite} : character
@@ -102,42 +132,68 @@ function App() {
       )
   }
 
+  const [theme, setTheme] = useState(lightTheme)
+
+  const [isDark, setisDark] = useState(false)
+
+  // Toggle Theme attempt #2
+  const toggleTheme = () => {
+    setTheme(() => (isDark === true ? lightTheme : darkTheme))
+    setisDark(() => (!isDark))
+    console.log(isDark)
+    console.log(theme.palette.mode)
+  }
+  
+
+  // // Toggle Theme
+  // const toggleTheme = () => {
+  //   setTheme(
+  //     (curr) => (curr.palette.mode === "light" ? darkTheme : lightTheme) 
+  //   );
+  //   console.log(theme.palette.mode)
+  // }
+  
+
+
   return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <Layout>
-          <div className="container">
-            <div className='content'>
-              <Switch>
-                <Route exact path="/">
-                  <Home/>
-                </Route>
-                <Route path="/clicker">
-                  <Clicker />
-                </Route>
-                <Route path="/cars">
-                  <Cars />
-                </Route>
-                <Route path='/characters'>
-                  <Typography variant="h5">
-                    {'Total characters: ' + characters.length}
-                  </Typography>
-                  <Container>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} />) : ('There are no Characters to display...')}</Container>
-                </Route>
-                <Route path='/weather'>
-                  <Weather />
-                </Route>
-              </Switch>
-            </div>
-            <Typography variant='h1'>
-              <Container align='center'>
-                <ChildCareIcon color="primary" />  
-              </Container>
-            </Typography>
-          </div>
-        </Layout>
-      </Router>
-    </ThemeProvider>
+    <ThemeContext.Provider value={{ theme }}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+          <Router>
+            <Layout theme={theme} toggleTheme={toggleTheme}>
+              <div className="container">
+                <div className='content'>
+                  <Switch>
+                    <Route exact path="/">
+                      <Home/>
+                    </Route>
+                    <Route path="/clicker">
+                      <Clicker />
+                    </Route>
+                    <Route path="/cars">
+                      <Cars />
+                    </Route>
+                    <Route path='/characters'>
+                      <Typography variant="h5">
+                        {'Total characters: ' + characters.length}
+                      </Typography>
+                      <Container>{characters.length > 0 ? (<Characters characters={characters} onDelete={deleteCharacter} onToggle={toggleFavorite} onAdd={addCharacter} />) : ('There are no Characters to display...')}</Container>
+                    </Route>
+                    <Route path='/weather'>
+                      <Weather />
+                    </Route>
+                  </Switch>
+                </div>
+                <Typography variant='h1'>
+                  <Container align='center'>
+                    <ChildCareIcon color="primary" />  
+                  </Container>
+                </Typography>
+              </div>
+            </Layout>
+          </Router>
+      </ThemeProvider>
+    </ThemeContext.Provider>
   );
 }
 
