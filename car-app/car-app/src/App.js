@@ -22,6 +22,7 @@ import { createContext } from 'react';
 // import Vehicles from './VehicleInput';
 import VehicleInput from './VehicleInput';
 import VehicleDisplay from './VehicleDisplay';
+import Navbar from './Navbar';
 
 
 export const ThemeContext = createContext(null);
@@ -165,7 +166,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
           <Router>
-            <Layout theme={theme} toggleTheme={toggleTheme}>
+            <Navbar toggleTheme={toggleTheme}/>
               <div className="container">
                 <div className='content'>
                   <Switch>
@@ -201,7 +202,7 @@ function App() {
                   </Container>
                 </Typography>
               </div>
-            </Layout>
+
           </Router>
       </ThemeProvider>
     </ThemeContext.Provider>
