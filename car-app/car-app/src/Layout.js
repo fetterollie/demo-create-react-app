@@ -63,6 +63,11 @@ const Layout = ({ children, toggleTheme, theme }) => {
             text: 'Weather',
             icon: <SubjectOutlined color="secondary" />,
             path: '/weather'
+        },
+        {
+            text: 'Vehicles',
+            icon: <SubjectOutlined color="secondary" />,
+            path: '/vehicles'
         }
     ]
 

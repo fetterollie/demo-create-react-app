@@ -18,6 +18,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createContext } from 'react';
 import { light } from '@mui/material/styles/createPalette';
+import InputCar from './components/InputCar';
+import Vehicles from './Vehicles';
 
 export const ThemeContext = createContext(null);
 
@@ -181,6 +183,9 @@ function App() {
                     </Route>
                     <Route path='/weather'>
                       <Weather />
+                    </Route>
+                    <Route>
+                      <Vehicles />
                     </Route>
                   </Switch>
                 </div>
