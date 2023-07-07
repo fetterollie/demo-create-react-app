@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import api from './api/carList'
-import { Button, Card, CardContent, CardMedia, Container, TextField, Typography } from '@material-ui/core';
+import { Box, Button, Card, CardContent, CardMedia, Container, TextField, Typography } from '@material-ui/core';
 
 // import './App.css';
 
@@ -120,31 +120,37 @@ const Cars = () => {
                   {finalArr?.map((car) => {
                     return (
                       <div key={car.id}>
-                        <Card sx={{ maxWidth: 200 }}>
-                          <CardContent>
-                            <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                              <img 
-                                src={car.image}
-                                width='200px'
-                              />
-                            </Typography>
-                            <Typography 
-                              gutterBottom
-                              variant='h6'
-                              component="div"
-                            >
-                              {car.model}
-                            </Typography>
-                            <Typography
-                              sx={{ fontSize: 14}}
-                              variant='body2'
-                              color='text.secondary'
-                              gutterBottom
-                            >
-                              {`${car.color} ${car.model} built in ${car.year}. ${loremIpsum}`}
-                            </Typography>
-                          </CardContent>
-                        </Card>
+                        <Box sx={{ 
+                          width:300
+                        }}>
+                          <Card sx={{ width: 200 }}>
+                            <CardContent>
+                              <Typography gutterBottom>
+                                <img 
+                                  src={car.image}
+                                  width='200px'
+                                />
+                              </Typography>
+                              <Typography 
+                                sx={{ fontSize: 14 }}
+                                color="text.secondary"
+                                gutterBottom
+                                variant='h6'
+                                component="div"
+                              >
+                                {car.model}
+                              </Typography>
+                              <Typography
+                                sx={{ fontSize: 14}}
+                                variant='body2'
+                                color='text.secondary'
+                                gutterBottom
+                              >
+                                {`${car.color} ${car.model} built in ${car.year}. ${loremIpsum}`}
+                              </Typography>
+                            </CardContent>
+                          </Card>
+                        </Box>
                       </div>
                       
                       // <ul key={car.id}>

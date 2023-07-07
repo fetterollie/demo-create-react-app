@@ -1,7 +1,8 @@
 import { Container } from "@material-ui/core";
 import InputCar from "./components/InputCar";
+import ListCars from "./components/ListCars";
 
-const Vehicles = () => {
+const VehicleInput = () => {
     return (
         <Container>
             <InputCar />
@@ -9,4 +10,4 @@ const Vehicles = () => {
     );
 }
  
-export default Vehicles;
+export default VehicleInput;

@@ -1,25 +1,28 @@
 
 import Home from './Home';
 import Clicker from './Clicker';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Cars from './Cars';
 import Characters from './Characters';
-import character from './Character';
+// import character from './Character';
 import { useState } from 'react'
 import Weather from './Weather';
-import axios from 'axios'
+// import axios from 'axios'
 import Typography from '@mui/material/Typography';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import { Container } from '@mui/material';
-import { makeStyles, Paper, Box } from '@material-ui/core';
+// import { makeStyles, Paper, Box } from '@material-ui/core';
 import Layout from './Layout';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createContext } from 'react';
-import { light } from '@mui/material/styles/createPalette';
-import InputCar from './components/InputCar';
-import Vehicles from './Vehicles';
+// import { light } from '@mui/material/styles/createPalette';
+// import InputCar from './components/InputCar';
+// import Vehicles from './VehicleInput';
+import VehicleInput from './VehicleInput';
+import VehicleDisplay from './VehicleDisplay';
+
 
 export const ThemeContext = createContext(null);
 
@@ -184,8 +187,11 @@ function App() {
                     <Route path='/weather'>
                       <Weather />
                     </Route>
-                    <Route>
-                      <Vehicles />
+                    <Route path='/vehicleinput'>
+                      <VehicleInput />
+                    </Route>
+                    <Route path='/vehicledisplay'>
+                      <VehicleDisplay />
                     </Route>
                   </Switch>
                 </div>

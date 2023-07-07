@@ -18,6 +18,8 @@ const InputCar = () => {
                 body: JSON.stringify(body)
             });
 
+            window.location = "/vehicleinput";
+
             console.log(response)
         } catch (err) {
             console.error(err.message);

@@ -1,4 +1,4 @@
-import { Button, Container, CssBaseline, Drawer, Link, List, ListItem, ListItemIcon, ListItemText, ThemeProvider, Typography, createTheme, makeStyles } from "@material-ui/core";
+import { Button, CssBaseline, Drawer, List, ListItem, ListItemIcon, ListItemText, ThemeProvider, Typography, makeStyles } from "@material-ui/core";
 import React from "react";
 import { SubjectOutlined } from "@material-ui/icons";
 import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom.min";
@@ -65,14 +65,20 @@ const Layout = ({ children, toggleTheme, theme }) => {
             path: '/weather'
         },
         {
-            text: 'Vehicles',
+            text: 'Vehicle Input',
             icon: <SubjectOutlined color="secondary" />,
-            path: '/vehicles'
+            path: '/vehicleinput'
+        },
+        {
+            text: 'Display Vehicles',
+            icon: <SubjectOutlined color="secondary" />,
+            path: '/vehicledisplay'
         }
     ]
 
     return (
         <ThemeProvider theme={theme}>
+        <CssBaseline/>
             <div>
                 <Typography 
                 variant="h4"
@@ -109,7 +115,7 @@ const Layout = ({ children, toggleTheme, theme }) => {
                                     button 
                                     key={item.text} 
                                     onClick={() => history.push(item.path)}
-                                    className={location.pathname == item.path ? classes.active : null}
+                                    className={location.pathname === item.path ? classes.active : null}
                                 >
                                     <ListItemIcon>{item.icon}</ListItemIcon>
                                     <ListItemText primary={item.text} />
