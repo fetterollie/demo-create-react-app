@@ -1,5 +1,13 @@
 # Getting Started with Create React App
 
+## Instructions to Start Application
+
+In CLI, navigate project directory and run ```code.```
+In fresh terminal start JSON server by running ```npx json-server -p 3500 -w data/db.json```
+Open up SQL shell, log in connect to 'demo' database.
+In fresh terminal, cd into server directory and run ```nodemon index``` to connect to postgres.
+In fresh terminal, run ```npm run start``` to start application in browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
