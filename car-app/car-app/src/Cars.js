@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import api from './api/carList'
 import { Box, Button, Card, CardContent, CardMedia, Container, TextField, Typography } from '@material-ui/core';
 
-// import './App.css';
+
 
 
 const Cars = () => {
