@@ -1,6 +1,10 @@
-import { Button, FormControl, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import { useState } from 'react'
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 
 const Weather = () => {
@@ -35,28 +39,38 @@ const Weather = () => {
     }
 
     return (
-        <div className="container">
+        <Container>
             <Typography variant='h5'>
                 {`Temperature:`}
             </Typography>
+            <Container>
             <Typography>
                 {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : 'No Temperature Info'}
             </Typography>
+            </Container>
+                <FormControl
+                    margin='normal'
+                    fullWidth='true'
+                >
                 <form onSubmit={onSubmit}>
                     <TextField
+                        sx={{ width: "100%"}}
                         label="ZIP Code"
                         value={zipCode}
                         onChange={(e) => {setZipcode(e.target.value)}}
                     >
                     </TextField>
-                    <br/>
-                    <Button 
+                    <br />
+                    <Button
+                        sx={{ width: "100%" }}
                         type='submit'
+                        variant='contained'
                     >
                         Get Temperature
                     </Button>
                 </form>
-        </div>
+                </FormControl>
+        </Container>
     );
 }
  

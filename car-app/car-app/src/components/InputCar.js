@@ -1,5 +1,8 @@
-import { Button, Container, TextField, Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
+import { FormControl } from '@mui/material';
 import React, { useState } from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const InputCar = () => {
     const [make, setMake] = useState('')
@@ -30,45 +33,53 @@ const InputCar = () => {
         <Container>
             <Typography variant='h5'>Input Car</Typography>
             <form onSubmit={onSubmitForm} className='' >
-                <TextField
-                    label='Add Make'
-                    variant='outlined'
-                    value={make}
-                    onChange={e => setMake(e.target.value)}
-                />
-                <TextField
-                    label='Add Model'
-                    variant='outlined'
-                    value={model}
-                    onChange={e => setModel(e.target.value)}
-                />
-                <TextField
-                    label='Add Color'
-                    variant='outlined'
-                    value={color}
-                    onChange={e => setColor(e.target.value)}
-                />
-                <TextField
-                    label='Add Year'
-                    variant='outlined'
-                    value={year}
-                    onChange={e => setYear(e.target.value)}
-                />
-                <TextField
-                    label='Add Image URL'
-                    variant='outlined'
-                    value={imgUrl}
-                    onChange={e => setImgUrl(e.target.value)}
-                />
-                  <div>
+                {/* <FormControl> */}
+                    <TextField
+                        sx={{ width: "50%" }}
+                        label='Add Make'
+                        variant='filled'
+                        value={make}
+                        onChange={e => setMake(e.target.value)}
+                    />
+                    <TextField
+                        sx={{ width: "50%" }}
+                        label='Add Model'
+                        variant='filled'
+                        value={model}
+                        onChange={e => setModel(e.target.value)}
+                    />
+                    <TextField
+                        sx={{ width: "50%" }}
+                        label='Add Color'
+                        variant='filled'
+                        value={color}
+                        onChange={e => setColor(e.target.value)}
+                    />
+                    <TextField
+                        sx={{ width: "50%" }}
+                        label='Add Year'
+                        variant='filled'
+                        value={year}
+                        onChange={e => setYear(e.target.value)}
+                    />
+                    <TextField
+                        sx={{ width: "100%" }}
+                        label='Add Image URL'
+                        variant='filled'
+                        value={imgUrl}
+                        onChange={e => setImgUrl(e.target.value)}
+                    />
+                {/* </FormControl> */}
+                <div>
                     <Button 
-                      type="submit"
-                      variant='contained'
+                    sx={{ width: "100%" }}
+                    type="submit"
+                    variant='contained'
                     >
-                      Submit
+                    Submit
                     </Button>
-                  </div>
-                </form>
+                </div>
+            </form>
         </Container>
      );
 }
