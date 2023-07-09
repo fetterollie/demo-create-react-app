@@ -23,50 +23,57 @@ import { createContext } from 'react';
 import VehicleInput from './VehicleInput';
 import VehicleDisplay from './VehicleDisplay';
 import Navbar from './Navbar';
+import ResponsiveAppBar from './components/ResponsiveAppBar';
 
 
 export const ThemeContext = createContext(null);
 
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#488dd3',
-      contrastText: '#badcff',
-    },
-    secondary: {
-      main: '#e6aa38',
-    },
-    warning: {
-      main: '#ffd600',
-    },
-  },
-  typography: {
-    fontFamily: 'Lato',
-  },
-});
+// const darkTheme = createTheme(
+//   {
+//     palette: {
+//       mode: 'dark',
+//       primary: {
+//         main: '#546e7a',
+//       },
+//       secondary: {
+//         main: '#547a73',
+//       },
+//     },
+//     typography: {
+//       fontFamily: 'Noto Sans Display',
+//     },
+//     props: {
+//       MuiAppBar: {
+//         color: 'secondary',
+//       },
+//     },
+//     spacing: 8,
+//   }
+// );
 
-const lightTheme = createTheme({
-    palette: {
-      mode: 'light',
-      primary: {
-        main: '#4d9ae5',
-        dark: '#0a2c52',
-        light: '#cbe5ff',
-      },
-      secondary: {
-        main: '#e6aa38',
-      },
-      text: {
-        primary: '#0a2c52',
-        secondary: '#488dd3',
-      },
-    },
-    typography: {
-      fontFamily: 'Lato',
-    },
-  });
+// const lightTheme = createTheme(
+//   {
+//     palette: {
+//       mode: 'light',
+//       primary: {
+//         main: '#546e7a',
+//       },
+//       secondary: {
+//         main: '#547a73',
+//       },
+//     },
+//     typography: {
+//       fontFamily: 'Noto Sans Display',
+//     },
+//     props: {
+//       MuiAppBar: {
+//         color: 'secondary',
+//       },
+//     },
+//     spacing: 8,
+//   }
+// );
 
 
 function App() {
@@ -138,17 +145,17 @@ function App() {
       )
   }
 
-  const [theme, setTheme] = useState(lightTheme)
+  // const [theme, setTheme] = useState(lightTheme)
 
-  const [isDark, setisDark] = useState(false)
+  // const [isDark, setisDark] = useState(false)
 
-  // Toggle Theme attempt #2
-  const toggleTheme = () => {
-    setTheme(() => (isDark === true ? lightTheme : darkTheme))
-    setisDark(() => (!isDark))
-    console.log(isDark)
-    console.log(theme.palette.mode)
-  }
+  // // Toggle Theme attempt #2
+  // const toggleTheme = () => {
+  //   setTheme(() => (isDark === true ? lightTheme : darkTheme))
+  //   setisDark(() => (!isDark))
+  //   console.log(isDark)
+  //   console.log(theme.palette.mode)
+  // }
   
 
   // // Toggle Theme
@@ -162,15 +169,16 @@ function App() {
 
 
   return (
-    <ThemeContext.Provider value={{ theme }}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
+    // <ThemeContext.Provider value={{ theme }}>
+    //   <ThemeProvider theme={theme}>
+        // <CssBaseline />
           <Router>
-            <Navbar toggleTheme={toggleTheme}/>
+            {/* <Navbar toggleTheme={toggleTheme}/> */}
+            <ResponsiveAppBar />
               <div className="container">
                 <div className='content'>
                   <Switch>
-                    <Route exact path="/">
+                    <Route exact path ="/home">
                       <Home/>
                     </Route>
                     <Route path="/clicker">
@@ -204,8 +212,8 @@ function App() {
               </div>
 
           </Router>
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    //   </ThemeProvider>
+    // </ThemeContext.Provider>
   );
 }
 

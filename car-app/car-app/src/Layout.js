@@ -77,8 +77,8 @@ const Layout = ({ children, toggleTheme, theme }) => {
     ]
 
     return (
-        <ThemeProvider theme={theme}>
-        <CssBaseline/>
+        // <ThemeProvider theme={theme}>
+        // <CssBaseline/>
             <div>
                 <Typography 
                 variant="h4"
@@ -128,7 +128,7 @@ const Layout = ({ children, toggleTheme, theme }) => {
                     </div>
                 </div>
             </div>
-        </ThemeProvider>
+        // </ThemeProvider>
     );
 }
  
