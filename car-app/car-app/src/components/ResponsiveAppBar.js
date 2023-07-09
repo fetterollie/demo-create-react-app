@@ -15,7 +15,8 @@ import AdbIcon from '@mui/icons-material/Adb';
 import ChildCareTwoToneIcon from '@mui/icons-material/ChildCareTwoTone';
 import { Link } from 'react-router-dom';
 
-const pages = ['Home', 'Clicker', 'Cars', 'Weather', 'Character', 'VehicleDisplay', 'VehicleInput'];
+
+const pages = ['Home', 'Clicker', 'Cars', 'Weather', 'Character', 'VehicleDisplay', 'VehicleInput', ''];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {

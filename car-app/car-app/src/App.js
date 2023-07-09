@@ -11,11 +11,8 @@ import Weather from './Weather';
 // import axios from 'axios'
 import Typography from '@mui/material/Typography';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
 // import { makeStyles, Paper, Box } from '@material-ui/core';
-import Layout from './Layout';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { createContext } from 'react';
 // import { light } from '@mui/material/styles/createPalette';
 // import InputCar from './components/InputCar';
@@ -24,56 +21,62 @@ import VehicleInput from './VehicleInput';
 import VehicleDisplay from './VehicleDisplay';
 import Navbar from './Navbar';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
+import { createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import "@fontsource/noto-sans"
+import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnessRounded';
+
 
 
 export const ThemeContext = createContext(null);
 
 
-// const darkTheme = createTheme(
-//   {
-//     palette: {
-//       mode: 'dark',
-//       primary: {
-//         main: '#546e7a',
-//       },
-//       secondary: {
-//         main: '#547a73',
-//       },
-//     },
-//     typography: {
-//       fontFamily: 'Noto Sans Display',
-//     },
-//     props: {
-//       MuiAppBar: {
-//         color: 'secondary',
-//       },
-//     },
-//     spacing: 8,
-//   }
-// );
+const darkTheme = createTheme(
+  {
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#546e7a',
+    },
+    secondary: {
+        main: '#547a73',
+      },
+    },
+    typography: {
+      fontFamily: "Noto Sans",
+    },
+    props: {
+      MuiAppBar: {
+        color: 'secondary',
+      },
+    },
+    spacing: 4,
+  }
+);
 
-// const lightTheme = createTheme(
-//   {
-//     palette: {
-//       mode: 'light',
-//       primary: {
-//         main: '#546e7a',
-//       },
-//       secondary: {
-//         main: '#547a73',
-//       },
-//     },
-//     typography: {
-//       fontFamily: 'Noto Sans Display',
-//     },
-//     props: {
-//       MuiAppBar: {
-//         color: 'secondary',
-//       },
-//     },
-//     spacing: 8,
-//   }
-// );
+const lightTheme = createTheme(
+  {
+    palette: {
+      mode: 'light',
+      primary: {
+        main: '#546e7a',
+    },
+    secondary: {
+      main: '#547a73',
+      },
+    },
+    typography: {
+      fontFamily: 'Noto Sans',
+    },
+    props: {
+      MuiAppBar: {
+        color: 'secondary',
+      },
+    },
+    spacing: 4,
+  }
+);
 
 
 function App() {
@@ -144,36 +147,26 @@ function App() {
         )
       )
   }
-
-  // const [theme, setTheme] = useState(lightTheme)
-
-  // const [isDark, setisDark] = useState(false)
-
-  // // Toggle Theme attempt #2
-  // const toggleTheme = () => {
-  //   setTheme(() => (isDark === true ? lightTheme : darkTheme))
-  //   setisDark(() => (!isDark))
-  //   console.log(isDark)
-  //   console.log(theme.palette.mode)
-  // }
   
+  // Toggle Theme
+  const [theme, setTheme] = useState(lightTheme)
+  const [isDark, setisDark] = useState(false)
 
-  // // Toggle Theme
-  // const toggleTheme = () => {
-  //   setTheme(
-  //     (curr) => (curr.palette.mode === "light" ? darkTheme : lightTheme) 
-  //   );
-  //   console.log(theme.palette.mode)
-  // }
+  const toggleTheme = () => {
+    setTheme(() => (isDark === true ? lightTheme : darkTheme))
+    setisDark(() => (!isDark))
+    // checking toggle
+    // console.log(isDark)
+    // console.log(theme.palette.mode)
+  }
+  
   
 
 
   return (
-    // <ThemeContext.Provider value={{ theme }}>
-    //   <ThemeProvider theme={theme}>
-        // <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
           <Router>
-            {/* <Navbar toggleTheme={toggleTheme}/> */}
             <ResponsiveAppBar />
               <div className="container">
                 <div className='content'>
@@ -212,8 +205,10 @@ function App() {
               </div>
 
           </Router>
-    //   </ThemeProvider>
-    // </ThemeContext.Provider>
+        <Button onClick={() => {toggleTheme()}}>
+        <SettingsBrightnessRoundedIcon/>
+        </Button>
+      </ThemeProvider>
   );
 }
 
