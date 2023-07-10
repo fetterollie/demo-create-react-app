@@ -39,19 +39,14 @@ const Weather = () => {
     }
 
     return (
-        <Container>
-            <Typography variant='h5'>
+        <Container sx={{ maxWidth: "250px" }}>
+            <Typography variant='h5'sx={{ paddingTop: "5px" }}>
                 {`Temperature:`}
             </Typography>
-            <Container>
-            <Typography>
-                {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : 'No Temperature Info'}
-            </Typography>
-            </Container>
-                <FormControl
-                    margin='normal'
-                    fullWidth='true'
-                >
+            <FormControl
+                margin='normal'
+                fullWidth='true'
+            >
                 <form onSubmit={onSubmit}>
                     <TextField
                         sx={{ width: "100%"}}
@@ -69,7 +64,10 @@ const Weather = () => {
                         Get Temperature
                     </Button>
                 </form>
-                </FormControl>
+            </FormControl>
+            <Typography>
+                {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : ''}
+            </Typography>
         </Container>
     );
 }

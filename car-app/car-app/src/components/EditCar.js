@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import IconButton from '@mui/material/IconButton';
+import DisabledByDefaultRoundedIcon from '@mui/icons-material/DisabledByDefaultRounded';
 
 const style = {
   position: 'absolute',
@@ -75,43 +77,57 @@ export default function EditCar({ car }) {
             aria-describedby="modal-modal-description"
         >
             <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
+            <Typography 
+                sx={{ paddingBottom: "10px" }}
+                id="modal-modal-title" 
+                variant="h5" 
+                component="h2"
+                color="primary"
+            >
                 {`Edit car details:`}
             </Typography>
                 <form>
                     <TextField 
+                        sx={{ width: "100%" }}
                         value={make} 
                         onChange={e => setMake(e.target.value)}
                     />
                     <TextField 
+                        sx={{ width: "100%" }}
                         value={model} 
                         onChange={e => setModel(e.target.value)}
                     />
                     <TextField 
+                        sx={{ width: "100%" }}
                         value={color} 
                         onChange={e => setColor(e.target.value)}
                     />
                     <TextField
+                        sx={{ width: "100%" }}
                         value={year} 
                         onChange={e => setYear(e.target.value)}
                     />
                     <TextField 
+                        sx={{ width: "100%" }}
                         value={imgUrl} 
                         onChange={e => setImgUrl(e.target.value)}
                     />
                     <Button 
+                        sx={{ width: "80%" }}
+                        variant="contained"
                         onClick={e => updateValues(e)}
                     >
-                        Update State Values
+                        Update Car Details
                     </Button>
                     <Button 
-     
+                        sx={{ width: "20%" }}
                         variant="contained"
+                        color="error"
                         onClick={() => {
                             handleClose();
                         }}
                     >
-                        Close
+                        <DisabledByDefaultRoundedIcon />
                     </Button>
             </form>
             </Box>

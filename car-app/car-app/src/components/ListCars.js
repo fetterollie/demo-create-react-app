@@ -19,7 +19,7 @@ const ListCars = () => {
             });
 
             setCars(cars.filter(car => car.car_id !== id));
-
+            window.location = "./vehicledisplay"
             // console.log(deleteCar);
         } catch (err) {
             console.error(err.message);

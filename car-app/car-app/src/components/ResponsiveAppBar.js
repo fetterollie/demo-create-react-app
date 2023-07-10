@@ -14,9 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 // import AdbIcon from '@mui/icons-material/Adb';
 import ChildCareTwoToneIcon from '@mui/icons-material/ChildCareTwoTone';
 import { Link } from 'react-router-dom';
+// import Link from '@mui/material/Link';
 
 
-const pages = ['Home', 'Clicker', 'Cars', 'Weather', 'Character', 'VehicleDisplay', 'VehicleInput', ''];
+
+const pages = ['Home', 'Clicker', 'Weather', 'VehicleDisplay', 'VehicleInput'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -92,9 +94,11 @@ function ResponsiveAppBar() {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textDecoration="none" textAlign="center">
-                    <Link to={`/${page}`}>
-                      {page}
+                  <Typography sx={{ textDecoration: 'none' }} textAlign="center">
+                    <Link underline="none" to={`/${page}`}>
+                      <Button>
+                       {page}
+                      </Button>
                     </Link>
                   </Typography>
                 </MenuItem>
@@ -127,7 +131,7 @@ function ResponsiveAppBar() {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block', textDecoration: 'none' }}
               >
-                <Link underline="none" variant="null" textDecoration="none" style={{textDecoration: "none", color: "white"}} to={`/${page}`}>
+                <Link underline="none" style={{ textDecoration: "none", color: "white" }} to={`/${page}`}>
                   {page}
                 </Link>
               </Button>
