@@ -1,9 +1,8 @@
 import { Container, Typography } from '@material-ui/core';
-import { FormControl } from '@mui/material';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import EditCar from './EditCar';
+
 
 const InputCar = () => {
     const [make, setMake] = useState('')
@@ -24,7 +23,7 @@ const InputCar = () => {
 
             window.location = "/vehicleinput";
 
-            console.log(response)
+            // console.log(response)
         } catch (err) {
             console.error(err.message);
         }
@@ -70,7 +69,6 @@ const InputCar = () => {
                         value={imgUrl}
                         onChange={e => setImgUrl(e.target.value)}
                     />
-                {/* </FormControl> */}
                 <div>
                     <Button 
                     sx={{ width: "100%" }}

@@ -20,7 +20,7 @@ const ListCars = () => {
 
             setCars(cars.filter(car => car.car_id !== id));
 
-            console.log(deleteCar);
+            // console.log(deleteCar);
         } catch (err) {
             console.error(err.message);
         }
@@ -32,7 +32,7 @@ const ListCars = () => {
             const response = await fetch("http://localhost:5000/cars");
             const jsonData = await response.json();
             
-            console.log(jsonData);
+            // console.log(jsonData);
             setCars(jsonData);
         } catch (err) {
             console.error(err.message);
@@ -44,7 +44,7 @@ const ListCars = () => {
     }, []);
 
     //output
-    console.log(cars);
+    // console.log(cars);
 
     return (
         <Container>
@@ -61,7 +61,7 @@ const ListCars = () => {
                         <Typography variant="h6">{car.make ? car.make : "N/A"}</Typography>
                         <Typography>{`Year: ${car.year ? car.year : "N/A"} Model: ${car.model ? car.model : "N/A"} Color: ${car.color ? car.color : "N/A"}`}</Typography>
                         <Button onClick={() => {deleteCar(car.car_id)}}>Delete</Button>
-                        <EditCar />
+                        <EditCar car={car} />
                     </CardContent>
                 </Card>
             ))}
