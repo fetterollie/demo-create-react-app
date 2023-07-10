@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Cars from './Cars';
 import Characters from './Characters';
 // import character from './Character';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Weather from './Weather';
 // import axios from 'axios'
 import Typography from '@mui/material/Typography';
@@ -81,6 +81,27 @@ const lightTheme = createTheme(
 
 function App() {
 
+  const [cars, setCars] = useState([])
+
+  const getCars = async () => {
+    try{
+
+        const response = await fetch("http://localhost:5000/cars");
+        const jsonData = await response.json();
+
+        setCars(jsonData);
+    } catch (err) {
+        console.error(err.message);
+    }
+  };
+
+  useEffect(() => {
+      getCars();
+  }, []);
+
+  //output
+  console.log(cars);
+
   const [characters, setCharacters] = useState([
     {
         id: 1,
@@ -122,7 +143,7 @@ function App() {
         favorite: false,
         imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwvaiOvPKtSfloiPXBGhLnYvz4e1M5CLDtF9Q6EPHnpKqKH8J6&s'
     },
-])
+  ])
 
   // Add Character
   const addCharacter = (charInfo) => {
@@ -172,7 +193,7 @@ function App() {
                 <div className='content'>
                   <Switch>
                     <Route exact path ="/home">
-                      <Home/>
+                      <Home cars={cars}/>
                     </Route>
                     <Route path="/clicker">
                       <Clicker />
@@ -193,7 +214,7 @@ function App() {
                       <VehicleInput />
                     </Route>
                     <Route path='/vehicledisplay'>
-                      <VehicleDisplay />
+                      <VehicleDisplay cars={cars}/>
                     </Route>
                   </Switch>
                 </div>

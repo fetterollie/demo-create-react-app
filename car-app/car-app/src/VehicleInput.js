@@ -3,9 +3,10 @@ import InputCar from "./components/InputCar";
 import ListCars from "./components/ListCars";
 
 const VehicleInput = () => {
+
     return (
         <Container>
-            <InputCar />
+            <InputCar/>
         </Container>
     );
 }

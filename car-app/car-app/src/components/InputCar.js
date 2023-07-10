@@ -3,6 +3,7 @@ import { FormControl } from '@mui/material';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import EditCar from './EditCar';
 
 const InputCar = () => {
     const [make, setMake] = useState('')
