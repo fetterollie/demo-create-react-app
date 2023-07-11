@@ -4,8 +4,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
 import DisabledByDefaultRoundedIcon from '@mui/icons-material/DisabledByDefaultRounded';
+import EditIcon from '@mui/icons-material/Edit';
 
 const style = {
   position: 'absolute',
@@ -14,7 +14,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  border: '2px solid #546e7a',
   boxShadow: 24,
   p: 4,
 };
@@ -62,12 +62,12 @@ export default function EditCar({ car }) {
 
     return (
         <div id={`id${car.car_id}`}>
-        <Button 
+        <Button
             onClick={handleOpen} 
             data-toggle="modal" 
             data-target={`#id${car.car_id}`}
         >
-            Edit Car
+            <EditIcon/>
         </Button>
         <Modal
             id={`id${car.car_id}`}

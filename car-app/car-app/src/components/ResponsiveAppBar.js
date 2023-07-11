@@ -11,14 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
 import ChildCareTwoToneIcon from '@mui/icons-material/ChildCareTwoTone';
 import { Link } from 'react-router-dom';
-// import Link from '@mui/material/Link';
 
 
 
-const pages = ['Home', 'Clicker', 'Weather', 'VehicleDisplay', 'VehicleInput'];
+
+const pages = ['Home', 'VehicleDisplay', 'VehicleInput'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {

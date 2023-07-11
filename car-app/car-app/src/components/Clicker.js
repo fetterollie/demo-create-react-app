@@ -2,10 +2,10 @@ import { Typography } from '@mui/material';
 import { useState } from 'react';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField';
 
 
 const Clicker = () => {
@@ -22,15 +22,13 @@ const Clicker = () => {
     }
 
     return (
-
-
-        <Container>
-            <Typography variant='h5'>
+        <Container sx={{ maxWidth: "250px" }}>
+            <Typography variant='h5' sx={{ paddingTop: "5px" }}>
                 Clicker
             </Typography>
             <Box 
                 sx={{
-                    width: "150px"
+                    width: "250px"
                 }}
             >
             <Button
@@ -38,6 +36,11 @@ const Clicker = () => {
             >
                 {count}
             </Button>
+            <TextField 
+                sx={{ width: "100%"}}
+                label="Count"
+                value={count}
+            />
             <br/>
             <Button 
                 sx={{ width: "50%" }}

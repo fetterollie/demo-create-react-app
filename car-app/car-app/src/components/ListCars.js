@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Container, Typography } from "@material-ui/core";
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import EditCar from "./EditCar";
 import InfoModalCar from "./InfoModalCar";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import Stack from '@mui/material/Stack';
+
+
 
 
 const ListCars = () => {
@@ -65,9 +68,10 @@ const ListCars = () => {
                         </Typography>
                         <Typography>{car.model ? car.model : "N/A"}</Typography> */}
                         {/* <Typography>{`Year: ${car.year ? car.year : "N/A"} Model: ${car.model ? car.model : "N/A"} Color: ${car.color ? car.color : "N/A"}`}</Typography> */}
-                        <Button onClick={() => {deleteCar(car.car_id)}}>Delete</Button>
-                        <EditCar car={car} />
-                        
+                        <Stack direction="row">
+                            <EditCar car={car} />
+                            <Button color="error" onClick={() => {deleteCar(car.car_id)}}><DeleteForeverIcon/></Button>
+                        </Stack>
                     </CardContent>
                 </Card>
             ))}

@@ -1,10 +1,10 @@
 
 import Home from './Home';
-import Clicker from './Clicker';
+import Clicker from './components/Clicker';
 // import Navbar from './Navbar';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { useEffect, useState } from 'react'
-import Weather from './Weather';
+import Weather from './components/Weather';
 // import axios from 'axios'
 import Typography from '@mui/material/Typography';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
@@ -123,13 +123,7 @@ function App() {
                 <div className='content'>
                   <Switch>
                     <Route exact path ="/home">
-                      <Home cars={cars}/>
-                    </Route>
-                    <Route path="/clicker">
-                      <Clicker />
-                    </Route>
-                    <Route path='/weather'>
-                      <Weather />
+                      <Home />
                     </Route>
                     <Route path='/vehicleinput'>
                       <VehicleInput />
