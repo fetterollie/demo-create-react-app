@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import EditCar from "./EditCar";
+import InfoModalCar from "./InfoModalCar";
 
 
 const ListCars = () => {
@@ -52,16 +53,21 @@ const ListCars = () => {
             {cars.map(car => (
                 <Card sx={{ width: "300px" }}>
                     <CardContent>
-                        <Typography>
+                        <InfoModalCar car={car} />
+                        {/* <Typography>
                             <img 
                                 src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
                                 width='200px'
                             />
+                        </Typography> */}
+                        {/* <Typography variant="h6">
+                            {car.make ? car.make : "N/A"}
                         </Typography>
-                        <Typography variant="h6">{car.make ? car.make : "N/A"}</Typography>
-                        <Typography>{`Year: ${car.year ? car.year : "N/A"} Model: ${car.model ? car.model : "N/A"} Color: ${car.color ? car.color : "N/A"}`}</Typography>
+                        <Typography>{car.model ? car.model : "N/A"}</Typography> */}
+                        {/* <Typography>{`Year: ${car.year ? car.year : "N/A"} Model: ${car.model ? car.model : "N/A"} Color: ${car.color ? car.color : "N/A"}`}</Typography> */}
                         <Button onClick={() => {deleteCar(car.car_id)}}>Delete</Button>
                         <EditCar car={car} />
+                        
                     </CardContent>
                 </Card>
             ))}
