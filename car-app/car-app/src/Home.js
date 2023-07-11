@@ -2,10 +2,6 @@ import { Button, Container, Typography } from "@mui/material";
 
 const Home = ({ cars }) => {
 
-    const handleTest = () => {
-        console.log('Click', cars)
-    }
-
     return (
         <Container>
             <Typography variant='h5'>
