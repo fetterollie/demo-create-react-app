@@ -16,7 +16,6 @@ import { createContext } from 'react';
 // import Vehicles from './VehicleInput';
 import VehicleInput from './VehicleInput';
 import VehicleDisplay from './VehicleDisplay';
-import Navbar from './Navbar';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
