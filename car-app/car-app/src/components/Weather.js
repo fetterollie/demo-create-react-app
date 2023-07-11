@@ -13,6 +13,8 @@ const Weather = () => {
     const [temp, setTemp] = useState('')
     const [city, setCity] = useState('Alexandria')
 
+
+    // retrieve weather data from api via axios
     const getWeather = (zipCode) => {
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`)
         .then(res => {
@@ -49,7 +51,7 @@ const Weather = () => {
             >
                 <form onSubmit={onSubmit}>
                     <TextField
-                        sx={{ width: "100%"}}
+                        sx={{ width: "250px"}}
                         label="ZIP Code"
                         value={zipCode}
                         onChange={(e) => {setZipcode(e.target.value)}}
@@ -57,7 +59,7 @@ const Weather = () => {
                     </TextField>
                     <br />
                     <Button
-                        sx={{ width: "100%" }}
+                        sx={{ width: "250px" }}
                         type='submit'
                         variant='contained'
                     >

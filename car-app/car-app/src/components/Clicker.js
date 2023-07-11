@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
 
 
 const Clicker = () => {
@@ -24,39 +25,39 @@ const Clicker = () => {
     return (
         <Container sx={{ maxWidth: "250px" }}>
             <Typography variant='h5' sx={{ paddingTop: "5px" }}>
-                Clicker
+                Counter
             </Typography>
-            <Box 
-                sx={{
-                    width: "250px"
-                }}
+            <FormControl
+                margin='normal'
+                fullWidth='true'
             >
-            <Button
-                sx={{ width: "100%" }}
-            >
-                {count}
-            </Button>
-            <TextField 
-                sx={{ width: "100%"}}
-                label="Count"
-                value={count}
-            />
-            <br/>
-            <Button 
-                sx={{ width: "50%" }}
-                variant='contained'
-                onClick={handleClickSub}
-            >
-                <RemoveIcon />
-            </Button>
-            <Button  
-                sx={{ width: "50%" }}
-                variant='contained'
-                onClick={handleClickAdd}
-            >
-                <AddIcon />
-            </Button>
-            </Box>
+                <Box 
+                    sx={{
+                        width: "250px"
+                    }}
+                >
+                    <TextField 
+                        sx={{ width: "100%"}}
+                        label="Count"
+                        value={count}
+                    />
+                    <br/>
+                    <Button 
+                        sx={{ width: "50%" }}
+                        variant='contained'
+                        onClick={handleClickSub}
+                    >
+                        <RemoveIcon />
+                    </Button>
+                    <Button  
+                        sx={{ width: "50%" }}
+                        variant='contained'
+                        onClick={handleClickAdd}
+                    >
+                        <AddIcon />
+                    </Button>
+                </Box>
+            </FormControl>
         </Container>
      );
 }

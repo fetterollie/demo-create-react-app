@@ -7,6 +7,9 @@ import EditCar from "./EditCar";
 import InfoModalCar from "./InfoModalCar";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Stack from '@mui/material/Stack';
+import FilterCars from "./FilterCars";
+import Grid from '@mui/material/Grid';
+
 
 
 
@@ -30,6 +33,7 @@ const ListCars = () => {
         }
     };
 
+    // get cars from database
     const getCars = async () => {
         try{
 
@@ -53,28 +57,42 @@ const ListCars = () => {
     return (
         <Container>
             <Typography variant="h5">Car List</Typography>
-            {cars.map(car => (
-                <Card sx={{ width: "300px" }}>
-                    <CardContent>
-                        <InfoModalCar car={car} />
-                        {/* <Typography>
-                            <img 
-                                src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
-                                width='200px'
-                            />
-                        </Typography> */}
-                        {/* <Typography variant="h6">
-                            {car.make ? car.make : "N/A"}
-                        </Typography>
-                        <Typography>{car.model ? car.model : "N/A"}</Typography> */}
-                        {/* <Typography>{`Year: ${car.year ? car.year : "N/A"} Model: ${car.model ? car.model : "N/A"} Color: ${car.color ? car.color : "N/A"}`}</Typography> */}
-                        <Stack direction="row">
-                            <EditCar car={car} />
-                            <Button color="error" onClick={() => {deleteCar(car.car_id)}}><DeleteForeverIcon/></Button>
-                        </Stack>
-                    </CardContent>
-                </Card>
-            ))}
+            <Grid>
+                <FilterCars cars={cars} />
+            </Grid>
+            <Grid 
+                container 
+                spacing={12} 
+                xs={12}
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+            >
+                {cars.map(car => (
+                    <Grid item xs={12}>
+                        <Card sx={{ width: "300px" }}>
+                            <CardContent>
+                                <Grid
+                                    item
+                                    spacing={12} 
+                                    xs={12}
+                                    direction="column"
+                                    alignItems="center"
+                                    justifyContent="center"
+                                >
+                                    <InfoModalCar car={car} />
+                                    <Stack direction="row">
+                                        <EditCar car={car} />
+                                        <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
+                                            <DeleteForeverIcon/>
+                                        </Button>
+                                    </Stack>
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                ))}
+            </Grid>
         </Container>
     );
 }

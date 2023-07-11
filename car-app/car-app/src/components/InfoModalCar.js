@@ -48,19 +48,19 @@ export default function InfoModalCar({ car }) {
                 data-toggle="modal" 
                 data-target={`#id${car.car_id}`}
             >
-                <Typography>
-                    <img 
-                        alt={`${car.year} ${car.color} ${car.make} ${car.model}`}
-                        src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
-                        width='200px'
-                    />
-                </Typography>
-                <Typography variant="h6">
-                    {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
-                </Typography>
-                <Typography variant="h6">
-                    
-                </Typography>
+                    <Typography>
+                        <img 
+                            alt={`${car.year} ${car.color} ${car.make} ${car.model}`}
+                            src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
+                            width='290px'
+                        />
+                    </Typography>
+                    <Typography variant="h6">
+                        {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
+                    </Typography>
+                    <Typography variant="h6">
+                        
+                    </Typography>
             </Box>
             <Modal
                 id={`id${car.car_id}`}
