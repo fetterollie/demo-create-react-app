@@ -37,8 +37,7 @@ const Weather = () => {
         }
         
         getWeather(zipCode)
-
-    }
+    };
 
     return (
         <Container sx={{ maxWidth: "250px" }}>

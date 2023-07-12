@@ -9,9 +9,6 @@ const Home = () => {
 
     return (
         <Container>
-            <Typography variant='h5' >
-                Home
-            </Typography>
             <Grid 
                 container 
                 xs={12}
@@ -41,7 +38,6 @@ const Home = () => {
                     <Clicker />
                 </Grid>
             </Grid>
-        
         </Container>
     );
 }

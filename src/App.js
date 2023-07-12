@@ -1,19 +1,12 @@
 
 import Home from './Home';
-import Clicker from './components/Clicker';
-// import Navbar from './Navbar';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import Weather from './components/Weather';
-// import axios from 'axios'
 import Typography from '@mui/material/Typography';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import { Button, Container } from '@mui/material';
-// import { makeStyles, Paper, Box } from '@material-ui/core';
 import { createContext } from 'react';
-// import { light } from '@mui/material/styles/createPalette';
-// import InputCar from './components/InputCar';
-// import Vehicles from './VehicleInput';
 import VehicleInput from './VehicleInput';
 import VehicleDisplay from './VehicleDisplay';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
