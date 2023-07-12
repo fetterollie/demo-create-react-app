@@ -3,6 +3,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Weather from './components/Weather';
 import Clicker from './components/Clicker';
+import NasaPod from './components/NasaPod';
 
 
 const Home = () => {
@@ -36,6 +37,9 @@ const Home = () => {
                 </Grid>
                 <Grid item xs={12}>
                     <Clicker />
+                </Grid>
+                <Grid item xs={12}>
+                    <NasaPod />
                 </Grid>
             </Grid>
         </Container>
