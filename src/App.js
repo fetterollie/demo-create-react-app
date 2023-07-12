@@ -18,6 +18,7 @@ import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnes
 
 
 
+
 export const ThemeContext = createContext(null);
 
 
@@ -117,6 +118,7 @@ function App() {
                     <Route exact path ="/home">
                       <Home />
                     </Route>
+
                     <Route path='/vehicleinput'>
                       <VehicleInput />
                     </Route>
