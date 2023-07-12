@@ -82,12 +82,27 @@ app.delete("/cars/:id", async (req, res) => {
     }
 });
 
+
 // login 
 app.use('/login', (req, res) => {
     res.send({
         token: 'test123'
     });
 });
+
+// attempt at username login
+// app.get('/login', async (req, res) => {
+//     try {
+//         const { username, password } = req.params;
+//         const loginUser = await pool.query(
+//             "SELECT * FROM users WHERE username = $1 AND password = $2", 
+//             [username, password]
+//         )
+//         console.log(res)
+//     } catch (err) {
+//         console.error(err.message)
+//     }
+// })
 
 
 app.listen(5000, () => {
