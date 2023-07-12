@@ -108,36 +108,43 @@ function App() {
     // console.log(theme.palette.mode)
   }
 
+  // if(!token) {
+  //   return <Login setToken={setToken} />
+  // }
+
   return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
-          <Router>
-            <ResponsiveAppBar />
-              <div className="container">
-                <div className='content'>
-                  <Switch>
-                    <Route exact path ="/home">
-                      <Home />
-                    </Route>
-                    <Route path="/login">
-                      <Login setToken={setToken} />
-                    </Route>
-                    <Route path='/vehicleinput'>
-                      <VehicleInput />
-                    </Route>
-                    <Route path='/vehicledisplay'>
-                      <VehicleDisplay cars={cars}/>
-                    </Route>
-                  </Switch>
+          {!token ? 
+          <Login setToken={setToken}/> :
+            <Router>
+              <ResponsiveAppBar />
+                <div className="container">
+                  <div className='content'>
+                    <Switch>
+                      <Route exact path ="/home">
+                        <Home />
+                      </Route>
+                      {/* <Route path="/login">
+                        <Login setToken={setToken} />
+                      </Route> */}
+                      <Route path='/vehicleinput'>
+                        <VehicleInput />
+                      </Route>
+                      <Route path='/vehicledisplay'>
+                        <VehicleDisplay cars={cars}/>
+                      </Route>
+                    </Switch>
+                  </div>
+                  <Typography variant='h1'>
+                    <Container align='center'>
+                      <ChildCareIcon color="primary" />  
+                    </Container>
+                  </Typography>
                 </div>
-                <Typography variant='h1'>
-                  <Container align='center'>
-                    <ChildCareIcon color="primary" />  
-                  </Container>
-                </Typography>
-              </div>
 
-          </Router>
+            </Router>
+          }
         <Button onClick={() => {toggleTheme()}}>
         <SettingsBrightnessRoundedIcon/>
         </Button>
