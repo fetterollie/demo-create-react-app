@@ -90,20 +90,29 @@ app.use('/login', (req, res) => {
     });
 });
 
-// attempt at username login
-// app.get('/login', async (req, res) => {
-//     try {
-//         const { username, password } = req.params;
-//         const loginUser = await pool.query(
-//             "SELECT * FROM users WHERE username = $1 AND password = $2", 
-//             [username, password]
-//         )
-//         console.log(res)
-//     } catch (err) {
-//         console.error(err.message)
-//     }
-// })
+// all users
+app.get("/users", async(req, res) => {
+    try{
+        const allUsers = await pool.query("SELECT * FROM users");
+        res.json(allUsers.rows);
+    } catch {
+        console.error(err.message);
+    }
+});
 
+// get a role given username and password
+app.get("/users/:username/:password", async(req, res) => {
+    try{
+        const{ username, password } = req.params;
+        const user = await pool.query(
+            "SELECT role FROM users WHERE username = $1 AND password = $2", 
+            [username, password]
+        );
+        res.json(user.rows);
+    } catch {
+        console.error(err.message);
+    }
+});
 
 app.listen(5000, () => {
     console.log("server has started on port 5000")
