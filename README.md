@@ -12,6 +12,10 @@ In a new terminal window, navigate into the project directory and run:
 
 ### `npm start`
 
+## Application Screenshots
+
+![home page screenshot](./images/demo-app-home.png) ![vehicle display screenshot](./images/demo-app-vehicle-display.png) ![vehicle input screenshot](./images/demo-app-vehicle-input.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
