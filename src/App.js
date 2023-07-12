@@ -15,7 +15,8 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import "@fontsource/noto-sans"
 import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnessRounded';
-
+import Login from './components/Login';
+import useToken from './useToken';
 
 
 
@@ -69,7 +70,10 @@ const lightTheme = createTheme(
 );
 
 
+
+
 function App() {
+  const { token, setToken } = useToken();
 
   const [cars, setCars] = useState([])
 
@@ -90,7 +94,7 @@ function App() {
   }, []);
 
   //output
-  console.log(cars);
+  // console.log(cars);
   
   // Toggle Theme
   const [theme, setTheme] = useState(lightTheme)
@@ -103,9 +107,6 @@ function App() {
     // console.log(isDark)
     // console.log(theme.palette.mode)
   }
-  
-  
-
 
   return (
       <ThemeProvider theme={theme}>
@@ -118,7 +119,9 @@ function App() {
                     <Route exact path ="/home">
                       <Home />
                     </Route>
-
+                    <Route path="/login">
+                      <Login setToken={setToken} />
+                    </Route>
                     <Route path='/vehicleinput'>
                       <VehicleInput />
                     </Route>
