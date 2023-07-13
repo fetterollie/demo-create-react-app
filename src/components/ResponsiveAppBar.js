@@ -42,7 +42,7 @@ function ResponsiveAppBar() {
 
   return (
     <AppBar position="static" color="primary" enableColorOnDark>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ width: "100vw" }}>
         <Toolbar disableGutters>
           <ChildCareTwoToneIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography

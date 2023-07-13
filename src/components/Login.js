@@ -44,8 +44,13 @@ const Login = ({ setToken }) => {
         <Container sx={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center' 
-        }}>
+            alignItems: 'center',
+            position: 'absolute',
+            top: '33%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)'
+            }}
+        >
             <Typography variant='h5'>
                 Login
             </Typography>

@@ -14,7 +14,7 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   bgcolor: 'background.paper',
-  border: '2px solid #546e7a',
+  border: '3px solid #546e7a',
   boxShadow: 24,
   p: 4,
 };
@@ -52,7 +52,7 @@ export default function InfoModalCar({ car }) {
                         <img 
                             alt={`${car.year} ${car.color} ${car.make} ${car.model}`}
                             src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
-                            width='290px'
+                            width='270px'
                         />
                     </Typography>
                     <Typography variant="h6">

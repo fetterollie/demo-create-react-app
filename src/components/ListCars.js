@@ -104,7 +104,7 @@ const ListCars = ({ token }) => {
     // console.log(cars);
 
     return (
-        <Container>
+        <Container sx={{ paddingLeft: "0px" }}>
             <Typography
                 variant='h5'
             >
@@ -157,13 +157,14 @@ const ListCars = ({ token }) => {
                 container 
                 spacing={12} 
                 // xs={12}
-                direction="column"
+                direction="column-reverse"
                 alignItems="center"
                 justifyContent="center"
+                sx={{ paddingLeft: "0px" }}
             >
                 {finalArray ? finalArray.map(car => (
                     <Grid key={`listcar${car.car_id}`} item xs={12}>
-                        <Card sx={{ width: "300px" }}>
+                        <Card sx={{ width: "300px", paddingLeft: "0px" }}>
                             <CardContent>
                                 <Grid
                                     item
@@ -177,9 +178,9 @@ const ListCars = ({ token }) => {
                         </Card>
                     </Grid>
                 )) : cars.map(car => (
-                    <Grid key={`listcar${car.car_id}`} item xs={12}>
-                        <Card sx={{ width: "300px" }}>
-                            <CardContent>
+                    <Grid key={`listcar${car.car_id}`} item xs={12} sx={{ paddingLeft: '0px' }}>
+                        <Card sx={{ width: "300px", paddingLeft: "0px" }}>
+                            <CardContent sx={{ }}>
                                 <Grid
                                     item
                                     xs={12}

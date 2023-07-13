@@ -116,34 +116,33 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
           {!token ? 
-          <Login setToken={setToken}/> :
-            <Router>
-              <ResponsiveAppBar />
-                <div className="container">
-                  <div className='content'>
-                    <Switch>
-                      <Route path ="/home" component={Home} />
-                      <Route exact path ="/" component={Home} />
-                      <Route path='/vehicleinput'>
-                        <VehicleInput />
-                      </Route>
-                      <Route path='/vehicledisplay'>
-                        <VehicleDisplay cars={cars} token={token}/>
-                      </Route>
-                    </Switch>
+            <Login setToken={setToken}/> :
+              <Router>
+                <ResponsiveAppBar />
+                  <div className="container">
+                    <div className='content'>
+                      <Switch>
+                        <Route path ="/home" component={Home} />
+                        <Route exact path ="/" component={Home} />
+                        <Route path='/vehicleinput'>
+                          <VehicleInput />
+                        </Route>
+                        <Route path='/vehicledisplay'>
+                          <VehicleDisplay cars={cars} token={token}/>
+                        </Route>
+                      </Switch>
+                    </div>
+                    <Typography variant='h1'>
+                      <Container align='center'>
+                        <ChildCareIcon color="primary" />  
+                      </Container>
+                    </Typography>
                   </div>
-                  <Typography variant='h1'>
-                    <Container align='center'>
-                      <ChildCareIcon color="primary" />  
-                    </Container>
-                  </Typography>
-                </div>
-
-            </Router>
-          }
-        <Button onClick={() => {toggleTheme()}}>
-        <SettingsBrightnessRoundedIcon/>
-        </Button>
+              </Router>
+            }
+          <Button onClick={() => {toggleTheme()}}>
+            <SettingsBrightnessRoundedIcon/>
+          </Button>
       </ThemeProvider>
   );
 }

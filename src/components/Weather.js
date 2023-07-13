@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
 
 
 const Weather = () => {
@@ -40,7 +42,7 @@ const Weather = () => {
     };
 
     return (
-        <Container sx={{ maxWidth: "250px" }}>
+        <Box sx={{ maxWidth: "250px" }}>
             <Typography variant='h5'sx={{ paddingTop: "5px" }}>
                 {`Temperature:`}
             </Typography>
@@ -69,7 +71,7 @@ const Weather = () => {
             <Typography>
                 {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : ''}
             </Typography>
-        </Container>
+        </Box>
     );
 }
  

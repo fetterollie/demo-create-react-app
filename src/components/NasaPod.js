@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
 
 
 
@@ -44,7 +46,7 @@ const NasaPod = () => {
     };
 
     return (
-        <Container sx={{ maxWidth: "250px" }}>
+        <Box sx={{ maxWidth: "250px" }}>
             <Typography variant='h5'sx={{ paddingTop: "5px" }}>
                 {`NASA PoD`}
             </Typography>
@@ -73,7 +75,7 @@ const NasaPod = () => {
             <Typography sx={{ maxWidth: "250px" }}>
                 <img src={nasaImage} width="250px" />
             </Typography>
-        </Container>
+        </Box>
     );
 }
  

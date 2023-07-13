@@ -23,7 +23,7 @@ const Clicker = () => {
     }
 
     return (
-        <Container sx={{ maxWidth: "250px" }}>
+        <Container sx={{ maxWidth: "250px", paddingLeft: "0px" }}>
             <Typography variant='h5' sx={{ paddingTop: "5px" }}>
                 Counter
             </Typography>
