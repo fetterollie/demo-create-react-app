@@ -105,10 +105,13 @@ app.get("/users/:username/:password", async(req, res) => {
     try{
         const{ username, password } = req.params;
         const user = await pool.query(
-            "SELECT role FROM users WHERE username = $1 AND password = $2", 
+            "SELECT * FROM users WHERE username = $1 AND password = $2", 
             [username, password]
         );
-        res.json(user.rows);
+        {res ? 
+            res.json(user.rows) : 
+            res.send({message: "Wrong username/password combination!"})
+        };
     } catch {
         console.error(err.message);
     }
