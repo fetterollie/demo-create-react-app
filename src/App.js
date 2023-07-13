@@ -132,7 +132,7 @@ function App() {
                         <VehicleInput />
                       </Route>
                       <Route path='/vehicledisplay'>
-                        <VehicleDisplay cars={cars}/>
+                        <VehicleDisplay cars={cars} token={token}/>
                       </Route>
                     </Switch>
                   </div>

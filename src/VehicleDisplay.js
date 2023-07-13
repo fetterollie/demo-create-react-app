@@ -1,11 +1,11 @@
 import { Container } from "@material-ui/core";
 import ListCars from "./components/ListCars";
 
-const VehicleDisplay = () => {
+const VehicleDisplay = ({ token }) => {
 
     return (
         <Container>
-            <ListCars />
+            <ListCars token={token} />
         </Container>
     );
 }

@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 
 
-const ListCars = () => {
+const ListCars = ({ token }) => {
 
     const [cars, setCars] = useState([])
 
@@ -192,7 +192,7 @@ const ListCars = () => {
                                     alignItems="center"
                                     justifyContent="center"
                                 >
-                                    <InfoModalCar car={car} />
+                                    <InfoModalCar car={car} token={token}/>
                                 </Grid>
                             </CardContent>
                         </Card>
@@ -210,12 +210,12 @@ const ListCars = () => {
                                 justifyContent="center"
                             >
                                 <InfoModalCar car={car} />
-                                <Stack direction="row">
+                                {token === 'manager' ? <Stack direction="row">
                                     <EditCar car={car} />
                                     <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
                                         <DeleteForeverIcon/>
                                     </Button>
-                                </Stack>
+                                </Stack> : <div></div>}
                             </Grid>
                         </CardContent>
                     </Card>
