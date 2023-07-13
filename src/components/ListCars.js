@@ -186,6 +186,7 @@ const ListCars = ({ token }) => {
                                     xs={12}
                                     alignItems="center"
                                     justifyContent="center"
+                                    sx={{ paddingLeft: "0px" }}
                                 >
                                     <InfoModalCar car={car} />
                                     {token === 'manager' ? <Stack direction="row">
