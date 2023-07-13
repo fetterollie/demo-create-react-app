@@ -82,13 +82,47 @@ app.delete("/cars/:id", async (req, res) => {
     }
 });
 
+// register a new user
+app.post('/register', async (req, res) => {
+    try {
+        const { username, password, role } = req.body;
+        const newUser = await pool.query(
+            "INSERT INTO users (username, password, role) VALUES($1, $2, $3) RETURNING *", 
+            [username, password, role]
+        );
+        res.json(newUser.rows[0]);
+    } catch (err) {
+        console.error(err.message);
+    }
+})
 
-// login 
-app.use('/login', (req, res) => {
-    res.send({
-        token: 'test123'
-    });
+// login new attempt 7.13.23 1100
+app.post('/login', async (req, res) => {
+    try {
+        const username = req.body.username;
+        const password = req.body.password;
+
+        const user = await pool.query(
+            "SELECT * FROM users WHERE username = $1 AND password = $2", 
+            [username, password]
+        );
+        // console.log(user.rows[0].role);
+        {res ? res.send({ token: user.rows[0].role}) : res.send({ message: "Wrong user/password combination!" })}
+    } catch (err) {
+        console.error(err.message);
+    }
 });
+
+// // login 
+// app.use('/login', (req, res) => {
+//     res.send({
+//         token: 'test123'
+//     });
+// });
+
+
+
+
 
 // all users
 app.get("/users", async(req, res) => {
