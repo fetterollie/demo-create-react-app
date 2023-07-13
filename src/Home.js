@@ -15,7 +15,6 @@ const Home = () => {
             </Typography>
             <Grid 
                 container 
-                xs={12}
                 spacing={12} 
                 direction="column"
                 alignItems="center"
@@ -24,8 +23,6 @@ const Home = () => {
                 <Grid 
                     item 
                     xs={12} 
-                    spacing={12} 
-                    direction="column"
                     alignItems="center"
                     justifyContent="center"
                 >

@@ -17,19 +17,19 @@ const NasaPod = () => {
 
     const [nasaImage, setNasaImage] = useState()
 
-    console.log(process.env.REACT_APP_NASA_API_KEY)
+    // console.log(process.env.REACT_APP_NASA_API_KEY)
 
     // retrieve NASA image data from api via axios
     const getNasaPod = (date) => {
         axios.get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`)
         .then(res => {
-            console.log(process.env.REACT_APP_NASA_API_KEY)
-            console.log(res.data.url)
+            // console.log(process.env.REACT_APP_NASA_API_KEY)
+            // console.log(res.data.url)
             setNasaImage(res.data.url)
                 // setCity(res.data.city.name)
         }).catch(err => {
-            console.log(process.env.REACT_APP_NASA_API_KEY)
-            console.log(err)
+            // console.log(process.env.REACT_APP_NASA_API_KEY)
+            // console.log(err)
         })
     };
 
@@ -50,7 +50,7 @@ const NasaPod = () => {
             </Typography>
             <FormControl
                 margin='normal'
-                fullWidth='true'
+                fullWidth={true}
             >
                 <form onSubmit={onSubmit}>
                     <TextField

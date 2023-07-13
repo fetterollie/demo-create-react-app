@@ -46,7 +46,7 @@ const Weather = () => {
             </Typography>
             <FormControl
                 margin='normal'
-                fullWidth='true'
+                fullWidth={true}
             >
                 <form onSubmit={onSubmit}>
                     <TextField

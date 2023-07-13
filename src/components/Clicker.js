@@ -29,7 +29,7 @@ const Clicker = () => {
             </Typography>
             <FormControl
                 margin='normal'
-                fullWidth='true'
+                fullWidth={true}
             >
                 <Box 
                     sx={{

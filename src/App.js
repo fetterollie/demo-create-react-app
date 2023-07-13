@@ -122,12 +122,8 @@ function App() {
                 <div className="container">
                   <div className='content'>
                     <Switch>
-                      <Route exact path ="/home">
-                        <Home />
-                      </Route>
-                      {/* <Route path="/login">
-                        <Login setToken={setToken} />
-                      </Route> */}
+                      <Route path ="/home" component={Home} />
+                      <Route exact path ="/" component={Home} />
                       <Route path='/vehicleinput'>
                         <VehicleInput />
                       </Route>
