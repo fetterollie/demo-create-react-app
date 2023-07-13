@@ -143,6 +143,7 @@ function App() {
           <Button onClick={() => {toggleTheme()}}>
             <SettingsBrightnessRoundedIcon/>
           </Button>
+
       </ThemeProvider>
   );
 }
