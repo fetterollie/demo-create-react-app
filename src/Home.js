@@ -9,7 +9,7 @@ import NasaPod from './components/NasaPod';
 const Home = () => {
 
     return (
-        <Container>
+        <Container sx={{ marginTop: "10px" }}>
             <Typography variant='h5'>
                 Home
             </Typography>

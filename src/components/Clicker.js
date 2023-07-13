@@ -23,7 +23,7 @@ const Clicker = () => {
     }
 
     return (
-        <Container sx={{ maxWidth: "250px", paddingLeft: "0px" }}>
+        <Box sx={{ maxWidth: "250px", paddingLeft: "0px" }}>
             <Typography variant='h5' sx={{ paddingTop: "5px" }}>
                 Counter
             </Typography>
@@ -58,7 +58,7 @@ const Clicker = () => {
                     </Button>
                 </Box>
             </FormControl>
-        </Container>
+        </Box>
      );
 }
  

@@ -104,13 +104,13 @@ const ListCars = ({ token }) => {
     // console.log(cars);
 
     return (
-        <Container sx={{ paddingLeft: "0px" }}>
-            <Typography
+        <Container sx={{ paddingLeft: "0px"}}>
+            <Typography sx={{ marginTop: "10px" }}
                 variant='h5'
             >
                 Filter Cars
             </Typography>
-            <form onSubmit={onSubmitForm} className='' >
+            <form onSubmit={onSubmitForm}>
                 {/* <FormControl> */}
                     <TextField
                         sx={{ width: "50%" }}
@@ -186,7 +186,7 @@ const ListCars = ({ token }) => {
                                     xs={12}
                                     alignItems="center"
                                     justifyContent="center"
-                                    sx={{ paddingLeft: "0px" }}
+                                    sx={{ paddingLeft: "opx" }}
                                 >
                                     <InfoModalCar car={car} />
                                     {token === 'manager' ? <Stack direction="row">
