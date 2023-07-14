@@ -117,10 +117,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
           {!token ? 
-          <>
             <Login setToken={setToken}/>
-              <Register />
-          </>
             :
               <Router>
                 <ResponsiveAppBar />
@@ -135,6 +132,9 @@ function App() {
                         <Route path='/vehicledisplay'>
                           <VehicleDisplay cars={cars} token={token}/>
                         </Route>
+                        {token === "manager" ? <Route path="/register">
+                          <Register />
+                        </Route> : <></>}
                       </Switch>
                     </div>
                     <Typography variant='h1'>

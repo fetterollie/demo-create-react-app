@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const pages = ['Home', 'VehicleDisplay', 'VehicleInput'];
+const pages = ['Home', 'VehicleDisplay', 'VehicleInput', 'Register'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {

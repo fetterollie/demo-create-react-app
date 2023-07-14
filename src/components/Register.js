@@ -19,7 +19,7 @@ async function registerUser(credentials) {
 
 
 
-const Register = () => {
+const Register = ({ token }) => {
 
     const [usernameReg, setUsernameReg] = useState();
     const [passwordReg, setPasswordReg] = useState();
@@ -44,13 +44,12 @@ const Register = () => {
 
     return (
         <Container sx={{
+            marginTop: '50px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            position: 'absolute',
-            top: '66%',
+            top: '50%',
             left: '50%',
-            transform: 'translate(-50%, -50%)'
             }}
         >
             <Typography variant='h5'>
