@@ -78,29 +78,39 @@ const ListCars = ({ token }) => {
     const onSubmitOptions = (event) => {
         event.preventDefault();
 
+        const finalFilter = finalArray.filter((finalArray) => (
+            finalArray.powerwindows === powerwindows &&
+             finalArray.powerlocks === powerlocks &&
+             finalArray.backupcamera === backupcamera));
+        
+        setFinalOptionArray(finalFilter);
+        
+        
+            
+
 
         // console.log('I made it this far')
         // console.log(powerwindows, powerlocks, backupcamera)
         // console.log(finalArray)
 
-        const pwFilterArray = finalArray.filter((finalArray) => (finalArray.powerwindows === powerwindows));
-        const plFilterArray = finalArray.filter((finalArray) => (finalArray.powerlocks === powerlocks));
-        const buFilterArray = finalArray.filter((finalArray) => (finalArray.backupcamera === backupcamera));
+        // const pwFilterArray = finalArray.filter((finalArray) => (finalArray.powerwindows === powerwindows));
+        // const plFilterArray = finalArray.filter((finalArray) => (finalArray.powerlocks === powerlocks));
+        // const buFilterArray = finalArray.filter((finalArray) => (finalArray.backupcamera === backupcamera));
 
-        const catArr = pwFilterArray.concat(plFilterArray, buFilterArray);
+        // const catArr = pwFilterArray.concat(plFilterArray, buFilterArray);
 
-        function removeDupes(catArr) {
-            const returnCarArray = [];
+        // function removeDupes(catArr) {
+        //     const returnCarArray = [];
       
-            catArr.forEach((car) => {
-              const foundCar = returnCarArray.find((item => ( item.car_id !== null && (item.car_id === car.car_id))))
-              if(!foundCar) {
-                returnCarArray.push(car);
-              }});
-            setFinalOptionArray(returnCarArray);
-        };
+        //     catArr.forEach((car) => {
+        //       const foundCar = returnCarArray.find((item => ( item.car_id !== null && (item.car_id === car.car_id))))
+        //       if(!foundCar) {
+        //         returnCarArray.push(car);
+        //       }});
+        //     setFinalOptionArray(returnCarArray);
+        // };
 
-        removeDupes(catArr)
+        // removeDupes(catArr)
     };
 
     // delete cars function
