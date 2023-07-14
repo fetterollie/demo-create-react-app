@@ -6,8 +6,8 @@ import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-async function loginUser(credentials) {
-    return fetch('http://localhost:5000/login', {
+async function registerUser(credentials) {
+    return fetch('http://localhost:5000/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -19,20 +19,22 @@ async function loginUser(credentials) {
 
 
 
-const Login = ({ setToken }) => {
+const Register = () => {
 
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [usernameReg, setUsernameReg] = useState();
+    const [passwordReg, setPasswordReg] = useState();
+    const [roleReg, setRoleReg] = useState();
 
-    const handleLogin = async (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
-        try {const token = await loginUser({
-            username,
-            password
+        try {const token = await registerUser({
+            usernameReg,
+            passwordReg,
+            roleReg
         });
         
         // console.log(token)
-        setToken(token);
+        // setToken(token);
             
         } catch (err) {
             console.error(err.message)
@@ -46,15 +48,15 @@ const Login = ({ setToken }) => {
             flexDirection: 'column',
             alignItems: 'center',
             position: 'absolute',
-            top: '33%',
+            top: '66%',
             left: '50%',
             transform: 'translate(-50%, -50%)'
             }}
         >
             <Typography variant='h5'>
-                Login
+                Register a New User
             </Typography>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleRegister}>
                 <Stack
                     direction='column'
                 >
@@ -64,7 +66,7 @@ const Login = ({ setToken }) => {
                         id='Username'
                         label='Username'
                         sx={{ width: "250px" }}
-                        onChange={(e) => {setUsername(e.target.value)}}
+                        onChange={(e) => {setUsernameReg(e.target.value)}}
                     />
                     <TextField 
                         variant='filled'
@@ -73,7 +75,15 @@ const Login = ({ setToken }) => {
                         label='Password'
                         sx={{ width: "250px" }}
                         type="password"
-                        onChange={(e) => {setPassword(e.target.value)}}
+                        onChange={(e) => {setPasswordReg(e.target.value)}}
+                    />
+                    <TextField 
+                        variant='filled'
+                        required
+                        id='Role'
+                        label='Role'
+                        sx={{ width: "250px" }}
+                        onChange={(e) => {setRoleReg(e.target.value)}}
                     />
                     <Button
                         type='submit'
@@ -89,8 +99,8 @@ const Login = ({ setToken }) => {
     );
 }
 
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
-}
+// Register.propTypes = {
+//     setToken: PropTypes.func.isRequired
+// }
  
-export default Login;
+export default Register;

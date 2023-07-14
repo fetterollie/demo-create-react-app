@@ -18,3 +18,5 @@ CREATE TABLE users(
 
 INSERT INTO users (user_id, username, password, role)
 VALUES (2, 'user', 'user', 'user');
+
+DELETE FROM users *;

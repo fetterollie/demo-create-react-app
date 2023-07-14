@@ -17,6 +17,7 @@ import "@fontsource/noto-sans"
 import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnessRounded';
 import Login from './components/Login';
 import useToken from './useToken';
+import Register from './components/Register';
 
 
 
@@ -116,7 +117,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
           {!token ? 
-            <Login setToken={setToken}/> :
+          <>
+            <Login setToken={setToken}/>
+              <Register />
+          </>
+            :
               <Router>
                 <ResponsiveAppBar />
                   <div className="container">

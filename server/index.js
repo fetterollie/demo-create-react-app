@@ -85,12 +85,13 @@ app.delete("/cars/:id", async (req, res) => {
 // register a new user
 app.post('/register', async (req, res) => {
     try {
-        const { username, password, role } = req.body;
+        const { usernameReg, passwordReg, roleReg } = req.body;
         const newUser = await pool.query(
             "INSERT INTO users (username, password, role) VALUES($1, $2, $3) RETURNING *", 
-            [username, password, role]
+            [usernameReg, passwordReg, roleReg]
         );
-        res.json(newUser.rows[0]);
+        console.log(newUser.rows[0]);
+        // res.json(newUser.rows[0]);
     } catch (err) {
         console.error(err.message);
     }
@@ -107,9 +108,9 @@ app.post('/login', async (req, res) => {
             [username, password]
         );
         // console.log(user.rows[0].role);
-        {res ? res.send({ token: user.rows[0].role}) : res.send({ message: "Wrong user/password combination!" })}
+        res.send({ token: user.rows[0].role});
     } catch (err) {
-        console.error(err.message);
+        console.error(console.log('ERROR!'));
     }
 });
 
