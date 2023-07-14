@@ -9,6 +9,10 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 const ListCars = ({ token }) => {
@@ -20,9 +24,13 @@ const ListCars = ({ token }) => {
     const [model, setModel] = useState('');
     const [color, setColor] = useState('');
     const [year, setYear] = useState('');
+    const [powerwindows, setPowerwindows] = useState(false);
+    const [powerlocks, setPowerlocks] = useState(false);
+    const [backupcamera, setBackupcamera] = useState(false);
 
     // state after filter
     const [finalArray, setFinalArray] = useState();
+    const [finalOptionArray, setFinalOptionArray] = useState();
 
     const [submitting, setSubmitting] = useState(false);
 
@@ -52,19 +60,47 @@ const ListCars = ({ token }) => {
                 returnCarArray.push(car);
               }});
             setFinalArray(returnCarArray);
+            setFinalOptionArray();
         };
 
-        console.log(catArr);
+        // console.log(catArr);
         
         removeDupes(catArr);
 
-        console.log(finalArray);
-
+        // console.log(finalArray);
 
         setTimeout(() => {
             setSubmitting(false);
         }, 2000)
-        console.log(finalArray);
+        // console.log(finalArray);
+    };
+
+    const onSubmitOptions = (event) => {
+        event.preventDefault();
+
+
+        // console.log('I made it this far')
+        // console.log(powerwindows, powerlocks, backupcamera)
+        // console.log(finalArray)
+
+        const pwFilterArray = finalArray.filter((finalArray) => (finalArray.powerwindows === powerwindows));
+        const plFilterArray = finalArray.filter((finalArray) => (finalArray.powerlocks === powerlocks));
+        const buFilterArray = finalArray.filter((finalArray) => (finalArray.backupcamera === backupcamera));
+
+        const catArr = pwFilterArray.concat(plFilterArray, buFilterArray);
+
+        function removeDupes(catArr) {
+            const returnCarArray = [];
+      
+            catArr.forEach((car) => {
+              const foundCar = returnCarArray.find((item => ( item.car_id !== null && (item.car_id === car.car_id))))
+              if(!foundCar) {
+                returnCarArray.push(car);
+              }});
+            setFinalOptionArray(returnCarArray);
+        };
+
+        removeDupes(catArr)
     };
 
     // delete cars function
@@ -150,8 +186,33 @@ const ListCars = ({ token }) => {
                     </Button>
                 </div>
             </form>
+            {finalArray ? 
+                <form onSubmit={onSubmitOptions}>
+                    <FormControlLabel 
+                        control={<Checkbox onChange={e => setPowerwindows(!powerwindows)} />} 
+                        label="Power Windows" />
+                    <FormControlLabel 
+                        control={<Checkbox onChange={e => setPowerlocks(!powerlocks)} />} 
+                        label="Power Locks" />
+                    <FormControlLabel 
+                        control={<Checkbox onChange={e => setBackupcamera(!backupcamera)} />} 
+                        label="Back-up Camera" 
+                    />
+                    <Button 
+                        variant="contained" 
+                        type="submit" 
+                        sx={{ width: "100%" }}
+                    >
+                        Filter Options
+                    </Button>
+                </form>
+                    :
+                <></>
+                
+                }
             <Typography variant="h5">
-                {finalArray ? `Filtered Car List` : "Car List"}
+                {finalOptionArray ? 'Filtered Car List & Options': 
+                (finalArray ? `Filtered Car List` : "Car List")}
             </Typography>
             <Grid 
                 container 
@@ -162,7 +223,9 @@ const ListCars = ({ token }) => {
                 justifyContent="center"
                 sx={{ paddingLeft: "0px" }}
             >
-                {finalArray ? finalArray.map(car => (
+                {/* if finalOptionArray is present, map over it. */}
+
+                {finalOptionArray ? finalOptionArray.map(car => (
                     <Grid key={`listcar${car.car_id}`} item xs={12}>
                         <Card sx={{ width: "300px", paddingLeft: "0px" }}>
                             <CardContent>
@@ -173,6 +236,38 @@ const ListCars = ({ token }) => {
                                     justifyContent="center"
                                 >
                                     <InfoModalCar car={car} token={token}/>
+                                    {token === 'manager' ? 
+                                    <Stack direction="row">
+                                        <EditCar car={car} />
+                                        <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
+                                            <DeleteForeverIcon/>
+                                        </Button>
+                                    </Stack> : 
+                                    <div></div>}
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                )) : 
+                (finalArray ? finalArray.map(car => (
+                    <Grid key={`listcar${car.car_id}`} item xs={12}>
+                        <Card sx={{ width: "300px", paddingLeft: "0px" }}>
+                            <CardContent>
+                                <Grid
+                                    item
+                                    xs={12}
+                                    alignItems="center"
+                                    justifyContent="center"
+                                >
+                                    <InfoModalCar car={car} token={token}/>
+                                    {token === 'manager' ? 
+                                    <Stack direction="row">
+                                        <EditCar car={car} />
+                                        <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
+                                            <DeleteForeverIcon/>
+                                        </Button>
+                                    </Stack> : 
+                                    <div></div>}
                                 </Grid>
                             </CardContent>
                         </Card>
@@ -189,17 +284,21 @@ const ListCars = ({ token }) => {
                                     sx={{ paddingLeft: "opx" }}
                                 >
                                     <InfoModalCar car={car} />
-                                    {token === 'manager' ? <Stack direction="row">
+                                    {token === 'manager' ? 
+                                    <Stack direction="row">
                                         <EditCar car={car} />
                                         <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
                                             <DeleteForeverIcon/>
                                         </Button>
-                                    </Stack> : <div></div>}
+                                    </Stack> : 
+                                    <div></div>}
                                 </Grid>
                             </CardContent>
                         </Card>
                     </Grid>
-                ))}
+                )))}
+
+                
             </Grid>
         </Container>
     );
