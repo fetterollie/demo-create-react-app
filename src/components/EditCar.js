@@ -6,6 +6,9 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import DisabledByDefaultRoundedIcon from '@mui/icons-material/DisabledByDefaultRounded';
 import EditIcon from '@mui/icons-material/Edit';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+
 
 const style = {
   position: 'absolute',
@@ -30,6 +33,9 @@ export default function EditCar({ car }) {
         setColor(car.color);
         setYear(car.year);
         setImgUrl(car.imgurl);
+        setPowerwindows(car.powerwindows);
+        setPowerlocks(car.powerlocks);
+        setBackupcamera(car.backupcamera);
     };
 
     // state
@@ -38,12 +44,15 @@ export default function EditCar({ car }) {
     const [color, setColor] = useState(car.color);
     const [year, setYear] = useState(car.year);
     const [imgUrl, setImgUrl] = useState(car.imgurl);
+    const [powerwindows, setPowerwindows] = useState(car.powerwindows);
+    const [powerlocks, setPowerlocks] = useState(car.powerlocks);
+    const [backupcamera, setBackupcamera] = useState(car.backupcamera);
 
     // edit values function
     const updateValues = async(e) => {
         e.preventDefault();
         try {
-            const body = { make, model, color, year, imgUrl };
+            const body = { make, model, color, year, imgUrl, powerwindows, powerlocks, backupcamera };
             const response = await fetch(`http://localhost:5000/cars/${car.car_id}`, 
                 {
                     method: "PUT",
@@ -112,6 +121,33 @@ export default function EditCar({ car }) {
                         value={imgUrl} 
                         onChange={e => setImgUrl(e.target.value)}
                     />
+                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>Power Windows: </Typography>
+                    <Select
+                        sx={{ width: "55%" }}
+                        value={powerwindows}
+                        onChange={e => setPowerwindows(e.target.value)}
+                    >
+                        <MenuItem value='true'>True</MenuItem>
+                        <MenuItem value='false'>False</MenuItem>
+                    </Select>
+                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>Power Locks: </Typography>
+                    <Select
+                        sx={{ width: "55%" }}
+                        value={powerlocks}
+                        onChange={e => setPowerlocks(e.target.value)}
+                    >
+                        <MenuItem value='true'>True</MenuItem>
+                        <MenuItem value='false'>False</MenuItem>
+                    </Select>
+                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>Back-up Camera: </Typography>
+                    <Select
+                        sx={{ width: "55%" }}
+                        value={backupcamera}
+                        onChange={e => setBackupcamera(e.target.value)}
+                    >
+                        <MenuItem value='true'>True</MenuItem>
+                        <MenuItem value='false'>False</MenuItem>
+                    </Select>
                     <Button 
                         sx={{ width: "80%" }}
                         variant="contained"

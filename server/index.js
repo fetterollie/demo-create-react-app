@@ -56,10 +56,10 @@ app.get("/cars/:id", async(req, res) => {
 app.put("/cars/:id", async(req, res) => {
     try{
         const { id } = req.params;
-        const { make, model, color, year, imgUrl } = req.body;
+        const {  make, model, color, year, imgUrl, powerwindows, powerlocks, backupcamera } = req.body;
         const updateCar = await pool.query(
-            "UPDATE cars SET make = $1, model = $2, color = $3, year = $4, imgUrl = $5 WHERE car_id = $6",
-            [make, model, color, year, imgUrl, id]);
+            "UPDATE cars SET make = $1, model = $2, color = $3, year = $4, imgUrl = $5, powerwindows = $6, powerlocks = $7, backupcamera = $8 WHERE car_id = $9",
+            [make, model, color, year, imgUrl, powerwindows, powerlocks, backupcamera, id]);
 
             res.json("Car was updated!")
     } catch {
