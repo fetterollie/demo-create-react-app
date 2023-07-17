@@ -28,6 +28,30 @@ const ListCars = ({ token }) => {
     const [powerlocks, setPowerlocks] = useState(false);
     const [backupcamera, setBackupcamera] = useState(false);
 
+    const [filters, setFilters] = useState({
+        make: "",
+        model: "",
+        color: "",
+        year: "",
+        powerwindows: "",
+        powerlocks: "",
+        backupcamera: ""
+    })
+
+    const handleFilterUpdate = (event) => {
+        event.preventDefault();
+        setFilters({
+            make: make,
+            model: model,
+            color: color,
+            year: year,
+            powerwindows: powerwindows,
+            powerlocks: powerlocks,
+            backupcamera: backupcamera
+        });
+        // console.log(filters)
+        getCars();
+    }
     // state after filter
     const [finalArray, setFinalArray] = useState();
     const [finalOptionArray, setFinalOptionArray] = useState();
@@ -133,10 +157,50 @@ const ListCars = ({ token }) => {
         try{
 
             const response = await fetch("http://localhost:5000/cars");
-            const jsonData = await response.json();
+            const carsData = await response.json();
             
-            // console.log(jsonData);
-            setCars(jsonData);
+            // console.log(carsData);
+            // console.log(filters);
+
+            // const displayCars = [];
+            // console.log(carsData[0].make)
+
+            // logic to filter for filter object
+            // carsData.filter((cars) => (cars.make === make));
+
+            function createFilteredArray(carsData){
+                const returnCarArray = [];
+
+                Object.entries(filters).forEach(([key, value]) => {
+                    console.log(`key: ${key}, value: ${value}`);
+                    console.log(carsData.filter((car) => (car[key] === value)))
+                    carsData.filter((car) => (car[key] === value)).forEach((car) => {
+                        const foundCar = returnCarArray.find((item => (
+                            item.car_id !== null && (item.car_id === car.car_id)
+                            )))
+                        if(!foundCar) {returnCarArray.push(car);
+                        }})
+                })
+                console.log(returnCarArray)
+                console.log("BREAK")
+            };
+            createFilteredArray(carsData)
+
+            // Object.entries(filters).forEach(([key, value]) => {
+            //     console.log(`key: ${key}, value: ${value}`);
+            //     console.log(carsData.filter((car) => (car[key] === value)))
+            //     carsData.filter((car) => (car[key] === value)).forEach((car) => {
+
+            //     })
+            // })
+
+            // console.log("BREAK")
+
+            
+
+
+
+            setCars(carsData);
         } catch (err) {
             console.error(err.message);
         }
@@ -156,7 +220,7 @@ const ListCars = ({ token }) => {
             >
                 Filter Cars
             </Typography>
-            <form onSubmit={onSubmitForm}>
+            <form onSubmit={handleFilterUpdate}>
                 {/* <FormControl> */}
                     <TextField
                         sx={{ width: "50%" }}
@@ -226,89 +290,40 @@ const ListCars = ({ token }) => {
             </Typography>
             <Grid 
                 container 
-                spacing={12} 
+                spacing={4} 
                 // xs={12}
                 direction="column-reverse"
                 alignItems="center"
                 justifyContent="center"
                 sx={{ paddingLeft: "0px" }}
             >
-                {/* if finalOptionArray is present, map over it. */}
-
-                {finalOptionArray ? finalOptionArray.map(car => (
-                    <Grid key={`listcar${car.car_id}`} item xs={12}>
+                {cars.map(car => (
+                <Grid key={`listcar${car.car_id}`} item xs={4} sx={{ paddingLeft: '0px' }}>
+                    <Grid
+                        item
+                        xs={4}
+                        alignItems="center"
+                        justifyContent="center"
+                        sx={{ paddingLeft: "opx" }}
+                    >
                         <Card sx={{ width: "300px", paddingLeft: "0px" }}>
                             <CardContent>
-                                <Grid
-                                    item
-                                    xs={12}
-                                    alignItems="center"
-                                    justifyContent="center"
-                                >
-                                    <InfoModalCar car={car} token={token}/>
-                                    {token === 'manager' ? 
+                                <InfoModalCar car={car} />
+                                {token === 'manager' ? 
                                     <Stack direction="row">
                                         <EditCar car={car} />
                                         <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
                                             <DeleteForeverIcon/>
                                         </Button>
                                     </Stack> : 
-                                    <div></div>}
-                                </Grid>
+                                    <div></div>
+                                }
                             </CardContent>
                         </Card>
                     </Grid>
-                )) : 
-                (finalArray ? finalArray.map(car => (
-                    <Grid key={`listcar${car.car_id}`} item xs={12}>
-                        <Card sx={{ width: "300px", paddingLeft: "0px" }}>
-                            <CardContent>
-                                <Grid
-                                    item
-                                    xs={12}
-                                    alignItems="center"
-                                    justifyContent="center"
-                                >
-                                    <InfoModalCar car={car} token={token}/>
-                                    {token === 'manager' ? 
-                                    <Stack direction="row">
-                                        <EditCar car={car} />
-                                        <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
-                                            <DeleteForeverIcon/>
-                                        </Button>
-                                    </Stack> : 
-                                    <div></div>}
-                                </Grid>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                )) : cars.map(car => (
-                    <Grid key={`listcar${car.car_id}`} item xs={12} sx={{ paddingLeft: '0px' }}>
-                        <Card sx={{ width: "300px", paddingLeft: "0px" }}>
-                            <CardContent sx={{ }}>
-                                <Grid
-                                    item
-                                    xs={12}
-                                    alignItems="center"
-                                    justifyContent="center"
-                                    sx={{ paddingLeft: "opx" }}
-                                >
-                                    <InfoModalCar car={car} />
-                                    {token === 'manager' ? 
-                                    <Stack direction="row">
-                                        <EditCar car={car} />
-                                        <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
-                                            <DeleteForeverIcon/>
-                                        </Button>
-                                    </Stack> : 
-                                    <div></div>}
-                                </Grid>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                )))}
-
-                
+                    
+                </Grid>
+                ))}
             </Grid>
         </Container>
     );
