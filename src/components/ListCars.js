@@ -33,9 +33,9 @@ const ListCars = ({ token }) => {
         model: "",
         color: "",
         year: "",
-        // powerwindows: "",
-        // powerlocks: "",
-        // backupcamera: ""
+        powerwindows: "",
+        powerlocks: "",
+        backupcamera: ""
     })
 
     const handleFilterUpdate = (event) => {
@@ -45,9 +45,9 @@ const ListCars = ({ token }) => {
             model: model,
             color: color,
             year: year,
-            // powerwindows: powerwindows,
-            // powerlocks: powerlocks,
-            // backupcamera: backupcamera
+            powerwindows: powerwindows,
+            powerlocks: powerlocks,
+            backupcamera: backupcamera
         })
         // console.log(filters)
         getCars();
@@ -161,38 +161,41 @@ const ListCars = ({ token }) => {
             
             // console.log(carsData)
 
-            const returnCars = []
+            let carsClonedArray = structuredClone(carsData)
+            
 
-            Object.entries(filters).forEach(([key, value]) => {
-                // console.log(`key: ${key}, value: ${value}`);
+            Object.entries(filters).forEach(([key, value], idx) => {
+                console.log(`key: ${key}, value: ${value}`);
                 // console.log(carsData.filter((car) => (car[key] === value)))
-                const tempArray = carsData.filter((car) => (car[key] === value))
+                let tempArray = carsClonedArray
+                if (value && typeof value === 'string') {
+                    tempArray = carsClonedArray.filter((car) => (car[key].toString() === value))
+                } 
 
-                tempArray.forEach((entry) => {returnCars.push(entry)})
+                console.log('tempArray: ', tempArray)
+                carsClonedArray = tempArray
             })
 
-            const returnCarArray = []
+            console.log('result: ', carsClonedArray)
 
-            returnCars.forEach((car) => {
-                const foundCar = returnCarArray.find((item) => (
-                    item.car_id !== null &&
-                    (item.car_id === car.car_id)
-                ))
-                if(!foundCar) {
-                    returnCarArray.push(car);
-                }
-            });
+            // returnCars.forEach((car) => {
+            //     const foundCar = returnCarArray.find((item) => (
+            //         item.car_id !== null &&
+            //         (item.car_id === car.car_id)
+            //     ))
+            //     if(!foundCar) {
+            //         returnCarArray.push(car);
+            //     }
+            // });
 
-            console.log(returnCars)
-            console.log(returnCarArray)
+            
+            // console.log(returnCars)
+            // console.log(returnCarArray)
 
             console.log("BREAK")
 
-            
+            carsClonedArray === carsData ? setCars(carsData): setCars(carsClonedArray);
 
-
-
-            returnCarArray.length > 0 ? setCars(returnCarArray): setCars(carsData);
         } catch (err) {
             console.error(err.message);
         }
@@ -201,6 +204,10 @@ const ListCars = ({ token }) => {
     useEffect(() => {
         getCars();
     }, []);
+
+    useEffect(() => {
+        getCars();
+    }, [filters]);
 
     //output
     // console.log(cars);
@@ -286,7 +293,7 @@ const ListCars = ({ token }) => {
                 // xs={12}
                 direction="column-reverse"
                 alignItems="center"
-                justifyContent="center"
+                // justifyContent="center"
                 sx={{ paddingLeft: "0px" }}
             >
                 {cars.map(car => (
