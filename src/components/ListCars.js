@@ -33,9 +33,9 @@ const ListCars = ({ token }) => {
         model: "",
         color: "",
         year: "",
-        powerwindows: "",
-        powerlocks: "",
-        backupcamera: ""
+        // powerwindows: "",
+        // powerlocks: "",
+        // backupcamera: ""
     })
 
     const handleFilterUpdate = (event) => {
@@ -45,10 +45,10 @@ const ListCars = ({ token }) => {
             model: model,
             color: color,
             year: year,
-            powerwindows: powerwindows,
-            powerlocks: powerlocks,
-            backupcamera: backupcamera
-        });
+            // powerwindows: powerwindows,
+            // powerlocks: powerlocks,
+            // backupcamera: backupcamera
+        })
         // console.log(filters)
         getCars();
     }
@@ -159,48 +159,40 @@ const ListCars = ({ token }) => {
             const response = await fetch("http://localhost:5000/cars");
             const carsData = await response.json();
             
-            // console.log(carsData);
-            // console.log(filters);
+            // console.log(carsData)
 
-            // const displayCars = [];
-            // console.log(carsData[0].make)
+            const returnCars = []
 
-            // logic to filter for filter object
-            // carsData.filter((cars) => (cars.make === make));
+            Object.entries(filters).forEach(([key, value]) => {
+                // console.log(`key: ${key}, value: ${value}`);
+                // console.log(carsData.filter((car) => (car[key] === value)))
+                const tempArray = carsData.filter((car) => (car[key] === value))
 
-            function createFilteredArray(carsData){
-                const returnCarArray = [];
+                tempArray.forEach((entry) => {returnCars.push(entry)})
+            })
 
-                Object.entries(filters).forEach(([key, value]) => {
-                    console.log(`key: ${key}, value: ${value}`);
-                    console.log(carsData.filter((car) => (car[key] === value)))
-                    carsData.filter((car) => (car[key] === value)).forEach((car) => {
-                        const foundCar = returnCarArray.find((item => (
-                            item.car_id !== null && (item.car_id === car.car_id)
-                            )))
-                        if(!foundCar) {returnCarArray.push(car);
-                        }})
-                })
-                console.log(returnCarArray)
-                console.log("BREAK")
-            };
-            createFilteredArray(carsData)
+            const returnCarArray = []
 
-            // Object.entries(filters).forEach(([key, value]) => {
-            //     console.log(`key: ${key}, value: ${value}`);
-            //     console.log(carsData.filter((car) => (car[key] === value)))
-            //     carsData.filter((car) => (car[key] === value)).forEach((car) => {
+            returnCars.forEach((car) => {
+                const foundCar = returnCarArray.find((item) => (
+                    item.car_id !== null &&
+                    (item.car_id === car.car_id)
+                ))
+                if(!foundCar) {
+                    returnCarArray.push(car);
+                }
+            });
 
-            //     })
-            // })
+            console.log(returnCars)
+            console.log(returnCarArray)
 
-            // console.log("BREAK")
+            console.log("BREAK")
 
             
 
 
 
-            setCars(carsData);
+            returnCarArray.length > 0 ? setCars(returnCarArray): setCars(carsData);
         } catch (err) {
             console.error(err.message);
         }
