@@ -6,9 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Grid from '@mui/material/Grid';
 
-
-
-
 const style = {
   position: 'absolute',
   top: '50%',
@@ -74,7 +71,9 @@ export default function InfoModalCar({ car }) {
                         item
                         xs={8}
                     >
-                        <Typography variant="h6">
+                        <Typography 
+                            variant="h6"
+                        >
                             {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
                         </Typography>
                     </Grid>
@@ -87,8 +86,12 @@ export default function InfoModalCar({ car }) {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
-                    <Grid container>
+                <Box 
+                    sx={style}
+                >
+                    <Grid 
+                        container
+                    >
                         <Grid item xs={8}>
                             <Typography 
                             sx={{ paddingBottom: "10px" }}

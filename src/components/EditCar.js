@@ -60,9 +60,7 @@ export default function EditCar({ car }) {
                     body: JSON.stringify(body)
                 }
             );
-            // console.log(car.car_id)
-            // console.log(body)
-            // console.log(response);
+            // refresh after input
             window.location = "/vehicledisplay";
         } catch (err) {
             console.error(err.message);
@@ -123,32 +121,50 @@ export default function EditCar({ car }) {
                         value={imgUrl} 
                         onChange={e => setImgUrl(e.target.value)}
                     />
-                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>Power Windows: </Typography>
+                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>
+                        Power Windows: 
+                    </Typography>
                     <Select
                         sx={{ width: "55%" }}
                         value={powerwindows}
                         onChange={e => setPowerwindows(e.target.value)}
                     >
-                        <MenuItem value='true'>True</MenuItem>
-                        <MenuItem value='false'>False</MenuItem>
+                        <MenuItem value='true'>
+                            True
+                        </MenuItem>
+                        <MenuItem value='false'>
+                            False
+                        </MenuItem>
                     </Select>
-                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>Power Locks: </Typography>
+                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>
+                        Power Locks: 
+                    </Typography>
                     <Select
                         sx={{ width: "55%" }}
                         value={powerlocks}
                         onChange={e => setPowerlocks(e.target.value)}
                     >
-                        <MenuItem value='true'>True</MenuItem>
-                        <MenuItem value='false'>False</MenuItem>
+                        <MenuItem value='true'>
+                            True
+                        </MenuItem>
+                        <MenuItem value='false'>
+                            False
+                        </MenuItem>
                     </Select>
-                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>Back-up Camera: </Typography>
+                    <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>
+                        Back-up Camera: 
+                    </Typography>
                     <Select
                         sx={{ width: "55%" }}
                         value={backupcamera}
                         onChange={e => setBackupcamera(e.target.value)}
                     >
-                        <MenuItem value='true'>True</MenuItem>
-                        <MenuItem value='false'>False</MenuItem>
+                        <MenuItem value='true'>
+                            True
+                        </MenuItem>
+                        <MenuItem value='false'>
+                            False
+                        </MenuItem>
                     </Select>
                     <Button 
                         sx={{ width: "80%" }}

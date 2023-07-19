@@ -18,8 +18,6 @@ async function registerUser(credentials) {
     .then(data => data.json())
 }
 
-
-
 const Register = ({ token }) => {
 
     const [usernameReg, setUsernameReg] = useState();
@@ -33,10 +31,6 @@ const Register = ({ token }) => {
             passwordReg,
             roleReg
         });
-        
-        // console.log(token)
-        // setToken(token);
-            
         } catch (err) {
             console.error(err.message)
         }
@@ -90,9 +84,5 @@ const Register = ({ token }) => {
         </Container>
     );
 }
-
-// Register.propTypes = {
-//     setToken: PropTypes.func.isRequired
-// }
  
 export default Register;

@@ -7,23 +7,16 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-
-
 const Weather = () => {
     const [zipCode, setZipcode] = useState('22309')
 
     const [temp, setTemp] = useState('')
     const [city, setCity] = useState('Alexandria')
 
-
     // retrieve weather data from api via axios
     const getWeather = (zipCode) => {
         axios.get(`https://api.openweathermap.org/data/2.5/forecast?zip=${zipCode}&appid=${process.env.REACT_APP_API_KEY}&units=imperial`)
         .then(res => {
-            // console.log(
-            //     res.data.city.name,
-            //     res.data.list[1].main.temp
-            //     )
                 setTemp(res.data.list[1].main.temp)
                 setCity(res.data.city.name)
         }).catch(err => {

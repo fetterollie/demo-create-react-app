@@ -19,10 +19,7 @@ import Login from './components/Login';
 import useToken from './useToken';
 import Register from './components/Register';
 
-
-
 export const ThemeContext = createContext(null);
-
 
 const darkTheme = createTheme(
   {
@@ -71,31 +68,11 @@ const lightTheme = createTheme(
 );
 
 
-
-
 function App() {
   const { token, setToken } = useToken();
 
   const [cars, setCars] = useState([])
 
-  const getCars = async () => {
-    try{
-
-        const response = await fetch("http://localhost:5000/cars");
-        const jsonData = await response.json();
-
-        setCars(jsonData);
-    } catch (err) {
-        console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-      getCars();
-  }, []);
-
-  //output
-  // console.log(cars);
   
   // Toggle Theme
   const [theme, setTheme] = useState(lightTheme)
@@ -104,14 +81,7 @@ function App() {
   const toggleTheme = () => {
     setTheme(() => (isDark === true ? lightTheme : darkTheme))
     setisDark(() => (!isDark))
-    // checking toggle
-    // console.log(isDark)
-    // console.log(theme.palette.mode)
   }
-
-  // if(!token) {
-  //   return <Login setToken={setToken} />
-  // }
 
   return (
       <ThemeProvider theme={theme}>

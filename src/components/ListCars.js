@@ -13,8 +13,6 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import '../Styles/Global.scss';
 
-
-
 const ListCars = ({ token }) => {
 
     const [cars, setCars] = useState([])
@@ -53,7 +51,6 @@ const ListCars = ({ token }) => {
         getCars();
     }
 
-
     // delete cars function
     const deleteCar = async (id) => {
         try {
@@ -75,12 +72,9 @@ const ListCars = ({ token }) => {
 
             const response = await fetch("http://localhost:5000/cars");
             const carsData = await response.json();
-            
-            // console.log(carsData)
 
             let carsClonedArray = structuredClone(carsData)
             
-
             Object.entries(filters).forEach(([key, value], idx) => {
                 console.log(`key: ${key}, value: ${value}`);
                 // console.log(carsData.filter((car) => (car[key] === value)))
@@ -91,13 +85,8 @@ const ListCars = ({ token }) => {
                     tempArray = carsClonedArray.filter((car) => (car[key] === value))
                 } 
 
-                // console.log('tempArray: ', tempArray)
                 carsClonedArray = tempArray
             })
-
-            console.log('result: ', carsClonedArray)
-
-            console.log("BREAK")
 
             carsClonedArray === carsData ? setCars(carsData): setCars(carsClonedArray);
 

@@ -17,8 +17,6 @@ async function loginUser(credentials) {
     .then(data => data.json())
 }
 
-
-
 const Login = ({ setToken }) => {
 
     const [username, setUsername] = useState();
@@ -31,14 +29,12 @@ const Login = ({ setToken }) => {
             password
         });
         
-        // console.log(token)
         setToken(token);
             
         } catch (err) {
             console.error(err.message)
         }
     }
-
 
     return (
         <Container sx={{
@@ -82,7 +78,6 @@ const Login = ({ setToken }) => {
                     >
                         Login
                     </Button>
-                
                 </Stack>
             </form>
         </Container>

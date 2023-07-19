@@ -5,7 +5,6 @@ import Weather from './components/Weather';
 import Clicker from './components/Clicker';
 import NasaPod from './components/NasaPod';
 
-
 const Home = () => {
 
     return (

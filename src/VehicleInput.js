@@ -4,7 +4,6 @@ import ListCars from "./components/ListCars";
 import Box from '@mui/material/Box'
 
 const VehicleInput = () => {
-
     return (
     <InputCar />
     );
