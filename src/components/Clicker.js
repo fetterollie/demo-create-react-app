@@ -7,6 +7,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
+import '../Styles/Global.scss';
 
 
 const Clicker = () => {
@@ -24,8 +25,11 @@ const Clicker = () => {
     }
 
     return (
-        <Box sx={{ maxWidth: "250px", paddingLeft: "0px" }}>
-            <Typography variant='h5' sx={{ paddingTop: "5px" }}>
+        <Box className="widgetBox">
+            <Typography 
+                variant='h5' 
+                className='widgetTitle'
+            >
                 Counter
             </Typography>
             <FormControl

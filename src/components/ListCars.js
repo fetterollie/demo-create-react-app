@@ -162,7 +162,7 @@ const ListCars = ({ token }) => {
             </form>
 
        
-            <Typography className="head" variant="h5">
+            <Typography className="list" variant="h5">
                 Car List
             </Typography>
             <Grid 

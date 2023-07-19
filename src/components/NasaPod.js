@@ -32,8 +32,11 @@ const NasaPod = () => {
     };
 
     return (
-        <Box sx={{ maxWidth: "250px" }}>
-            <Typography variant='h5'sx={{ paddingTop: "5px" }}>
+        <Box className="widgetBox">
+            <Typography 
+                variant='h5'
+                className='widgetTitle'
+            >
                 {`NASA PoD`}
             </Typography>
             <FormControl

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useState } from 'react'
-import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
@@ -35,8 +34,11 @@ const Weather = () => {
     };
 
     return (
-        <Box sx={{ maxWidth: "250px" }}>
-            <Typography variant='h5'sx={{ paddingTop: "5px" }}>
+        <Box className="widgetBox">
+            <Typography 
+                variant='h5'
+                className='widgetTitle'
+            >
                 {`Temperature:`}
             </Typography>
             <FormControl

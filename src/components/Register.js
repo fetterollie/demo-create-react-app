@@ -38,7 +38,7 @@ const Register = ({ token }) => {
 
 
     return (
-        <Container className='body'>
+        <Container className='head'>
             <Typography className="head" variant='h5'>
                 Register a New User
             </Typography>
