@@ -15,12 +15,10 @@ import ChildCareTwoToneIcon from '@mui/icons-material/ChildCareTwoTone';
 import { Link } from 'react-router-dom';
 
 
+function ResponsiveAppBar({ token }) {
+  const pages = ['Home', 'VehicleDisplay', 'VehicleInput', `${token === "manager" ? "Register" : ""}`];
+  const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-
-const pages = ['Home', 'VehicleDisplay', 'VehicleInput', 'Register'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 

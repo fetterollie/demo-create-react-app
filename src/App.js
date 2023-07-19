@@ -120,7 +120,7 @@ function App() {
             <Login setToken={setToken}/>
             :
               <Router>
-                <ResponsiveAppBar />
+                <ResponsiveAppBar token={token}/>
                   <div className="container">
                     <div className='content'>
                       <Switch>
