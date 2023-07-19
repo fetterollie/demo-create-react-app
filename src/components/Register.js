@@ -48,7 +48,7 @@ const Register = ({ token }) => {
             <Typography className="head" variant='h5'>
                 Register a New User
             </Typography>
-            <form onSubmit={handleRegister}>
+            <form className='head' onSubmit={handleRegister}>
                 <Stack
                     direction='column'
                 >

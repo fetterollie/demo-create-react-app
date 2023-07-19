@@ -31,7 +31,9 @@ const InputCar = () => {
 
     return ( 
         <Container className='body'>
-            <Typography className='head' variant='h5'>Input Car</Typography>
+            <Typography className='head' variant='h5'>
+                Input Car
+            </Typography>
             <form onSubmit={onSubmitForm} className='head' >
                     <TextField
                         sx={{ width: "50%" }}

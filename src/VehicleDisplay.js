@@ -4,9 +4,7 @@ import ListCars from "./components/ListCars";
 const VehicleDisplay = ({ token }) => {
 
     return (
-        <Container sx={{ paddingLeft: "0px" }}>
-            <ListCars token={token} />
-        </Container>
+    <ListCars token={token} />
     );
 }
  
