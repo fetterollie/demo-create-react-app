@@ -9,8 +9,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
@@ -33,9 +31,9 @@ const ListCars = ({ token }) => {
         model: "",
         color: "",
         year: "",
-        powerwindows: "",
-        powerlocks: "",
-        backupcamera: ""
+        powerwindows: false,
+        powerlocks: false,
+        backupcamera: false
     })
 
     const handleFilterUpdate = (event) => {
@@ -49,93 +47,10 @@ const ListCars = ({ token }) => {
             powerlocks: powerlocks,
             backupcamera: backupcamera
         })
-        // console.log(filters)
+
         getCars();
     }
-    // state after filter
-    const [finalArray, setFinalArray] = useState();
-    const [finalOptionArray, setFinalOptionArray] = useState();
 
-    const [submitting, setSubmitting] = useState(false);
-
-
-    const onSubmitForm = (event) => {
-        event.preventDefault();
-        setSubmitting(true);
-
-        const makeArray = cars.filter((cars) => (cars.make === make));
-        const modelArray = cars.filter((cars) => (cars.model === model));
-        const colorArray = cars.filter((cars) => (cars.color === color));
-        const yearArray = cars.filter((cars) => (cars.year === year));
-
-        const catArr = makeArray.concat(modelArray, colorArray, yearArray);
-
-        // console.log(make, model, color, year);
-        // console.log(cars)
-        // console.log(colorArray)
-
-        // removing duplicates in array
-        function removeDupes(catArr) {
-            const returnCarArray = [];
-      
-            catArr.forEach((car) => {
-              const foundCar = returnCarArray.find((item => ( item.car_id !== null && (item.car_id === car.car_id))))
-              if(!foundCar) {
-                returnCarArray.push(car);
-              }});
-            setFinalArray(returnCarArray);
-            setFinalOptionArray();
-        };
-
-        // console.log(catArr);
-        
-        removeDupes(catArr);
-
-        // console.log(finalArray);
-
-        setTimeout(() => {
-            setSubmitting(false);
-        }, 2000)
-        // console.log(finalArray);
-    };
-
-    const onSubmitOptions = (event) => {
-        event.preventDefault();
-
-        const finalFilter = finalArray.filter((finalArray) => (
-            finalArray.powerwindows === powerwindows &&
-             finalArray.powerlocks === powerlocks &&
-             finalArray.backupcamera === backupcamera));
-        
-        setFinalOptionArray(finalFilter);
-        
-        
-            
-
-
-        // console.log('I made it this far')
-        // console.log(powerwindows, powerlocks, backupcamera)
-        // console.log(finalArray)
-
-        // const pwFilterArray = finalArray.filter((finalArray) => (finalArray.powerwindows === powerwindows));
-        // const plFilterArray = finalArray.filter((finalArray) => (finalArray.powerlocks === powerlocks));
-        // const buFilterArray = finalArray.filter((finalArray) => (finalArray.backupcamera === backupcamera));
-
-        // const catArr = pwFilterArray.concat(plFilterArray, buFilterArray);
-
-        // function removeDupes(catArr) {
-        //     const returnCarArray = [];
-      
-        //     catArr.forEach((car) => {
-        //       const foundCar = returnCarArray.find((item => ( item.car_id !== null && (item.car_id === car.car_id))))
-        //       if(!foundCar) {
-        //         returnCarArray.push(car);
-        //       }});
-        //     setFinalOptionArray(returnCarArray);
-        // };
-
-        // removeDupes(catArr)
-    };
 
     // delete cars function
     const deleteCar = async (id) => {
@@ -146,13 +61,13 @@ const ListCars = ({ token }) => {
 
             setCars(cars.filter(car => car.car_id !== id));
             window.location = "./vehicledisplay"
-            // console.log(deleteCar);
+
         } catch (err) {
             console.error(err.message);
         }
     };
 
-    // get cars from database
+    // get cars from database and filter
     const getCars = async () => {
         try{
 
@@ -170,27 +85,15 @@ const ListCars = ({ token }) => {
                 let tempArray = carsClonedArray
                 if (value && typeof value === 'string') {
                     tempArray = carsClonedArray.filter((car) => (car[key].toString() === value))
+                } else if (value && typeof value === 'boolean') {
+                    tempArray = carsClonedArray.filter((car) => (car[key] === value))
                 } 
 
-                console.log('tempArray: ', tempArray)
+                // console.log('tempArray: ', tempArray)
                 carsClonedArray = tempArray
             })
 
             console.log('result: ', carsClonedArray)
-
-            // returnCars.forEach((car) => {
-            //     const foundCar = returnCarArray.find((item) => (
-            //         item.car_id !== null &&
-            //         (item.car_id === car.car_id)
-            //     ))
-            //     if(!foundCar) {
-            //         returnCarArray.push(car);
-            //     }
-            // });
-
-            
-            // console.log(returnCars)
-            // console.log(returnCarArray)
 
             console.log("BREAK")
 
@@ -209,8 +112,6 @@ const ListCars = ({ token }) => {
         getCars();
     }, [filters]);
 
-    //output
-    // console.log(cars);
 
     return (
         <Container sx={{ paddingLeft: "0px"}}>
@@ -249,18 +150,6 @@ const ListCars = ({ token }) => {
                         value={year}
                         onChange={e => setYear(e.target.value)}
                     />
-                <div>
-                    <Button 
-                    sx={{ width: "100%" }}
-                    type="submit"
-                    variant='contained'
-                    >
-                    Submit
-                    </Button>
-                </div>
-            </form>
-            {finalArray ? 
-                <form onSubmit={onSubmitOptions}>
                     <FormControlLabel 
                         control={<Checkbox onChange={e => setPowerwindows(!powerwindows)} />} 
                         label="Power Windows" />
@@ -271,21 +160,20 @@ const ListCars = ({ token }) => {
                         control={<Checkbox onChange={e => setBackupcamera(!backupcamera)} />} 
                         label="Back-up Camera" 
                     />
+                <div>
                     <Button 
-                        variant="contained" 
-                        type="submit" 
-                        sx={{ width: "100%" }}
+                    sx={{ width: "100%" }}
+                    type="submit"
+                    variant='contained'
                     >
-                        Filter Options
+                    Submit
                     </Button>
-                </form>
-                    :
-                <></>
-                
-                }
+                </div>
+            </form>
+
+       
             <Typography variant="h5">
-                {finalOptionArray ? 'Filtered Car List & Options': 
-                (finalArray ? `Filtered Car List` : "Car List")}
+                Car List
             </Typography>
             <Grid 
                 container 
