@@ -72,11 +72,13 @@ export default function EditCar({ car }) {
     return (
         <div id={`id${car.car_id}`}>
         <Button
+            variant="outlined"
             onClick={handleOpen} 
             data-toggle="modal" 
             data-target={`#id${car.car_id}`}
         >
             <EditIcon/>
+            Edit
         </Button>
         <Modal
             id={`id${car.car_id}`}

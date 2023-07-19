@@ -5,9 +5,7 @@ import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Grid from '@mui/material/Grid';
-import EditCar from "./EditCar";
-import Button from '@mui/material/Button';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 
 
 
@@ -23,7 +21,7 @@ const style = {
   p: 4,
 };
 
-export default function InfoModalCar({ car, token, deleteCar }) {
+export default function InfoModalCar({ car }) {
     // state for modal
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -54,15 +52,15 @@ export default function InfoModalCar({ car, token, deleteCar }) {
             >
                 <Grid 
                     container
-                    alignItems="center"
                     direction="row"
-                    justifyContent="center"
+                    justifyContent="space-evenly"
+                    alignItems="center"
                 >
                     <Grid 
                         item 
                         alignItems="center"
                         justifyContent="center"
-                        xs={12}
+                        xs={10}
                         maxWidth="100%"
                     >
                         <img 
@@ -80,27 +78,6 @@ export default function InfoModalCar({ car, token, deleteCar }) {
                             {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
                         </Typography>
                     </Grid>
-                        {token === 'manager' ? 
-                            <>
-                                <Grid
-                                    item
-                                    xs={2}
-                                >
-                                    <EditCar car={car} />
-                                </Grid>
-                                <Grid
-                                    item
-                                    xs={2}
-                                >
-                                    <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
-                                        <DeleteForeverIcon/>
-                                    </Button>
-                                </Grid>
-                            </>
-                             : 
-                            <></>
-                        }
-                    
                 </Grid>
             </Box>
             <Modal

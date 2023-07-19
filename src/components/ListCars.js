@@ -196,6 +196,32 @@ const ListCars = ({ token }) => {
                         <Card>
                             <CardContent >
                                 <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
+                                {token === 'manager' ? 
+                                    <Grid 
+                                        container
+                                        direction="row"
+                                        justifyContent="flex-start"
+                                        alignItems="flex-start"
+                                    >
+                                        <Grid
+                                            item
+                                            xs={4}
+                                        >
+                                            <EditCar car={car} />
+                                        </Grid>
+                                        <Grid
+                                            item
+                                            xs={4}
+                                        >
+                                            <Button  variant="outlined" color="error" onClick={() => {deleteCar(car.car_id)}}>
+                                                <DeleteForeverIcon/>
+                                                Delete
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                    : 
+                                    <></>
+                        }
                             </CardContent>
                         </Card>
                     </Grid>
