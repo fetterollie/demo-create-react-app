@@ -4,8 +4,11 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import Stack from '@mui/material/Stack';
-import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import EditCar from "./EditCar";
+import Button from '@mui/material/Button';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
 
 
 const style = {
@@ -20,7 +23,7 @@ const style = {
   p: 4,
 };
 
-export default function InfoModalCar({ car }) {
+export default function InfoModalCar({ car, token, deleteCar }) {
     // state for modal
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
@@ -49,19 +52,56 @@ export default function InfoModalCar({ car }) {
                 data-toggle="modal" 
                 data-target={`#id${car.car_id}`}
             >
-                    <Typography>
+                <Grid 
+                    container
+                    alignItems="center"
+                    direction="row"
+                    justifyContent="center"
+                >
+                    <Grid 
+                        item 
+                        alignItems="center"
+                        justifyContent="center"
+                        xs={12}
+                        maxWidth="100%"
+                    >
                         <img 
                             alt={`${car.year} ${car.color} ${car.make} ${car.model}`}
                             src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
-                            width='270px'
+                            height="200px"
+                            bgcolor="#000000"
                         />
-                    </Typography>
-                    <Typography variant="h6">
-                        {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
-                    </Typography>
-                    <Typography variant="h6">
-                        
-                    </Typography>
+                    </Grid>
+                    <Grid 
+                        item
+                        xs={8}
+                    >
+                        <Typography variant="h6">
+                            {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
+                        </Typography>
+                    </Grid>
+                        {token === 'manager' ? 
+                            <>
+                                <Grid
+                                    item
+                                    xs={2}
+                                >
+                                    <EditCar car={car} />
+                                </Grid>
+                                <Grid
+                                    item
+                                    xs={2}
+                                >
+                                    <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
+                                        <DeleteForeverIcon/>
+                                    </Button>
+                                </Grid>
+                            </>
+                             : 
+                            <></>
+                        }
+                    
+                </Grid>
             </Box>
             <Modal
                 id={`id${car.car_id}`}
@@ -71,36 +111,40 @@ export default function InfoModalCar({ car }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Stack>
-                        <Typography 
+                    <Grid container>
+                        <Grid item xs={8}>
+                            <Typography 
                             sx={{ paddingBottom: "10px" }}
                             id="modal-modal-title" 
                             variant="h5" 
                             component="h2"
                             color="primary"
-                        >
-                            Car details:
-                        </Typography>
-                        <Typography>
-                            {`Year: ${car.year ? car.year : "N/A"}`}
-                            <br/>
-                            {`Make: ${car.make ? car.make : "N/A"}`}
-                            <br/>
-                            {`Model: ${car.model ? car.model : "N/A"}`}
-                            <br/>
-                            {`Color: ${car.color ? car.color : "N/A"}`}
-                            <br/>
-                        </Typography>
-                        <IconButton 
-                                variant="contained"
-                                color="error"
-                                onClick={() => {
-                                    handleClose();
-                                }}
                             >
-                                <CloseIcon />
-                        </IconButton>
-                    </Stack>
+                                Car details:
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <IconButton 
+                                    variant="contained"
+                                    color="error"
+                                    onClick={() => {handleClose();}}
+                            >
+                                    <CloseIcon />
+                            </IconButton>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography>
+                                {`Year: ${car.year ? car.year : "N/A"}`}
+                                <br/>
+                                {`Make: ${car.make ? car.make : "N/A"}`}
+                                <br/>
+                                {`Model: ${car.model ? car.model : "N/A"}`}
+                                <br/>
+                                {`Color: ${car.color ? car.color : "N/A"}`}
+                            <br/>
+                            </Typography>
+                        </Grid>
+                    </Grid>
                 </Box>
             </Modal>
         </div>

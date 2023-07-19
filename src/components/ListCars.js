@@ -179,39 +179,26 @@ const ListCars = ({ token }) => {
             </Typography>
             <Grid 
                 container 
-                spacing={4} 
-                // xs={12}
-                direction="column-reverse"
-                alignItems="center"
-                // justifyContent="center"
-                sx={{ paddingLeft: "0px" }}
+                spacing={2} 
+                // alignItems="center"
             >
                 {cars.map(car => (
-                <Grid key={`listcar${car.car_id}`} item xs={4} sx={{ paddingLeft: '0px' }}>
                     <Grid
                         item
-                        xs={4}
+                        key={`listcar${car.car_id}`}
+                        xs={12}
+                        md={6}
+                        lg={4}
                         alignItems="center"
                         justifyContent="center"
                         sx={{ paddingLeft: "opx" }}
                     >
-                        <Card sx={{ width: "300px", paddingLeft: "0px" }}>
-                            <CardContent>
-                                <InfoModalCar car={car} />
-                                {token === 'manager' ? 
-                                    <Stack direction="row">
-                                        <EditCar car={car} />
-                                        <Button color="error" onClick={() => {deleteCar(car.car_id)}}>
-                                            <DeleteForeverIcon/>
-                                        </Button>
-                                    </Stack> : 
-                                    <div></div>
-                                }
+                        <Card>
+                            <CardContent >
+                                <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
                             </CardContent>
                         </Card>
                     </Grid>
-                    
-                </Grid>
                 ))}
             </Grid>
         </Container>
