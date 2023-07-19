@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import '../Styles/Global.scss';
 
 async function registerUser(credentials) {
     return fetch('http://localhost:5000/register', {

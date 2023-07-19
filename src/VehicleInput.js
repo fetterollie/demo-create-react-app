@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 const VehicleInput = () => {
 
     return (
-        <InputCar />
+    <InputCar />
     );
 }
  

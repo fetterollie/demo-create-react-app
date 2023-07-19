@@ -11,7 +11,7 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import '../Styles/ListCars.scss';
+import '../Styles/Global.scss';
 
 
 
@@ -117,13 +117,12 @@ const ListCars = ({ token }) => {
 
     return (
         <Container className="body">
-            <Typography className="head" sx={{ marginTop: "10px" }}
+            <Typography className="head"
                 variant='h5'
             >
                 Filter Cars
             </Typography>
-            <form className="form" onSubmit={handleFilterUpdate}>
-                {/* <FormControl> */}
+            <form className="head" onSubmit={handleFilterUpdate}>
                     <TextField
                         sx={{ width: "50%" }}
                         label='Add Make'
@@ -180,7 +179,6 @@ const ListCars = ({ token }) => {
             <Grid 
                 container 
                 spacing={2} 
-                // alignItems="center"
             >
                 {cars.map(car => (
                     <Grid

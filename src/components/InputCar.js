@@ -2,7 +2,7 @@ import { Container, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-
+import '../Styles/Global.scss';
 
 const InputCar = () => {
     const [make, setMake] = useState('')
@@ -32,8 +32,7 @@ const InputCar = () => {
     return ( 
         <Container className='body'>
             <Typography className='head' variant='h5'>Input Car</Typography>
-            <form onSubmit={onSubmitForm} className='' >
-                {/* <FormControl> */}
+            <form onSubmit={onSubmitForm} className='head' >
                     <TextField
                         sx={{ width: "50%" }}
                         label='Add Make'
