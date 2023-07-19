@@ -116,8 +116,8 @@ const ListCars = ({ token }) => {
 
 
     return (
-        <Container className="head">
-            <Typography sx={{ marginTop: "10px" }}
+        <Container className="body">
+            <Typography className="head" sx={{ marginTop: "10px" }}
                 variant='h5'
             >
                 Filter Cars

@@ -43,16 +43,8 @@ const Register = ({ token }) => {
 
 
     return (
-        <Container sx={{
-            marginTop: '50px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            top: '50%',
-            left: '50%',
-            }}
-        >
-            <Typography variant='h5'>
+        <Container className='body'>
+            <Typography className="head" variant='h5'>
                 Register a New User
             </Typography>
             <form onSubmit={handleRegister}>

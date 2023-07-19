@@ -30,8 +30,8 @@ const InputCar = () => {
     };
 
     return ( 
-        <Container>
-            <Typography variant='h5'>Input Car</Typography>
+        <Container className='body'>
+            <Typography className='head' variant='h5'>Input Car</Typography>
             <form onSubmit={onSubmitForm} className='' >
                 {/* <FormControl> */}
                     <TextField
