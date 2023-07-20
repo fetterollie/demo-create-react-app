@@ -115,13 +115,13 @@ const ListCars = ({ token }) => {
                 <Grid 
                     container
                     direction="row"
-                    justifyContent="space-evenly"
-                    alignItems="center"
+                    justifyContent="space-between"
+                    alignItems="stretch"
                     spacing={12}
                 >
                         <Grid 
                             item
-                            xs={11}
+                            xs={12}
                             md={6}
                         >
                             <TextField
@@ -133,7 +133,7 @@ const ListCars = ({ token }) => {
                         </Grid>
                         <Grid 
                             item
-                            xs={11}
+                            xs={12}
                             md={6}
                         >
                             <TextField
@@ -145,7 +145,7 @@ const ListCars = ({ token }) => {
                         </Grid>
                         <Grid 
                             item
-                            xs={11}
+                            xs={12}
                             md={6}
                         >
                             <TextField
@@ -157,7 +157,7 @@ const ListCars = ({ token }) => {
                         </Grid>
                         <Grid 
                             item
-                            xs={11}
+                            xs={12}
                             md={6}
                         >
                             <TextField
