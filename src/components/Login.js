@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import '../Styles/Global.scss';
 
 async function loginUser(credentials) {
     return fetch('http://localhost:5000/login', {
@@ -37,50 +38,54 @@ const Login = ({ setToken }) => {
     }
 
     return (
-        <Container sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            position: 'absolute',
-            top: '33%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)'
-            }}
-        >
-            <Typography variant='h5'>
-                Login
-            </Typography>
-            <form onSubmit={handleLogin}>
-                <Stack
-                    direction='column'
-                >
-                    <TextField 
-                        variant='filled'
-                        required
-                        id='Username'
-                        label='Username'
-                        sx={{ width: "250px" }}
-                        onChange={(e) => {setUsername(e.target.value)}}
-                    />
-                    <TextField 
-                        variant='filled'
-                        required
-                        id='Password'
-                        label='Password'
-                        sx={{ width: "250px" }}
-                        type="password"
-                        onChange={(e) => {setPassword(e.target.value)}}
-                    />
-                    <Button
-                        type='submit'
-                        variant='contained'
-                        sx={{ width: "250px" }}
+        <div className='login'>
+            <Container 
+                className=''
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    position: 'absolute',
+                    top: '33%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)'
+                }}
+            >
+                <Typography variant='h5'>
+                    Login
+                </Typography>
+                <form className='body' onSubmit={handleLogin}>
+                    <Stack
+                        direction='column'
                     >
-                        Login
-                    </Button>
-                </Stack>
-            </form>
-        </Container>
+                        <TextField 
+                            variant='filled'
+                            required
+                            id='Username'
+                            label='Username'
+                            sx={{ width: "250px" }}
+                            onChange={(e) => {setUsername(e.target.value)}}
+                        />
+                        <TextField 
+                            variant='filled'
+                            required
+                            id='Password'
+                            label='Password'
+                            sx={{ width: "250px" }}
+                            type="password"
+                            onChange={(e) => {setPassword(e.target.value)}}
+                        />
+                        <Button
+                            type='submit'
+                            variant='contained'
+                            sx={{ width: "250px" }}
+                        >
+                            Login
+                        </Button>
+                    </Stack>
+                </form>
+            </Container>
+        </div>
     );
 }
 
