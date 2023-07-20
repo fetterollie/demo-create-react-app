@@ -107,17 +107,13 @@ function App() {
                         </Route> : <></>}
                       </Switch>
                     </div>
-                    <Typography variant='h1'>
-                      <Container align='center'>
-                        <ChildCareIcon color="primary" />  
-                      </Container>
-                    </Typography>
+                    <Button className="" onClick={() => {toggleTheme()}}>
+                      <SettingsBrightnessRoundedIcon/>
+                    </Button>
                   </div>
               </Router>
             }
-          <Button onClick={() => {toggleTheme()}}>
-            <SettingsBrightnessRoundedIcon/>
-          </Button>
+          
 
       </ThemeProvider>
   );

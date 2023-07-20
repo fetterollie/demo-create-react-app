@@ -46,13 +46,18 @@
 }
 
 .login {
-    background-color: aqua;
+    background-color: rgb(238, 238, 238);
     background-image: url("../images/bokehBG.png");
-    background-repeat: repeat;
+    background-position: center center;
     background-size: cover;
-    background-position: middle center;
     margin-top: 0px;
     margin-bottom: 0px;
-    padding-bottom: 100%;
+    padding-top: 100%;
 
+}
+
+modeToggle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
