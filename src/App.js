@@ -40,7 +40,7 @@ const darkTheme = createTheme(
         color: 'secondary',
       },
     },
-    spacing: 4,
+    spacing: 1,
   }
 );
 
@@ -63,7 +63,7 @@ const lightTheme = createTheme(
         color: 'secondary',
       },
     },
-    spacing: 4,
+    spacing: 1,
   }
 );
 

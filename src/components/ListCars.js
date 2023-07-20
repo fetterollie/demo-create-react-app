@@ -111,54 +111,103 @@ const ListCars = ({ token }) => {
             >
                 Filter Cars
             </Typography>
-            <form className="head" onSubmit={handleFilterUpdate}>
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Make'
-                        variant='filled'
-                        value={make}
-                        onChange={e => setMake(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Model'
-                        variant='filled'
-                        value={model}
-                        onChange={e => setModel(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Color'
-                        variant='filled'
-                        value={color}
-                        onChange={e => setColor(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Year'
-                        variant='filled'
-                        value={year}
-                        onChange={e => setYear(e.target.value)}
-                    />
-                    <FormControlLabel 
-                        control={<Checkbox onChange={e => setPowerwindows(!powerwindows)} />} 
-                        label="Power Windows" />
-                    <FormControlLabel 
-                        control={<Checkbox onChange={e => setPowerlocks(!powerlocks)} />} 
-                        label="Power Locks" />
-                    <FormControlLabel 
-                        control={<Checkbox onChange={e => setBackupcamera(!backupcamera)} />} 
-                        label="Back-up Camera" 
-                    />
-                <div>
-                    <Button 
-                    sx={{ width: "100%" }}
-                    type="submit"
-                    variant='contained'
-                    >
-                    Submit
-                    </Button>
-                </div>
+            <form onSubmit={handleFilterUpdate}>
+                <Grid 
+                    container
+                    direction="row"
+                    justifyContent="space-evenly"
+                    alignItems="center"
+                    spacing={12}
+                >
+                        <Grid 
+                            item
+                            xs={11}
+                            md={6}
+                        >
+                            <TextField
+                            className="carInputForm"
+                            label='Add Make'
+                            value={make}
+                            onChange={e => setMake(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={11}
+                            md={6}
+                        >
+                            <TextField
+                            className="carInputForm"
+                            label='Add Model'
+                            value={model}
+                            onChange={e => setModel(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={11}
+                            md={6}
+                        >
+                            <TextField
+                            className="carInputForm"
+                            label='Add Color'
+                            value={color}
+                            onChange={e => setColor(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={11}
+                            md={6}
+                        >
+                            <TextField
+                            className="carInputForm"
+                            label='Add Year'
+                            value={year}
+                            onChange={e => setYear(e.target.value)}
+                            />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={12}
+                            md={4}
+                        >
+                            <FormControlLabel 
+                            control={<Checkbox onChange={e => setPowerwindows(!powerwindows)} />} 
+                            label="Power Windows" />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={12}
+                            md={4}
+                        >
+                            <FormControlLabel 
+                            control={<Checkbox onChange={e => setPowerlocks(!powerlocks)} />} 
+                            label="Power Locks" />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={12}
+                            md={4}
+                        >
+                            <FormControlLabel 
+                            control={<Checkbox onChange={e => setBackupcamera(!backupcamera)} />} 
+                            label="Back-up Camera" />
+                        </Grid>
+                        <Grid 
+                            item
+                            xs={12}
+                        >
+                            <Button 
+                            sx={{ width: "100%" }}
+                            type="submit"
+                            variant='contained'
+                            >
+                                Submit
+                            </Button>
+                        </Grid>
+                    
+                </Grid>
             </form>
 
        
@@ -178,7 +227,7 @@ const ListCars = ({ token }) => {
                         lg={4}
                         alignItems="center"
                         justifyContent="center"
-                        sx={{ paddingLeft: "opx" }}
+                        sx={{ paddingLeft: "0px" }}
                     >
                         <Card>
                             <CardContent >
