@@ -2,21 +2,20 @@ import React, { useState } from "react";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import IconButton from '@mui/material/IconButton';
+import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import Grid from '@mui/material/Grid';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '3px solid #546e7a',
-  boxShadow: 24,
-  p: 4,
-};
+// const style = {
+//   position: 'absolute',
+//   top: '50%',
+//   left: '50%',
+//   transform: 'translate(-50%, -50%)',
+//   bgcolor: 'background.paper',
+//   border: '3px solid #546e7a',
+//   boxShadow: 24,
+//   p: 4,
+// };
 
 export default function InfoModalCar({ car }) {
     // state for modal
@@ -41,8 +40,7 @@ export default function InfoModalCar({ car }) {
     return (
         <div id={`id${car.car_id}`}>
             {/* Display Each Car */}
-            <Box 
-                sx={{ paddingBottom: "15px" }}
+            <Box
                 onClick={handleOpen} 
                 data-toggle="modal" 
                 data-target={`#id${car.car_id}`}
@@ -55,27 +53,31 @@ export default function InfoModalCar({ car }) {
                 >
                     <Grid 
                         item 
-                        alignItems="center"
-                        justifyContent="center"
-                        xs={10}
-                        maxWidth="100%"
                     >
                         <img 
+                            className="car__image"
                             alt={`${car.year} ${car.color} ${car.make} ${car.model}`}
                             src={car.imgurl ? car.imgurl : "https://www.insticc.org/node/TechnicalProgram/56e7352809eb881d8c5546a9bbf8406e.png"}
                             height="200px"
                             bgcolor="#000000"
                         />
                     </Grid>
-                    <Grid 
-                        item
-                        xs={8}
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="flex-start"
+                        alignItems="flex-end"
                     >
-                        <Typography 
-                            variant="h6"
+                        <Grid 
+                        item
                         >
-                            {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
-                        </Typography>
+                            <Typography 
+                                className="car__card__items"
+                                variant="h6"
+                            >
+                                {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </Box>
@@ -87,14 +89,14 @@ export default function InfoModalCar({ car }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box 
-                    sx={style}
+                    className="car__detailModal"
                 >
+                    
                     <Grid 
                         container
                     >
-                        <Grid item xs={8}>
+                        <Grid item xs={10}>
                             <Typography 
-                            sx={{ paddingBottom: "10px" }}
                             id="modal-modal-title" 
                             variant="h5" 
                             component="h2"
@@ -103,14 +105,15 @@ export default function InfoModalCar({ car }) {
                                 Car details:
                             </Typography>
                         </Grid>
-                        <Grid item xs={4}>
-                            <IconButton 
-                                    variant="contained"
-                                    color="error"
-                                    onClick={() => {handleClose();}}
+                        <Grid item xs={1}>
+                            <Button 
+                                className="car__detailModal__closeButton"
+                                variant="text"
+                                color="error"
+                                onClick={() => {handleClose();}}
                             >
-                                    <CloseIcon />
-                            </IconButton>
+                                <CloseIcon />
+                            </Button>
                         </Grid>
                         <Grid item xs={12}>
                             <Typography>

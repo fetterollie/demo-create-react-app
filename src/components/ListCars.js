@@ -216,7 +216,7 @@ const ListCars = ({ token }) => {
             </Typography>
             <Grid 
                 container 
-                spacing={2} 
+                spacing={8} 
             >
                 {cars.map(car => (
                     <Grid
@@ -234,6 +234,7 @@ const ListCars = ({ token }) => {
                                 <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
                                 {token === 'manager' ? 
                                     <Grid 
+                                        className="car__card__items"
                                         container
                                         direction="row"
                                         justifyContent="flex-start"
@@ -241,13 +242,13 @@ const ListCars = ({ token }) => {
                                     >
                                         <Grid
                                             item
-                                            xs={4}
+                                            // xs={4}
                                         >
                                             <EditCar car={car} />
                                         </Grid>
                                         <Grid
                                             item
-                                            xs={4}
+                                            // xs={4}
                                         >
                                             <Button  variant="outlined" color="error" onClick={() => {deleteCar(car.car_id)}}>
                                                 <DeleteForeverIcon/>

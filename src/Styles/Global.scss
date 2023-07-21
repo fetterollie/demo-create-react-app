@@ -1,4 +1,8 @@
-
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 .head {
     margin-top: 25px;
@@ -56,8 +60,34 @@
 
 }
 
-modeToggle {
+.modeToggle {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.car__detailModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 3px solid #546e7a;
+    box-shadow: 24;
+    padding: 1rem;
+    color: black;
+}
+
+.car__detailModal__closeButton {
+    padding: 0px;
+}
+
+.car__image {
+//     margin-left: auto;
+//     margin-right: auto;
+}
+
+.car__card__items {
+    padding-left: 1rem;
+    padding-bottom: .6rem;
 }
