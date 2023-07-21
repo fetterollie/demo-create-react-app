@@ -100,7 +100,7 @@ function App() {
                           <VehicleInput />
                         </Route>
                         <Route path='/vehicledisplay'>
-                          <VehicleDisplay cars={cars} token={token}/>
+                          <VehicleDisplay token={token}/>
                         </Route>
                         {token === "manager" ? <Route path="/register">
                           <Register />

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Container, Typography } from "@material-ui/core";
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';

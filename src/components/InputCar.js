@@ -1,4 +1,5 @@
-import { Container, Typography } from '@material-ui/core';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
