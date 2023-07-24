@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../Styles/Global.scss';
+import Grid from '@mui/material/Grid';
 
 const InputCar = () => {
     const [make, setMake] = useState('')
@@ -32,54 +33,94 @@ const InputCar = () => {
 
     return ( 
         <Container className='body'>
-            <Typography className='head' variant='h5'>
+            <Typography className='page__title' variant='h5'>
                 Input Car
             </Typography>
             <form onSubmit={onSubmitForm} className='head' >
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Make'
-                        variant='filled'
-                        value={make}
-                        onChange={e => setMake(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Model'
-                        variant='filled'
-                        value={model}
-                        onChange={e => setModel(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Color'
-                        variant='filled'
-                        value={color}
-                        onChange={e => setColor(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "50%" }}
-                        label='Add Year'
-                        variant='filled'
-                        value={year}
-                        onChange={e => setYear(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ width: "100%" }}
-                        label='Add Image URL'
-                        variant='filled'
-                        value={imgUrl}
-                        onChange={e => setImgUrl(e.target.value)}
-                    />
-                <div>
-                    <Button 
-                    sx={{ width: "100%" }}
-                    type="submit"
-                    variant='contained'
+                <Grid 
+                    className="carInput" 
+                    container
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems="stretch"
+                    spacing={12}
+                >
+                    <Grid
+                        item
+                        xs={12}
+                        md={6}
                     >
-                    Submit
-                    </Button>
-                </div>
+                        <TextField
+                            className="carInputForm"
+                            label='Add Make'
+                            variant='filled'
+                            value={make}
+                            onChange={e => setMake(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                        md={6}
+                    >
+                        <TextField
+                            className="carInputForm"
+                            label='Add Model'
+                            variant='filled'
+                            value={model}
+                            onChange={e => setModel(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                        md={6}
+                    >
+                        <TextField
+                            className="carInputForm"
+                            label='Add Color'
+                            variant='filled'
+                            value={color}
+                            onChange={e => setColor(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                        md={6}
+                    >
+                        <TextField
+                            className="carInputForm"
+                            label='Add Year'
+                            variant='filled'
+                            value={year}
+                            onChange={e => setYear(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <TextField
+                            className="carInputForm"
+                            label='Add Image URL'
+                            variant='filled'
+                            value={imgUrl}
+                            onChange={e => setImgUrl(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <Button 
+                            type="submit"
+                            variant='contained'
+                        >
+                            Submit
+                        </Button>
+                    </Grid>
+                </Grid>
             </form>
         </Container>
      );

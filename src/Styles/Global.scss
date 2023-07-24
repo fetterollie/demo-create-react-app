@@ -4,11 +4,11 @@
     box-sizing: border-box;
 }
 
-.head {
-    margin-top: 25px;
-    margin-left: 0px;
-    margin-bottom: px;
-}
+// .head {
+//     margin-top: 25px;
+//     margin-left: 0px;
+//     margin-bottom: px;
+// }
 
 .form {
     margin-top: 20px;
@@ -24,12 +24,12 @@
 
 .body {
     margin-top: 1rem;
-    margin-left: 10px;
+    padding-left: 1rem;
     margin-bottom: .5rem;
 }
 
 .widgetBox {
-    max-width: 250px;
+    max-width: 100%;
     padding-left: 0px;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .application__title {
-    margin: 0;
+    padding-left: 1rem;
     font-family: Noto Sans;
     font-weight: 400;
     font-size: 1.5rem;
@@ -121,4 +121,31 @@
     letter-spacing: .1rem;
     -webkit-text-decoration: none;
     text-decoration: none;
+}
+
+.page__title {
+    padding-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    display: block;
+    font-size: 0.83em;
+    font-weight: bolder;
+}
+
+.page__content {
+    margin-left: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.MuiGrid-root {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.homeGrid {
+    padding-left: 0rem;
+    padding-right: 0rem;
 }

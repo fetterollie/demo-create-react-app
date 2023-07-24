@@ -107,112 +107,118 @@ const ListCars = ({ token }) => {
 
     return (
         <Container className="body">
-            <Typography className="head"
-                variant='h5'
+            <Typography 
+                className="page__title"
+                variant="h5"
             >
                 Filter Cars
             </Typography>
-            <form onSubmit={handleFilterUpdate}>
-                <Grid 
-                    container
-                    direction="row"
-                    justifyContent="space-between"
-                    alignItems="stretch"
-                    spacing={12}
-                >
-                        <Grid 
-                            item
-                            xs={12}
-                            md={6}
-                        >
-                            <TextField
-                            className="carInputForm"
-                            label='Add Make'
-                            value={make}
-                            onChange={e => setMake(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                            md={6}
-                        >
-                            <TextField
-                            className="carInputForm"
-                            label='Add Model'
-                            value={model}
-                            onChange={e => setModel(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                            md={6}
-                        >
-                            <TextField
-                            className="carInputForm"
-                            label='Add Color'
-                            value={color}
-                            onChange={e => setColor(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                            md={6}
-                        >
-                            <TextField
-                            className="carInputForm"
-                            label='Add Year'
-                            value={year}
-                            onChange={e => setYear(e.target.value)}
-                            />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                            md={4}
-                        >
-                            <FormControlLabel 
-                            control={<Checkbox onChange={e => setPowerwindows(!powerwindows)} />} 
-                            label="Power Windows" />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                            md={4}
-                        >
-                            <FormControlLabel 
-                            control={<Checkbox onChange={e => setPowerlocks(!powerlocks)} />} 
-                            label="Power Locks" />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                            md={4}
-                        >
-                            <FormControlLabel 
-                            control={<Checkbox onChange={e => setBackupcamera(!backupcamera)} />} 
-                            label="Back-up Camera" />
-                        </Grid>
-                        <Grid 
-                            item
-                            xs={12}
-                        >
-                            <Button 
-                            sx={{ width: "100%" }}
-                            type="submit"
-                            variant='contained'
+            <Container
+                className="head"
+            >
+                <form onSubmit={handleFilterUpdate}>
+                    <Grid 
+                        className="carInput" 
+                        container
+                        direction="row"
+                        justifyContent="space-between"
+                        alignItems="stretch"
+                        spacing={12}
+                    >
+                            <Grid 
+                                item
+                                xs={12}
+                                md={6}
                             >
-                                Submit
-                            </Button>
-                        </Grid>
-                    
-                </Grid>
-            </form>
+                                <TextField
+                                className="carInputForm"
+                                label='Add Make'
+                                value={make}
+                                onChange={e => setMake(e.target.value)}
+                                />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={6}
+                            >
+                                <TextField
+                                className="carInputForm"
+                                label='Add Model'
+                                value={model}
+                                onChange={e => setModel(e.target.value)}
+                                />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={6}
+                            >
+                                <TextField
+                                className="carInputForm"
+                                label='Add Color'
+                                value={color}
+                                onChange={e => setColor(e.target.value)}
+                                />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={6}
+                            >
+                                <TextField
+                                className="carInputForm"
+                                label='Add Year'
+                                value={year}
+                                onChange={e => setYear(e.target.value)}
+                                />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={3}
+                            >
+                                <FormControlLabel 
+                                control={<Checkbox onChange={e => setPowerwindows(!powerwindows)} />} 
+                                label="Power Windows" />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={3}
+                            >
+                                <FormControlLabel 
+                                control={<Checkbox onChange={e => setPowerlocks(!powerlocks)} />} 
+                                label="Power Locks" />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={3}
+                            >
+                                <FormControlLabel 
+                                control={<Checkbox onChange={e => setBackupcamera(!backupcamera)} />} 
+                                label="Back-up Camera" />
+                            </Grid>
+                            <Grid 
+                                item
+                                xs={12}
+                                md={3}
+                            >
+                                <Button 
+                                    type="submit"
+                                    variant='contained'
+                                >
+                                    Submit Filters
+                                </Button>
+                            </Grid>
+                        
+                    </Grid>
+                </form>
+            </Container>
 
        
-            <Typography className="list" variant="h5">
+            <Typography className="page__title" variant="h5">
                 Car List
             </Typography>
             <Grid 
