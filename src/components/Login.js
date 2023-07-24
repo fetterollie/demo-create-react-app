@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import '../Styles/Global.scss';
+import Grid from '@mui/material/Grid';
+
 
 async function loginUser(credentials) {
     return fetch('http://localhost:5000/login', {
@@ -51,23 +53,33 @@ const Login = ({ setToken }) => {
                     transform: 'translate(-50%, -50%)'
                 }}
             >
-                <Typography variant='h5'>
-                    Login
-                </Typography>
                 <form className='body' onSubmit={handleLogin}>
-                    <Stack
-                        direction='column'
+                    <Grid 
+                        className='carInput'
+                        container
+                        direction="column"
+                        justifyContent="center"
+                        alignItems="center"
+                        spacing={12}
                     >
-                        <TextField 
-                            variant='filled'
-                            required
-                            id='Username'
-                            label='Username'
-                            sx={{ width: "250px" }}
-                            onChange={(e) => {setUsername(e.target.value)}}
-                        />
-                        <TextField 
-                            variant='filled'
+                        <Grid item>
+                            <Typography variant='h5'>
+                                Login
+                            </Typography>
+                        </Grid>
+                        <Grid
+                            item
+                        >
+                            <TextField 
+                                required
+                                id='Username'
+                                label='Username'
+                                sx={{ width: "250px" }}
+                                onChange={(e) => {setUsername(e.target.value)}}
+                            />
+                        </Grid>
+                        <Grid item>
+                            <TextField 
                             required
                             id='Password'
                             label='Password'
@@ -75,14 +87,17 @@ const Login = ({ setToken }) => {
                             type="password"
                             onChange={(e) => {setPassword(e.target.value)}}
                         />
-                        <Button
+                        </Grid>
+                        <Grid item>
+                            <Button
                             type='submit'
-                            variant='contained'
+                            // variant='contained'
                             sx={{ width: "250px" }}
-                        >
-                            Login
-                        </Button>
-                    </Stack>
+                            >
+                                Login
+                            </Button>
+                        </Grid>
+                    </Grid>    
                 </form>
             </Container>
         </div>

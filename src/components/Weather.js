@@ -62,6 +62,7 @@ const Weather = () => {
                         Get Temperature
                     </Button>
                 </form>
+                
             </FormControl>
             <Typography>
                 {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : ''}

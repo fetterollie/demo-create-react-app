@@ -36,7 +36,7 @@ const Home = () => {
                 <Grid className="page__content" item key="NasaPod" xs={12} sm={6} md={4}>
                     <NasaPod />
                 </Grid>
-                <Grid className="page__content" item key="NasaPod" xs={12} sm={6} md={4}>
+                <Grid className="page__content" item key="Blank" xs={12} sm={6} md={4}>
                 </Grid>
             </Grid>
         </Container>

@@ -9,8 +9,23 @@ import Box from '@mui/material/Box';
 
 const NasaPod = () => {
 
-    const [date, setDate] = useState('2023-07-12')
+    
     const [nasaImage, setNasaImage] = useState()
+
+    const year = (new Date().getFullYear().toString());
+    // months are zero base in js so + 1
+    const month = ((new Date().getMonth() + 1).toString());
+    const day = (new Date().getDate().toString());
+
+    // converting any months/days to format ie. "01"
+    const zeroMonth = (month.length === 1 ? "0" + month : month);
+    const zeroDay = (day.length === 1 ? "0" + day : day);
+
+    // creating const to hold correct format and information for date
+    const currentDate = (year + "-" + zeroMonth + "-" + zeroDay);
+
+    // setting date for use in API
+    const [date, setDate] = useState(currentDate)
 
     // retrieve NASA image data from api via axios
     const getNasaPod = (date) => {

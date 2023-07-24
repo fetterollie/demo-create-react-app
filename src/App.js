@@ -92,7 +92,7 @@ function App() {
               <Router>
                 <ResponsiveAppBar token={token}/>
                   <div className="container">
-                    <div className='content'>
+                    <div key="fix?" className='content'>
                       <Switch>
                         <Route path ="/home" component={Home} />
                         <Route exact path ="/" component={Home} />
