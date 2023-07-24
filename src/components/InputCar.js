@@ -53,7 +53,6 @@ const InputCar = () => {
                         <TextField
                             className="carInputForm"
                             label='Add Make'
-                            variant='filled'
                             value={make}
                             onChange={e => setMake(e.target.value)}
                         />
@@ -66,7 +65,6 @@ const InputCar = () => {
                         <TextField
                             className="carInputForm"
                             label='Add Model'
-                            variant='filled'
                             value={model}
                             onChange={e => setModel(e.target.value)}
                         />
@@ -79,7 +77,6 @@ const InputCar = () => {
                         <TextField
                             className="carInputForm"
                             label='Add Color'
-                            variant='filled'
                             value={color}
                             onChange={e => setColor(e.target.value)}
                         />
@@ -92,7 +89,6 @@ const InputCar = () => {
                         <TextField
                             className="carInputForm"
                             label='Add Year'
-                            variant='filled'
                             value={year}
                             onChange={e => setYear(e.target.value)}
                         />
@@ -104,7 +100,6 @@ const InputCar = () => {
                         <TextField
                             className="carInputForm"
                             label='Add Image URL'
-                            variant='filled'
                             value={imgUrl}
                             onChange={e => setImgUrl(e.target.value)}
                         />

@@ -58,7 +58,6 @@ const Register = ({ token }) => {
                         xs={12}
                     >
                         <TextField 
-                            variant='filled'
                             required
                             id='Username'
                             label='Username'
@@ -71,7 +70,6 @@ const Register = ({ token }) => {
                         xs={12}
                     >
                         <TextField 
-                            variant='filled'
                             required
                             id='Password'
                             label='Password'
@@ -85,7 +83,6 @@ const Register = ({ token }) => {
                         xs={12}
                     >
                         <TextField 
-                            variant='filled'
                             required
                             id='Role'
                             label='Role'
