@@ -77,7 +77,7 @@ const ListCars = ({ token }) => {
             let carsClonedArray = structuredClone(carsData)
             
             Object.entries(filters).forEach(([key, value], idx) => {
-                console.log(`key: ${key}, value: ${value}`);
+                // console.log(`key: ${key}, value: ${value}`);
                 // console.log(carsData.filter((car) => (car[key] === value)))
                 let tempArray = carsClonedArray
                 if (value && typeof value === 'string') {
