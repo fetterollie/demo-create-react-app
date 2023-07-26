@@ -5,6 +5,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import InfoModalCar from "./InfoModalCar";
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
 import Grid from '@mui/material/Grid';
 
@@ -14,7 +15,10 @@ const ShoppingCart = ({ shoppingCart, removeFromShoppingCart, deleteCar, token }
     return ( 
         <Container>
             <Typography className="page__title" variant="h5">
-                Car List
+                Shopping Cart
+            </Typography>
+            <Typography className="page__title">
+                {`Total Items: ${shoppingCart.length}`}
             </Typography>
             <Grid 
                 container 
@@ -34,14 +38,10 @@ const ShoppingCart = ({ shoppingCart, removeFromShoppingCart, deleteCar, token }
                         <Card>
                             <CardContent >
                                 <Grid container>
-                                    <Grid item>
-                                        <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
-                                    </Grid>
-                                    <Grid item>
-                                    </Grid>
-                                    <Grid item>
-                                        <Button variant="contained" color="error" onClick={e => removeFromShoppingCart(car)}>
-                                    Remove from Cart
+                                    <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
+                                    <Grid item xs={12}>
+                                        <Button variant="outlined" color="error" onClick={e => removeFromShoppingCart(car)}>
+                                            <RemoveShoppingCartIcon/>
                                         </Button>
                                     </Grid>
                                 </Grid>

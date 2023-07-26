@@ -125,11 +125,8 @@
 }
 
 .page__title {
-    padding-top: 1rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-    padding-left: 1rem;
-    padding-bottom: 1rem;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
     display: block;
     font-size: 0.83em;
     font-weight: bolder;
@@ -142,11 +139,16 @@
 }
 
 .MuiGrid-root {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
 }
 
 .homeGrid {
     padding-left: 0rem;
     padding-right: 0rem;
+}
+
+.MuiTypography-h6 {
+    padding-left: 0;
+    padding-right: 0;
 }

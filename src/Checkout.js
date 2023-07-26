@@ -4,7 +4,11 @@ const Checkout = ({ shoppingCart, removeFromShoppingCart, deleteCar, token }) =>
     return ( 
     <>
 
-    <ShoppingCart shoppingCart={shoppingCart} removeFromShoppingCart={removeFromShoppingCart} deleteCar={deleteCar} token={token} />
+    <ShoppingCart 
+        shoppingCart={shoppingCart} 
+        removeFromShoppingCart={removeFromShoppingCart} 
+        deleteCar={deleteCar} token={token} 
+    />
     
     </> );
 }

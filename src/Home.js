@@ -17,7 +17,7 @@ const Home = () => {
             </Typography>
             <Grid
                 container 
-                className='homeGrid'
+                className='page__title'
                 direction="row"
                 justifyContent="space-evenly"
                 alignItems="flex-start"

@@ -13,7 +13,9 @@ import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import '../Styles/Global.scss';
-import e from "cors";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+
 
 const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
 
@@ -239,21 +241,17 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
                     >
                         <Card>
                             <CardContent >
-                                <Grid container>
+                                
+                                    <InfoModalCar className="" car={car} deleteCar={deleteCar} token={token}/>
                                     <Grid item>
-                                        <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
-                                    </Grid>
-                                    <Grid item>
-                                        <Button variant="contained" color="success" onClick={e => addToShoppingCart(car)}>
-                                    Add to Cart
+                                        <Button variant="outlined" color="success" onClick={e => addToShoppingCart(car)}>
+                                    <AddShoppingCartIcon />
+                                        </Button>
+                                        <Button variant="outlined" color="error" onClick={e => removeFromShoppingCart(car)}>
+                                    <RemoveShoppingCartIcon />
                                         </Button>
                                     </Grid>
-                                    <Grid item>
-                                        <Button variant="contained" color="error" onClick={e => removeFromShoppingCart(car)}>
-                                    Remove from Cart
-                                        </Button>
-                                    </Grid>
-                                </Grid>
+                                
                                 
                                 {token === 'manager' ? 
                                     <Grid 
