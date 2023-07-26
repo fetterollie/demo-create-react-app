@@ -133,7 +133,7 @@ function App() {
                           <VehicleDisplay token={token} addToShoppingCart={addToShoppingCart} removeFromShoppingCart={removeFromShoppingCart} />
                         </Route>
                         <Route path="/checkout">
-                          <Checkout shoppingCart={shoppingCart} />
+                          <Checkout shoppingCart={shoppingCart} removeFromShoppingCart={removeFromShoppingCart}/>
                         </Route>
                         {token === "manager" ? <Route path="/register">
                           <Register />
