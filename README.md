@@ -10,7 +10,7 @@ To connect to PostgreSQL, navigate into the server directory within this project
 
 In a new terminal window, navigate into the project directory and run:
 
-### `npm start`
+### `yarn start`
 
 ## Application Screenshots
 
