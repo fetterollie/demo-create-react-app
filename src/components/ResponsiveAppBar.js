@@ -18,7 +18,7 @@ import '../Styles/Global.scss';
 
 
 function ResponsiveAppBar({ token }) {
-  const pages = ['Home', 'VehicleDisplay', 'VehicleInput', `${token === "manager" ? "Register" : ""}`];
+  const pages = ['Home', 'VehicleDisplay', 'VehicleInput', 'Checkout', `${token === "manager" ? "Register" : ""}`];
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);

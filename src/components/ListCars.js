@@ -13,8 +13,9 @@ import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import '../Styles/Global.scss';
+import e from "cors";
 
-const ListCars = ({ token }) => {
+const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
 
     const [cars, setCars] = useState([])
 
@@ -238,7 +239,22 @@ const ListCars = ({ token }) => {
                     >
                         <Card>
                             <CardContent >
-                                <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
+                                <Grid container>
+                                    <Grid item>
+                                        <InfoModalCar car={car} deleteCar={deleteCar} token={token}/>
+                                    </Grid>
+                                    <Grid item>
+                                        <Button variant="contained" color="success" onClick={e => addToShoppingCart(car)}>
+                                    Add to Cart
+                                        </Button>
+                                    </Grid>
+                                    <Grid item>
+                                        <Button variant="contained" color="error" onClick={e => removeFromShoppingCart(car)}>
+                                    Remove from Cart
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                                
                                 {token === 'manager' ? 
                                     <Grid 
                                         className="car__card__items"

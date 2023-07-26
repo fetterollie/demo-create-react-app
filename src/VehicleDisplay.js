@@ -4,9 +4,9 @@ import './Styles/Global.scss';
 
 
 
-const VehicleDisplay = ({ token }) => {
+const VehicleDisplay = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
     return (
-    <ListCars token={token} />
+    <ListCars token={token} addToShoppingCart={addToShoppingCart} removeFromShoppingCart={removeFromShoppingCart} />
     );
 }
  

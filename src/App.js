@@ -18,6 +18,7 @@ import SettingsBrightnessRoundedIcon from '@mui/icons-material/SettingsBrightnes
 import Login from './components/Login';
 import useToken from './useToken';
 import Register from './components/Register';
+import Checkout from './Checkout';
 
 export const ThemeContext = createContext(null);
 
@@ -73,6 +74,35 @@ function App() {
 
   const [cars, setCars] = useState([])
 
+  let [shoppingCart, setShoppingCart] = useState([])
+
+  // function addToShoppingCart(car) {
+    
+  // }
+
+  const addToShoppingCart = (car) => {
+    if (car !== undefined && !shoppingCart.includes(car)) {
+      shoppingCart.push(car)
+    }
+    
+    console.log("cart(add):", shoppingCart)
+
+  }
+
+  const removeFromShoppingCart = (car) => {
+    let tempArray = []
+    if (shoppingCart.includes(car)) {
+      tempArray = shoppingCart.filter((cars) => cars !== car) 
+      setShoppingCart(tempArray)
+    }
+    
+    console.log("cart(del):", shoppingCart)
+    
+  }
+
+  useEffect(() => {
+    addToShoppingCart()
+  }, [shoppingCart])
   
   // Toggle Theme
   const [theme, setTheme] = useState(lightTheme)
@@ -100,7 +130,10 @@ function App() {
                           <VehicleInput />
                         </Route>
                         <Route path='/vehicledisplay'>
-                          <VehicleDisplay token={token}/>
+                          <VehicleDisplay token={token} addToShoppingCart={addToShoppingCart} removeFromShoppingCart={removeFromShoppingCart} />
+                        </Route>
+                        <Route path="/checkout">
+                          <Checkout shoppingCart={shoppingCart} />
                         </Route>
                         {token === "manager" ? <Route path="/register">
                           <Register />
