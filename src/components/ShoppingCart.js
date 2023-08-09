@@ -13,7 +13,7 @@ import '../Styles/Global.scss';
 
 const ShoppingCart = ({ shoppingCart, removeFromShoppingCart, deleteCar, token }) => {
     return ( 
-        <Container>
+        <Container className='page__container'>
             <Typography className="page__title" variant="h5">
                 Shopping Cart
             </Typography>

@@ -125,8 +125,8 @@
 }
 
 .page__title {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    // padding-left: 1rem !important;
+    // padding-right: 1rem !important;
     display: block;
     font-size: 0.83em;
     font-weight: bolder;
@@ -151,4 +151,15 @@
 .MuiTypography-h6 {
     padding-left: 0;
     padding-right: 0;
+}
+
+.MuiTypography-h5 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page__container {
+    // background-color: red;
+    padding: 1rem;
+
 }
