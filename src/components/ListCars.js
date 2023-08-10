@@ -15,11 +15,28 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import '../Styles/Global.scss';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import axios from 'axios';
 
 
 const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
 
+    //START: hibernate connection update
+    const [hibCars, setHibCars] = useState([]);
+
+    useEffect(() => {
+        console.log("new useEffect firing!")
+        loadHibCars();
+    }, [])
+
+    //load cars
+    const loadHibCars = async() => {
+        const result = await axios.get("http://localhost:8080/api/v1/cars")
+        console.log("hibData:", result.data[0])
+    }
+    //END: hibernate connection update
+
     const [cars, setCars] = useState([])
+
 
     // state for filtering
     const [make, setMake] = useState('');
@@ -76,6 +93,7 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
 
             const response = await fetch("http://localhost:5000/cars");
             const carsData = await response.json();
+            console.log(carsData)
 
             let carsClonedArray = structuredClone(carsData)
             
