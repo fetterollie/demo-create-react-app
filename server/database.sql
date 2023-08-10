@@ -20,3 +20,10 @@ INSERT INTO users (user_id, username, password, role)
 VALUES (2, 'user', 'user', 'user');
 
 DELETE FROM users *;
+
+
+INSERT INTO users (id, username, password, role)
+VALUES (1, 'jon', 'password', 'manager');
+
+INSERT INTO users (id, username, password, role)
+VALUES (2, 'user', 'password', 'user');
