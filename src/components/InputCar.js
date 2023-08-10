@@ -5,26 +5,43 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import '../Styles/Global.scss';
 import Grid from '@mui/material/Grid';
+import axios from 'axios';
 
 const InputCar = () => {
     const [make, setMake] = useState('')
     const [model, setModel] = useState('')
     const [color, setColor] = useState('')
     const [year, setYear] = useState('')
-    const [imgUrl, setImgUrl] = useState('')
+    const [imgurl, setImgurl] = useState('')
+    const powerwindows = "false"
+    const powerlocks = "false"
+    const backupcamera = "false"
 
     const onSubmitForm = async e => {
         e.preventDefault();
         try {
-            const body = { make, model, color, year, imgUrl };
-            const response = await fetch("http://localhost:5000/cars", {
-                method: "POST",
-                headers: { "Content-Type": "application/json"},
-                body: JSON.stringify(body)
-            });
+            const body = { 
+                make, 
+                model,   
+                year, 
+                color, 
+                imgurl, 
+                powerwindows,
+                powerlocks,
+                backupcamera
+            };
+            // Original POST
+            // const response = await fetch("http://localhost:5000/cars", {
+            //     method: "POST",
+            //     headers: { "Content-Type": "application/json"},
+            //     body: JSON.stringify(body)
+            
+            // axios POST
+            const response = await axios.post("http://localhost:8080/api/v1/cars", body)
+        
 
             window.location = "/vehicleinput";
-
+        
             // console.log(response)
         } catch (err) {
             console.error(err.message);
@@ -100,8 +117,8 @@ const InputCar = () => {
                         <TextField
                             className="carInputForm"
                             label='Add Image URL'
-                            value={imgUrl}
-                            onChange={e => setImgUrl(e.target.value)}
+                            value={imgurl}
+                            onChange={e => setImgurl(e.target.value)}
                         />
                     </Grid>
                     <Grid
