@@ -75,7 +75,14 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
     // delete cars function
     const deleteCar = async (id) => {
         try {
-            const deleteCar = await fetch(`http://localhost:5000/cars/${id}`, {
+            //ORIGINAL delete
+            // const deleteCar = await fetch(`http://localhost:5000/cars/${id}`, {
+            //     method: "DELETE"
+            // });
+
+            //axios delete
+            console.log("id:", id)
+            const deleteCar = await axios.delete(`http://localhost:8080/api/v1/cars/${id}`, {
                 method: "DELETE"
             });
 
@@ -90,13 +97,20 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
     // get cars from database and filter
     const getCars = async () => {
         try{
+            // ORIGINAL fetch
+            // const response = await fetch("http://localhost:5000/cars");
+            // const carsData = await response.json();
+            // console.log(carsData)
 
-            const response = await fetch("http://localhost:5000/cars");
-            const carsData = await response.json();
-            console.log(carsData)
+            // axios fetch from custom back-end (hibernate jpa)
+            const response = await axios.get("http://localhost:8080/api/v1/cars");
+            console.log("response", response.data);
+            const carsData = await response.data;
+            console.log(carsData);
 
             let carsClonedArray = structuredClone(carsData)
             
+            // filtering logic for selections
             Object.entries(filters).forEach(([key, value], idx) => {
                 // console.log(`key: ${key}, value: ${value}`);
                 // console.log(carsData.filter((car) => (car[key] === value)))
@@ -289,7 +303,7 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
                                             item
                                             // xs={4}
                                         >
-                                            <Button  variant="outlined" color="error" onClick={() => {deleteCar(car.car_id)}}>
+                                            <Button  variant="outlined" color="error" onClick={() => {deleteCar(car.id)}}>
                                                 <DeleteForeverIcon/>
                                                 Delete
                                             </Button>
