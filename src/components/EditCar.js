@@ -8,6 +8,7 @@ import DisabledByDefaultRoundedIcon from '@mui/icons-material/DisabledByDefaultR
 import EditIcon from '@mui/icons-material/Edit';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import axios from "axios";
 
 
 const style = {
@@ -32,7 +33,7 @@ export default function EditCar({ car }) {
         setModel(car.model);
         setColor(car.color);
         setYear(car.year);
-        setImgUrl(car.imgurl);
+        setImgurl(car.imgurl);
         setPowerwindows(car.powerwindows);
         setPowerlocks(car.powerlocks);
         setBackupcamera(car.backupcamera);
@@ -43,7 +44,7 @@ export default function EditCar({ car }) {
     const [model, setModel] = useState(car.model);
     const [color, setColor] = useState(car.color);
     const [year, setYear] = useState(car.year);
-    const [imgUrl, setImgUrl] = useState(car.imgurl);
+    const [imgurl, setImgurl] = useState(car.imgurl);
     const [powerwindows, setPowerwindows] = useState(car.powerwindows);
     const [powerlocks, setPowerlocks] = useState(car.powerlocks);
     const [backupcamera, setBackupcamera] = useState(car.backupcamera);
@@ -52,14 +53,29 @@ export default function EditCar({ car }) {
     const updateValues = async(e) => {
         e.preventDefault();
         try {
-            const body = { make, model, color, year, imgUrl, powerwindows, powerlocks, backupcamera };
-            const response = await fetch(`http://localhost:5000/cars/${car.car_id}`, 
-                {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body)
-                }
-            );
+            const body = { 
+                make, 
+                model, 
+                color, 
+                year, 
+                imgurl, 
+                powerwindows, 
+                powerlocks, 
+                backupcamera
+            };
+            
+            // ORIGINAL PUT
+            // const response = await fetch(`http://localhost:5000/cars/${car.car_id}`, 
+            //     {
+            //         method: "PUT",
+            //         headers: { "Content-Type": "application/json" },
+            //         body: JSON.stringify(body)
+            //     }
+            // );
+
+            // axios PUT hooking up new back-end
+            const response = await axios.put(`http://localhost:8080/api/v1/cars/${car.id}`, body);
+
             // refresh after input
             window.location = "/vehicledisplay";
         } catch (err) {
@@ -118,8 +134,8 @@ export default function EditCar({ car }) {
                     />
                     <TextField 
                         sx={{ width: "100%" }}
-                        value={imgUrl} 
-                        onChange={e => setImgUrl(e.target.value)}
+                        value={imgurl} 
+                        onChange={e => setImgurl(e.target.value)}
                     />
                     <Typography sx={{ display: "inline-flex", paddingRight: "20px", width: "45%" }}>
                         Power Windows: 
