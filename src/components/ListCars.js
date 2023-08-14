@@ -303,13 +303,13 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
                                     >
                                         <Grid
                                             item
-                                            // xs={4}
+                                            sx={{ padding: "0rem" }}
                                         >
                                             <EditCar car={car} />
                                         </Grid>
                                         <Grid
                                             item
-
+                                            sx={{ padding: "0rem" }}
                                         >
                                             <Button  
                                                 variant="outlined" 

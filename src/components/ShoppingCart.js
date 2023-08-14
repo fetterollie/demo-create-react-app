@@ -17,7 +17,10 @@ const ShoppingCart = ({ shoppingCart, removeFromShoppingCart, deleteCar, token }
             <Typography className="page__title" variant="h5">
                 Shopping Cart
             </Typography>
-            <Typography className="page__title">
+            <Typography 
+                className="page__title"
+                sx={{ paddingLeft: "1rem" }}
+            >
                 {`Total Items: ${shoppingCart.length}`}
             </Typography>
             <Grid 

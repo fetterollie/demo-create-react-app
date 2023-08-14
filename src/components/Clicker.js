@@ -28,7 +28,7 @@ const Clicker = () => {
         <Box className="widgetBox">
             <Typography 
                 variant='h5' 
-                className='widgetTitle'
+                sx={{ paddingLeft: "0rem" }}
             >
                 Counter
             </Typography>

@@ -12,6 +12,7 @@ const Home = () => {
             <Typography 
                 className='page__title'
                 variant='h5'
+                sx={{ paddingLeft: "2rem" }}
             >
                 Home
             </Typography>
@@ -24,7 +25,12 @@ const Home = () => {
             >
                 <Grid item key="Info">
                     <Typography className="" color="textSecondary">
-                        Lorem ipsum  dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        This full-stack application demonstrates many modern development 
+                        practices for both front-end and back-end components. The front-end
+                         of the application is built using React, the Create React App framework,
+                          Yarn, Material UI, MUI Theme Creator, Sass, and Axios. The back-end 
+                          of the application is constructed using Java, the Spring Boot framework,
+                           and PostgresQL.
                     </Typography>
                 </Grid>
                 <Grid className="page__content" item key="Weather" xs={12} sm={6} md={4}>

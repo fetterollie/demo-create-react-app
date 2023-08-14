@@ -37,7 +37,7 @@ const Weather = () => {
         <Box className="widgetBox">
             <Typography 
                 variant='h5'
-                className='widgetTitle'
+                sx={{ paddingLeft: "0rem" }}
             >
                 {`Temperature:`}
             </Typography>
@@ -64,7 +64,9 @@ const Weather = () => {
                 </form>
                 
             </FormControl>
-            <Typography>
+            <Typography
+                sx={{ width: "250px" }}
+            >
                 {temp && city ? (`The current temperature in ${city} is ${Math.round(temp * 10) / 10}F.`) : ''}
             </Typography>
         </Box>

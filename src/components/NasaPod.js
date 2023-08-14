@@ -50,7 +50,7 @@ const NasaPod = () => {
         <Box className="widgetBox">
             <Typography 
                 variant='h5'
-                className='widgetTitle'
+                sx={{ paddingLeft: "0rem" }}
             >
                 {`NASA PoD`}
             </Typography>

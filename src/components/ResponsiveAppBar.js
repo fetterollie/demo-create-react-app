@@ -92,6 +92,7 @@ function ResponsiveAppBar({ token, setToken }) {
             noWrap
             component="a"
             href="/home"
+            sx={{ paddingLeft: "1rem" }}
           >
             DEMO REACT APP
           </Typography>

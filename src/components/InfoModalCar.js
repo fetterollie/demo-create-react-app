@@ -50,6 +50,7 @@ export default function InfoModalCar({ car }) {
                     direction="row"
                     justifyContent="space-evenly"
                     alignItems="center"
+                    sx={{ padding: "0rem" }}
                 >
                     <Grid 
                         item 
@@ -69,11 +70,13 @@ export default function InfoModalCar({ car }) {
                         alignItems="flex-end"
                     >
                         <Grid 
-                        item
+                            item
+                            sx={{ padding: "0rem" }}
                         >
                             <Typography 
                                 className="car__card__items"
                                 variant="h6"
+                                sx={{ paddingLeft: "0rem" }}
                             >
                                 {`${car.make ? car.make : "N/A"} ${car.model ? car.model : "N/A"}`}
                             </Typography>
