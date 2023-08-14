@@ -3,14 +3,13 @@ const app = express();
 const cors = require('cors');
 const pool = require('./db');
 
-//middleware
+// middleware
 app.use(cors());
 app.use(express.json()); //adds req.body to access this obj
 
-//ROUTES//
+// ROUTES
 
-//create a car//
-
+// create a car
 app.post("/cars", async(req, res) => {
     try {
         // console.log(req.body);
@@ -25,8 +24,7 @@ app.post("/cars", async(req, res) => {
     }
 });
 
-//get all cars//
-
+// get all cars
 app.get("/cars", async(req, res) => {
     try{
         const allCars = await pool.query("SELECT * FROM cars");
@@ -36,8 +34,7 @@ app.get("/cars", async(req, res) => {
     }
 });
 
-//get a car//
-
+// get a car
 app.get("/cars/:id", async(req, res) => {
     try{
         const{ id } = req.params;
@@ -51,8 +48,7 @@ app.get("/cars/:id", async(req, res) => {
     }
 });
 
-//update a car//
-
+// update a car
 app.put("/cars/:id", async(req, res) => {
     try{
         const { id } = req.params;
@@ -67,8 +63,7 @@ app.put("/cars/:id", async(req, res) => {
     }
 });
 
-//delete a car
-
+// delete a car
 app.delete("/cars/:id", async (req, res) => {
     try{
         const { id } = req.params;
@@ -113,17 +108,6 @@ app.post('/login', async (req, res) => {
         console.error(console.log('ERROR!'));
     }
 });
-
-// // login 
-// app.use('/login', (req, res) => {
-//     res.send({
-//         token: 'test123'
-//     });
-// });
-
-
-
-
 
 // all users
 app.get("/users", async(req, res) => {
