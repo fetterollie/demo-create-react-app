@@ -85,7 +85,7 @@ function App() {
       shoppingCart.push(car)
     }
     
-    console.log("cart(add):", shoppingCart)
+    // console.log("cart(add):", shoppingCart)
 
   }
 
@@ -96,7 +96,7 @@ function App() {
       setShoppingCart(tempArray)
     }
     
-    console.log("cart(del):", shoppingCart)
+    // console.log("cart(del):", shoppingCart)
     
   }
 

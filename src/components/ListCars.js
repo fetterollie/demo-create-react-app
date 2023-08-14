@@ -24,14 +24,14 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
     const [hibCars, setHibCars] = useState([]);
 
     useEffect(() => {
-        console.log("new useEffect firing!")
+        // console.log("new useEffect firing!")
         loadHibCars();
     }, [])
 
     //load cars
     const loadHibCars = async() => {
         const result = await axios.get("http://localhost:8080/api/v1/cars")
-        console.log("hibData:", result.data[0])
+        // console.log("hibData:", result.data[0])
     }
     //END: hibernate connection update
 
@@ -81,7 +81,7 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
             // });
 
             //axios delete
-            console.log("id:", id)
+            // console.log("id:", id)
             const deleteCar = await axios.delete(`http://localhost:8080/api/v1/cars/${id}`, {
                 method: "DELETE"
             });
@@ -104,9 +104,9 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
 
             // axios fetch from custom back-end (hibernate jpa)
             const response = await axios.get("http://localhost:8080/api/v1/cars");
-            console.log("response", response.data);
+            // console.log("response", response.data);
             const carsData = await response.data;
-            console.log(carsData);
+            // console.log(carsData);
 
             let carsClonedArray = structuredClone(carsData)
             
@@ -274,17 +274,25 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
                         <Card>
                             <CardContent >
                                 
-                                    <InfoModalCar className="" car={car} deleteCar={deleteCar} token={token}/>
+                                    <InfoModalCar 
+                                        className="" 
+                                        car={car} 
+                                        deleteCar={deleteCar} 
+                                        token={token}
+                                    />
                                     <Grid item>
-                                        <Button variant="outlined" color="success" onClick={e => addToShoppingCart(car)}>
-                                    <AddShoppingCartIcon />
+                                        <Button 
+                                            variant="outlined" 
+                                            color="success" 
+                                            onClick={e => addToShoppingCart(car)}
+                                        >
+                                            <AddShoppingCartIcon />
                                         </Button>
                                         <Button variant="outlined" color="error" onClick={e => removeFromShoppingCart(car)}>
-                                    <RemoveShoppingCartIcon />
+                                            <RemoveShoppingCartIcon />
                                         </Button>
                                     </Grid>
-                                
-                                
+                                {/* if a manager is viewing, display this:  */}
                                 {token === 'manager' ? 
                                     <Grid 
                                         className="car__card__items"
@@ -301,17 +309,22 @@ const ListCars = ({ token, addToShoppingCart, removeFromShoppingCart }) => {
                                         </Grid>
                                         <Grid
                                             item
-                                            // xs={4}
+
                                         >
-                                            <Button  variant="outlined" color="error" onClick={() => {deleteCar(car.id)}}>
+                                            <Button  
+                                                variant="outlined" 
+                                                color="error" 
+                                                onClick={() => {deleteCar(car.id)}}
+                                            >
                                                 <DeleteForeverIcon/>
                                                 Delete
                                             </Button>
                                         </Grid>
                                     </Grid>
-                                    : 
+                                    :
+                                    // else don't display anything:
                                     <></>
-                        }
+                                }
                             </CardContent>
                         </Card>
                     </Grid>
