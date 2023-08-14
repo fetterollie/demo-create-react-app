@@ -15,7 +15,7 @@ import { Link } from 'react-router-dom';
 import '../Styles/Global.scss';
 
 
-function ResponsiveAppBar({ token }) {
+function ResponsiveAppBar({ token, setToken }) {
   const pages = ['Home', 'VehicleDisplay', 'VehicleInput', 'Checkout', `${token === "manager" ? "Register" : ""}`];
   const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -34,6 +34,7 @@ function ResponsiveAppBar({ token }) {
   };
 
   const handleCloseUserMenu = () => {
+    setToken("");
     setAnchorElUser(null);
   };
   
@@ -131,7 +132,10 @@ function ResponsiveAppBar({ token }) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem 
+                  key={setting} 
+                  onClick={handleCloseUserMenu}
+                >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

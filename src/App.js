@@ -116,11 +116,12 @@ function App() {
   return (
       <ThemeProvider theme={theme}>
         <CssBaseline />
+          {/* display the login page unless token is truthy */}
           {!token ? 
             <Login setToken={setToken}/>
             :
               <Router>
-                <ResponsiveAppBar token={token}/>
+                <ResponsiveAppBar token={token} setToken={setToken} />
                   <div className="container">
                     <div key="fix?" className='content'>
                       <Switch>
