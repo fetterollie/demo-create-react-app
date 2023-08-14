@@ -47,7 +47,7 @@ const Weather = () => {
             >
                 <form onSubmit={onSubmit}>
                     <TextField
-                        sx={{ width: "250px"}}
+                        sx={{ width: "250px" }}
                         label="ZIP Code"
                         value={zipCode}
                         onChange={(e) => {setZipcode(e.target.value)}}
