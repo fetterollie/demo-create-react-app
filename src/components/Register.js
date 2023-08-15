@@ -8,6 +8,7 @@ import { useState } from 'react';
 import '../Styles/Global.scss';
 import { Grid } from '@mui/material';
 
+// register a new user to PostgresQL db
 async function registerUser(credentials) {
     return fetch('http://localhost:5000/register', {
         method: 'POST',
@@ -19,6 +20,8 @@ async function registerUser(credentials) {
     .then(data => data.json())
 }
 
+// in the case of register, token will be the role which is 
+// returned from entering a correct username/password
 const Register = ({ token }) => {
 
     const [usernameReg, setUsernameReg] = useState();

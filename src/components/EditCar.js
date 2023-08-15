@@ -39,7 +39,7 @@ export default function EditCar({ car }) {
         setBackupcamera(car.backupcamera);
     };
 
-    // state
+    // state for car attributes
     const [make, setMake] = useState(car.make);
     const [model, setModel] = useState(car.model);
     const [color, setColor] = useState(car.color);

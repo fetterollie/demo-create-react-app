@@ -1,3 +1,5 @@
+-- SQL queries for db
+
 CREATE DATABASE demo;
 
 CREATE TABLE cars(
@@ -8,6 +10,7 @@ CREATE TABLE cars(
     year INT,
     imgUrl VARCHAR(2048)
 );
+
 
 CREATE TABLE users( 
     user_id SERIAL PRIMARY KEY,
